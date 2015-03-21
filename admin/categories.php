@@ -561,6 +561,7 @@ function updateNet() {
 <script type="text/javascript"><!--
 updateGross();
 //--></script>
+<script src="js/ckeditor/ckeditor.js"></script>
 <?php
     for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
 ?>
@@ -568,8 +569,25 @@ updateGross();
             <td class="main" valign="top"><?php if ($i == 0) echo TEXT_PRODUCTS_DESCRIPTION; ?></td>
             <td><table border="0" cellspacing="0" cellpadding="0">
               <tr>
-                <td class="main" valign="top"><?php echo tep_image(tep_catalog_href_link(DIR_WS_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], '', 'SSL'), $languages[$i]['name']); ?>&nbsp;</td>
-                <td class="main"><?php echo tep_draw_textarea_field('products_description[' . $languages[$i]['id'] . ']', 'soft', '70', '15', (empty($pInfo->products_id) ? '' : tep_get_products_description($pInfo->products_id, $languages[$i]['id']))); ?></td>
+                <td class="main" valign="top">
+                	<?php 
+                		echo tep_image(
+							tep_catalog_href_link(
+								DIR_WS_LANGUAGES . $languages[$i]['directory'] 
+								. '/images/' . $languages[$i]['image'], '', 'SSL'
+							), 
+							$languages[$i]['name']); 
+					?>&nbsp;
+				</td>
+                <td class="main">
+                	<?php 
+                		echo tep_draw_textarea_field(
+							'products_description[' . $languages[$i]['id'] . ']', 
+							'soft', '70', '15', (empty($pInfo->products_id) ? '' 
+							: tep_get_products_description($pInfo->products_id, 
+							$languages[$i]['id']))
+						); 
+					?></td>
               </tr>
             </table></td>
           </tr>
@@ -621,6 +639,11 @@ updateGross();
 #piList li { margin: 5px 0; padding: 2px; }
 </style>
 
+<!-- CKEditor -->
+<script>
+	CKEDITOR.replace( 'products_description[1]' );
+</script>
+        
 <script type="text/javascript">
 $('#piList').sortable({
   containment: 'parent'
