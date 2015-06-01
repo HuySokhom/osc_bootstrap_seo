@@ -51,7 +51,7 @@ require(DIR_WS_INCLUDES . 'template_top.php');
 ></script>
 <script 
 	type="text/javascript" 
-	src="js/ng/app/modules/controller/modules_edit_ctrl.js"
+	src="js/ng/app/modules/controller/modules_install_ctrl.js"
 ></script>
 <script 
 	type="text/javascript" 

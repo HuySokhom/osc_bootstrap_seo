@@ -1,5 +1,5 @@
 app.controller(
-	'modules_edit_ctrl', [
+	'modules_install_ctrl', [
 	'$scope'
 	, 'Factory'
 	, 'Services'
