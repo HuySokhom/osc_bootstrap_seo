@@ -55,6 +55,10 @@ require(DIR_WS_INCLUDES . 'template_top.php');
 ></script>
 <script 
 	type="text/javascript" 
+	src="js/ng/app/modules/controller/modules_edit_ctrl.js"
+></script>
+<script 
+	type="text/javascript" 
 	src="js/ng/app/modules/factory/factory.js"
 ></script>
 <script 
@@ -64,6 +68,10 @@ require(DIR_WS_INCLUDES . 'template_top.php');
 <script 
 	type="text/javascript" 
 	src="js/ng/app/modules/directive/install-modules.js"
+></script>
+<script 
+	type="text/javascript" 
+	src="js/ng/app/modules/directive/edit-modules.js"
 ></script>
 
 </body>
