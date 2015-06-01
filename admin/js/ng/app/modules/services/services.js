@@ -15,5 +15,12 @@ app.service("Services",
 			
         };
         
+        this.alertMessage = function(attr){
+        	$(attr).show();
+			setTimeout(function(){
+				$(attr).hide();
+			},1000);
+        };
+        
  	}
 );
