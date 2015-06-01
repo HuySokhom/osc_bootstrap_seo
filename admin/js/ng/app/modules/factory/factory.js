@@ -14,12 +14,12 @@ app.factory("Factory", [
         obj.remove = function(params) {
         	return $http({
         		method: 'DELETE', 
-				url: url + params.id,
+				url: url + params,
 				data: params
         	});
         };
         
-        obj.add = function(params){
+        obj.insert = function(params){
         	return $http({
         		url: url,
     			method: 'POST',
