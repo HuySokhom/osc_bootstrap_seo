@@ -7,14 +7,13 @@ app.controller(
 		
 		$scope.module_install = [];
 		
+		$('.message-remove').hide();
 		$scope.remove = function(params){
-			console.log(params);
+			// push object to install module
+			$scope.modules.elements.push(params);
 			Services.removeObject($scope.module_install, params.title);
 			// alert message
-//			$('.message').show();
-//			setTimeout(function(){
-//				$('.message').hide();
-//			},1000);	
+			Services.alertMessage('.message-remove');
 		};
 		
 	}
