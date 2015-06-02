@@ -11,6 +11,14 @@ app.factory("Factory", [
             });
         };
         
+        obj.getModule = function(params) {
+            return $http({
+        		url: 'api/Module',
+    			method: 'GET',
+    			params: params
+            });
+        };
+        
         obj.remove = function(params) {
         	return $http({
         		method: 'DELETE', 
