@@ -13,6 +13,7 @@ $module_type = $cfgModules->get($set, 'code');
 $module_directory = $cfgModules->get($set, 'directory');
 $module_language_directory = $cfgModules->get($set, 'language_directory');
 $module_key = $cfgModules->get($set, 'key');
+define('HEADING_TITLE', $cfgModules->get($set, 'title'));
 
 require(DIR_WS_INCLUDES . 'template_top.php');
 
@@ -34,7 +35,7 @@ require(DIR_WS_INCLUDES . 'template_top.php');
 		<span class="glyphicon glyphicon-plus"></span>
 		Install Modules
 	</button>
-	<h3>Dashboard</h3>
+	<h3><?php echo HEADING_TITLE; ?></h3>
 	<div
 		class="alert alert-success message-remove"
 	>
