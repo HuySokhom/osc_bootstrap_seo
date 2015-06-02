@@ -12,7 +12,27 @@
 				</h4>
 	      	</div>
 			<div class="modal-body">
-				get from db
+				<table
+					data-ng-repeat="module in module_edit"
+				>
+					<tr>
+						<td>
+							<label>
+								{{module.configuration_title}}
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							{{module.configuration_description}}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							{{module.configuration_value}}
+						</td>
+					</tr>
+				</table>
 			</div>
 			<div class="modal-footer">
 				<button 
