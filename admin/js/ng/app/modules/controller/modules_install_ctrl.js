@@ -16,6 +16,10 @@ app.controller(
 		$scope.installModule = function(params){
 			$scope.module_install.push(params);
 			Services.removeObject($scope.modules.elements, params.title);
+			
+			Factory.insert().success(function(data){
+				console.log(data);
+			});
 			// alert message
 			Services.alertMessage('.message-install');
 		};

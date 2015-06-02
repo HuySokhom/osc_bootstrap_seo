@@ -4,6 +4,6 @@ app.controller(
 	, 'Factory'
 	, 'Services'
 	, function ($scope, Factory, Services){
-		console.log('test');
+		
 	}
 ]);
