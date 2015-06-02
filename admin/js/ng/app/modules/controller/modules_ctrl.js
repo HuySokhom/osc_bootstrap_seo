@@ -5,7 +5,20 @@ app.controller(
 	, 'Services'
 	, function ($scope, Factory, Services){
 		
-		$scope.module_install = [];
+		function init(){
+			// get module name for filter
+			var module = $('#module').attr('class');
+			var path = $('#path').attr('class');
+			var dataParse = {
+				module: module, 
+				path: path
+			};
+			Factory.getModule(dataParse).success(function(data){
+				console.log(data);
+				$scope.module_install = data;
+			});
+		}
+		init();
 		
 		$('.message-remove').hide();
 		$scope.remove = function(params){
