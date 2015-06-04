@@ -7,23 +7,21 @@ app.controller(
 		// get module name for filter
 		var path = $('#path').attr('class');
 		var module = $('#module').attr('class');
-		function init(){
+		$scope.init = function(){
 			var dataParse = {
 				module: module, 
 				path: path
 			};
 			Factory.getModule(dataParse).success(function(data){
 				console.log(data);
-				$scope.module_install = data;
+				$scope.modules = data;
 			});
-		}
-		init();
+		};
+		$scope.init();
 		
 		$('.message-remove').hide();
 		$scope.remove = function(params, index){
-			// push object to install module
-			$scope.modules.elements.push(params);
-			$scope.module_install.splice(index, 1);
+			$scope.modules.splice(index, 1);
 			// alert message
 			Services.alertMessage('.message-remove');			
 			var data = {
