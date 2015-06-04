@@ -30,7 +30,7 @@ app.factory("Factory", [
         obj.remove = function(params) {
         	return $http({
         		method: 'DELETE', 
-				url: url + params,
+				url: 'api/Module',
 				data: params
         	});
         };
