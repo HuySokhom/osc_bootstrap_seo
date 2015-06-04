@@ -4,10 +4,11 @@ app.factory("Factory", [
         var url = 'api/Modules';
         var obj = {};
         
-        obj.get = function() {
+        obj.get = function(params) {
             return $http({
         		url: url,
     			method: 'GET',
+    			params: params
             });
         };
         
