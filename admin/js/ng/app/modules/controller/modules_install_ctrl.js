@@ -5,20 +5,31 @@ app.controller(
 	, 'Services'
 	, '$location'
 	, function ($scope, Factory, Services, $location){
-		function init(){
-			Factory.get().success(function(data){
-				$scope.modules = data;
+		
+		var path = $('#path').attr('class');
+		var module = $('#module').attr('class');
+		$scope.install = function(){
+			var dataParse = {
+				module: module, 
+				path: path,
+				module_directory: $('#module_directory').attr('class')
+			};
+			Factory.get(dataParse).success(function(data){
+				$scope.modules_install = data;
+				console.log(data);
 			});
 		};
-		init();
-		
+				
 		$('.message-install').hide();
-		$scope.installModule = function(params){
-			$scope.module_install.push(params);
-			Services.removeObject($scope.modules.elements, params.title);
-			
-			Factory.insert().success(function(data){
-				console.log(data);
+		$scope.installModule = function(params, $index){
+			$scope.modules_install.splice($index, 1);			
+			var data = {
+				code: params.code,
+				path: path,
+				module: module
+			};
+			Factory.insert(data).success(function(data){
+				$scope.init();
 			});
 			// alert message
 			Services.alertMessage('.message-install');
