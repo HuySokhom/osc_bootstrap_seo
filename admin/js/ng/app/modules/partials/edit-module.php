@@ -28,19 +28,8 @@
 						</td>
 					</tr>
 					<tr>
-						<td data-ng-if="module.configuration_value >= 0">
-							<input type="text" data-ng-model="module.configuration_value"/>
-							{{module.configuration_value}}							
-						</td>
 						<td>
-							<div data-ng-if="module.configuration_value == 'True'">
-								<select>
-									
-									<option data-ng-false-value="module.configuration_value">False</option>
-									<option data-ng-true-value="module.configuration_value">True</option>
-								</select>
-								{{module.configuration_value}}
-							</div>
+							{{module.configuration_value}}							
 						</td>
 					</tr>
 				</table>
