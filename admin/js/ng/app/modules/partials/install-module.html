@@ -19,7 +19,7 @@
 					Install Success.
 				</div>
 				<div
-					data-ng-if="modules.elements.length == 0"
+					data-ng-if="modules_install.length == 0"
 					class="alert alert-warning"
 				>
 					<label>Info: </label>
@@ -27,7 +27,7 @@
 				</div>
 				<table 
 					class="table table-striped table-bordered"
-					data-ng-if="modules.elements.length > 0"
+					data-ng-if="modules_install.length > 0"
 				>
 					<tr>
 						<th>
@@ -38,7 +38,7 @@
 						</th>
 					</tr>
 					<tr
-						data-ng-repeat="module in modules.elements"
+						data-ng-repeat="module in modules_install"
 					>
 						<td>
 							<label>{{module.title}}</label>
@@ -50,7 +50,7 @@
 							<button
 								class="btn btn-primary"
 								title="install"
-								data-ng-click="installModule(module);"
+								data-ng-click="installModule(module, $index);"
 							>
 								Install 
 							</button>
