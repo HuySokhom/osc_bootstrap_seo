@@ -16,7 +16,9 @@ $module_key = $cfgModules->get($set, 'key');
 define('HEADING_TITLE', $cfgModules->get($set, 'title'));
 
 require(DIR_WS_INCLUDES . 'template_top.php');
-
+// require_once 'includes/languages/english/modules.php';
+// require_once 'includes/languages/english/modules/dashboard/d_admin_logins.php';
+// require_once (DIR_FS_ADMIN . 'js/ng/app/modules/partials/edit-module.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,7 +37,7 @@ require(DIR_WS_INCLUDES . 'template_top.php');
 		<span class="glyphicon glyphicon-plus"></span>
 		Install Modules
 	</button>
-	<h3><?php echo HEADING_TITLE; ?></h3>
+	<h3><?php echo HEADING_TITLE;?></h3>
 	<div
 		class="alert alert-success message-remove"
 	>
@@ -65,7 +67,7 @@ require(DIR_WS_INCLUDES . 'template_top.php');
 			</td>
 		</tr>
 		<tr
-			data-ng-repeat="module in module_install"
+			data-ng-repeat="module in module_install track by $index"
 		>
 			<td>
 				{{module.title}}
@@ -86,13 +88,14 @@ require(DIR_WS_INCLUDES . 'template_top.php');
 				<button
 					class="btn btn-danger"
 					title="Delete"
-					data-ng-click="remove(module);"				
+					data-ng-click="remove(module, $index);"				
 				>
 					Remove
 				</button>
 			</td>
 		</tr>
 	</table>
+	<?php echo '<b>' . TEXT_MODULE_DIRECTORY . '</b> ' . $module_directory; ?>
 	<install-modules></install-modules>
 	<edit:modules></edit:modules>
 <script 
