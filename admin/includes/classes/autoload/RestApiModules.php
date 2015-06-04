@@ -46,8 +46,43 @@ class RestApiModules extends RestApi {
 		
 	}
 	
-	public function post(){
-			
+	public function post($params){
+		$path = $params['POST']['path'];
+		$class_name =  $params['POST']['code'];
+		$module_name = $params['POST']['module'];
+		
+		if( $path == 'dashboard'){
+			// find path only in admin directory
+			require(DIR_WS_MODULES . $path . '/' . $class_name . '.php');
+		}else{
+			// find file path in catalog
+			require(DIR_FS_CATALOG_MODULES . $path . '/' . $class_name . '.php');
+		}		
+		$module = new $class_name();
+		// remove module if already installed
+		if ($module->check() > 0) { 
+			$module->remove();
+		}
+		$module->install();		
+		$modules_installed =
+			$this->query($module_name)
+				?
+			$this->query($module_name) : []
+		;
+		// add new module file if not existing for update cf key value MODULE
+		if (!in_array( $class_name . '.php', $modules_installed)) {
+			$modules_installed[] = $class_name . '.php';
+		}
+		// update main Module
+		tep_db_query("
+			update
+				" . TABLE_CONFIGURATION . "
+			set
+				configuration_value = '" . implode(';', $modules_installed) . "'
+			where
+				configuration_key = '" . $module_name . "'
+		");
+		
 	}
 	
 	public function query($params){
