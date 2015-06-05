@@ -22,6 +22,7 @@ app.controller(
 		$('.message-remove').hide();
 		$scope.remove = function(params, index){
 			$scope.modules.splice(index, 1);
+			$scope.count = $scope.count + 1;
 			// alert message
 			Services.alertMessage('.message-remove');			
 			var data = {

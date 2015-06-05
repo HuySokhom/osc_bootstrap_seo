@@ -16,13 +16,14 @@ app.controller(
 			};
 			Factory.get(dataParse).success(function(data){
 				$scope.modules_install = data;
-				console.log(data);
+				$scope.count = data.length;
 			});
 		};
-				
+		$scope.install();
 		$('.message-install').hide();
 		$scope.installModule = function(params, $index){
-			$scope.modules_install.splice($index, 1);			
+			$scope.modules_install.splice($index, 1);
+			$scope.count = $scope.count - 1;
 			var data = {
 				code: params.code,
 				path: path,
