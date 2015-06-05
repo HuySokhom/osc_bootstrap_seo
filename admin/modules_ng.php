@@ -14,11 +14,7 @@ $module_directory = $cfgModules->get($set, 'directory');
 $module_language_directory = $cfgModules->get($set, 'language_directory');
 $module_key = $cfgModules->get($set, 'key');
 define('HEADING_TITLE', $cfgModules->get($set, 'title'));
-
 require(DIR_WS_INCLUDES . 'template_top.php');
-// require_once 'includes/languages/english/modules.php';
-// require_once 'includes/languages/english/modules/dashboard/d_admin_logins.php';
-// require_once (DIR_FS_ADMIN . 'js/ng/app/modules/partials/edit-module.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,14 +24,16 @@ require(DIR_WS_INCLUDES . 'template_top.php');
 >
 	<span id="module" class="<?php echo $module_key;?>"></span>
 	<span id="path" class="<?php echo $set;?>"></span>
+	<span id="module_directory" class="<?php echo $module_directory;?>"></span>
 	<button
 		class="btn btn-primary"
 		style="float: right;"
 		data-toggle="modal" 
+		data-ng-click="install();"
 		data-target="#install-module"
 	>
 		<span class="glyphicon glyphicon-plus"></span>
-		Install Modules
+		Install Modules ({{count}})
 	</button>
 	<h3><?php echo HEADING_TITLE;?></h3>
 	<div
@@ -57,7 +55,7 @@ require(DIR_WS_INCLUDES . 'template_top.php');
 			</th>
 		</tr>
 		<tr
-			data-ng-if="module_install.length == 0 "
+			data-ng-if="modules.length == 0 "
 		>
 			<td colspan="3">
 				<div class="alert alert-warning">
@@ -67,7 +65,7 @@ require(DIR_WS_INCLUDES . 'template_top.php');
 			</td>
 		</tr>
 		<tr
-			data-ng-repeat="module in module_install track by $index"
+			data-ng-repeat="module in modules track by $index"
 		>
 			<td>
 				{{module.title}}
