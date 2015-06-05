@@ -21,19 +21,23 @@ app.controller(
 		};
 		$scope.install();
 		$('.message-install').hide();
+		$scope.row = null;
 		$scope.installModule = function(params, $index){
-			$scope.modules_install.splice($index, 1);
-			$scope.count = $scope.count - 1;
+			$scope.row = $index;
 			var data = {
 				code: params.code,
 				path: path,
 				module: module
 			};
 			Factory.insert(data).success(function(data){
+				$scope.modules_install.splice($index, 1);
+				$scope.count = $scope.count - 1;
 				$scope.init();
+				// alert message
+				Services.alertMessage('.message-install');
+				$scope.row = null;
 			});
-			// alert message
-			Services.alertMessage('.message-install');
+			
 		};
 		
 	}
