@@ -9,9 +9,9 @@ class RestApiModulesEdit extends RestApi {
 		$cn = $params['GET']['class_name'];
 		
 		if( $path == 'dashboard'){
-			require(DIR_WS_MODULES . $path . '/' . $cn . '.php');
+			require_once DIR_WS_MODULES . $path . '/' . $cn . '.php';
 		}else{
-			require(DIR_FS_CATALOG_MODULES . $path . '/' . $cn . '.php');
+			require_once DIR_FS_CATALOG_MODULES . $path . '/' . $cn . '.php';
 		}		
 			
 		$class = new $cn();
