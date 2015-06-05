@@ -1,7 +1,7 @@
 app.factory("Factory", [
  	'$http', 
  	function ($http) {
-        var url = 'api/Modules';
+        var url = 'api/ModulesInstall';
         var obj = {};
         
         obj.get = function(params) {
@@ -14,7 +14,7 @@ app.factory("Factory", [
         
         obj.getModule = function(params) {
             return $http({
-        		url: 'api/Module',
+        		url: 'api/Modules',
     			method: 'GET',
     			params: params
             });
@@ -31,7 +31,7 @@ app.factory("Factory", [
         obj.remove = function(params) {
         	return $http({
         		method: 'DELETE', 
-				url: 'api/Module',
+				url: 'api/Modules',
 				data: params
         	});
         };
