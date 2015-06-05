@@ -20,9 +20,13 @@ class RestApiModules extends RestApi {
 						if( $path == 'dashboard'){
 							// find path only in admin directory
 							require_once DIR_WS_MODULES . $path . '/' . $file;
+							// include languages
+							include_once DIR_WS_LANGUAGES . 'english/modules/' . $path . '/' . $file;
 						}else{
 							// find file path in catalog
 							require_once DIR_FS_CATALOG_MODULES . $path . '/' . $file;
+							// include languages
+							include_once DIR_FS_CATALOG_LANGUAGES . 'english/modules/' . $path . '/' . $file;
 						}
 						// replace php extension to use instead of function
 						$class_name = str_replace('.php', '', $file);

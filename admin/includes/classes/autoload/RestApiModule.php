@@ -15,11 +15,16 @@ class RestApiModule extends RestApi {
 			foreach ($class_name as $cn){
 				if( $path == 'dashboard'){
 					// find path only in admin directory 
-					require(DIR_WS_MODULES . $path . '/' . $cn);
+					require_once DIR_WS_MODULES . $path . '/' . $cn;
+					// include languages
+					include_once DIR_WS_LANGUAGES . 'english/modules/' . $path . '/' . $cn;
 				}else{
 					// find file path in catalog
-					require(DIR_FS_CATALOG_MODULES . $path . '/' . $cn);
+					require_once DIR_FS_CATALOG_MODULES . $path . '/' . $cn;
+					// include languages
+					include_once DIR_FS_CATALOG_LANGUAGES . 'english/modules/' . $path . '/' . $cn;
 				}
+				
 				// replace php extension to use instead of function 
 				$cn = str_replace('.php', '', $cn);
 				
