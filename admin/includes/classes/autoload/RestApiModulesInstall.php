@@ -42,6 +42,8 @@ class RestApiModulesInstall extends RestApi {
 					}
 				}
 			}
+			sort($array);
+			$dir->close();
 		}
 		
 		return [
