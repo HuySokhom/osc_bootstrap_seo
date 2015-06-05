@@ -21,17 +21,16 @@ app.controller(
 		
 		$('.message-remove').hide();
 		$scope.remove = function(params, index){
-			$scope.modules.splice(index, 1);
-			$scope.count = $scope.count + 1;
-			// alert message
-			Services.alertMessage('.message-remove');			
 			var data = {
 				code: params.code,
 				module: module, 
 				path: path
 			};			
 			Factory.remove(data).success(function(data){
-				console.log(data);
+				$scope.modules.splice(index, 1);
+				$scope.count = $scope.count + 1;
+				// alert message
+				Services.alertMessage('.message-remove');	
 			});
 		};
 		
