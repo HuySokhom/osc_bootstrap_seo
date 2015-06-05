@@ -7,6 +7,13 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
+				<button 
+					type="button" 
+					class="close" 
+					data-dismiss="modal" 
+				>
+					<span>&times;</span>
+				</button>
 				<h4>
 					<label>Edit Modules</label>
 				</h4>
