@@ -93,7 +93,7 @@ require(DIR_WS_INCLUDES . 'template_top.php');
 			</td>
 		</tr>
 	</table>
-	<?php echo '<b>' . TEXT_MODULE_DIRECTORY . '</b> ' . $module_directory; ?>
+	<?php echo '<b>Module Directory: </b> ' . $module_directory; ?>
 	<install-modules></install-modules>
 	<edit:modules></edit:modules>
 <script 
