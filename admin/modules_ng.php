@@ -33,7 +33,8 @@ require(DIR_WS_INCLUDES . 'template_top.php');
 		data-target="#install-module"
 	>
 		<span class="glyphicon glyphicon-plus"></span>
-		Install Modules ({{count}})
+		Install Modules 
+		(<span data-ng-bind="count"></span>)
 	</button>
 	<h3><?php echo HEADING_TITLE;?></h3>
 	<div
