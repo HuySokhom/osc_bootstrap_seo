@@ -8,7 +8,8 @@ app.controller(
 		
 		var path = $('#path').attr('class');
 		var module = $('#module').attr('class');
-		$scope.install = function(){
+		$scope.install = function(header){
+			$scope.header = header;
 			var dataParse = {
 				module: module, 
 				path: path,
