@@ -15,31 +15,14 @@
 					<span>&times;</span>
 				</button>
 				<h4>
-					<label>Edit Modules</label>
+					<label data-ng-bind="header"></label>
 				</h4>
 	      	</div>
 			<div class="modal-body">
-				<table
-					data-ng-repeat="module in module_edit"
+				<span					
+					id="element"
 				>
-					<tr>
-						<td>
-							<label>
-								{{module.configuration_title}}
-							</label>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							{{module.configuration_description}}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							{{module.configuration_value}}							
-						</td>
-					</tr>
-				</table>
+				</span>
 			</div>
 			<div class="modal-footer">
 				<button 
