@@ -29,7 +29,7 @@ require(DIR_WS_INCLUDES . 'template_top.php');
 		class="btn btn-primary"
 		style="float: right;"
 		data-toggle="modal" 
-		data-ng-click="install();"
+		data-ng-click="install('<?php echo HEADING_TITLE;?>');"
 		data-target="#install-module"
 	>
 		<span class="glyphicon glyphicon-plus"></span>
@@ -78,7 +78,7 @@ require(DIR_WS_INCLUDES . 'template_top.php');
 				<button
 					class="btn btn-primary"
 					title="Edit"
-					data-ng-click="edit(module);"
+					data-ng-click="edit(module, module.title);"
 					data-toggle="modal" 
 					data-target="#edit-module"
 				>
