@@ -6,7 +6,9 @@ app.controller(
 	, function ($scope, Factory, Services){
 		
 		$scope.module_edit = [];
+		
 		$scope.edit = function(params, header){
+			$scope.show_progress = false;
 			$scope.header = header;
 			angular.element('#element').empty();
 			var dataParse = {
@@ -18,8 +20,13 @@ app.controller(
 			});
 		};
 		
-		$scope.save = function(params){
-			
+		$scope.save = function(){
+			var data = Services.getAllElements();
+			$scope.show_progress = true;
+			Factory.save(data).success(function(data){
+				$('#edit-module').modal('hide');
+				$scope.init();
+			});
 		};
 		
 	}
