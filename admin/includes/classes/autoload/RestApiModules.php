@@ -80,6 +80,18 @@ class RestApiModules extends RestApi {
 		
 	}
 	
+	public function put($params){
+		foreach ($params['PUT'] as $key => $value){
+			tep_db_query("
+				UPDATE 
+					" . TABLE_CONFIGURATION . " 
+				SET 
+					configuration_value = '" . $value['cf_value'] . "' 
+				WHERE 
+					configuration_key = '" . $value['cf_key'] . "'
+			");
+		}
+	}
 	
 	public function query($params){
 		$sql = tep_db_query("
