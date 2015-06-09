@@ -13,7 +13,6 @@ app.controller(
 				path: path
 			};
 			Factory.getModule(dataParse).success(function(data){
-				console.log(data);
 				$scope.modules = data;
 			});
 		};
