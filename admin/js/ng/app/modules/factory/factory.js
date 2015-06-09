@@ -46,7 +46,7 @@ app.factory("Factory", [
         
         obj.save = function(params){
         	return $http({
-        		url: url + params.id,
+        		url: 'api/Modules',
     			method: 'PUT',
     			data: params
         	});
