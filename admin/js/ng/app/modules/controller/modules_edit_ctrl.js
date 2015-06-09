@@ -8,15 +8,18 @@ app.controller(
 		$scope.module_edit = [];
 		$scope.edit = function(params, header){
 			$scope.header = header;
-			$('#element').empty();
-			var path = $('#path').attr('class');
+			angular.element('#element').empty();
 			var dataParse = {
 				class_name: params.code, 
-				path: path
+				path: angular.element('#path').attr('class')
 			};
 			Factory.editModules(dataParse).success(function(data){
-				$('#element').append(data);
+				angular.element('#element').append(data);
 			});
+		};
+		
+		$scope.save = function(params){
+			
 		};
 		
 	}
