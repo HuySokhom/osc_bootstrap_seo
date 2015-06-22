@@ -1,2 +1,8 @@
-/* user.css ----------------------------------------------------------------- */
+body{
+	background-color: #F4F4F4;
+}
+.container {
+	width: 1170px;
+	background: #FFF;
+}
 
