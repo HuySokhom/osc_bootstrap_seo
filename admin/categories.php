@@ -253,7 +253,7 @@
           $language_id = $languages[$i]['id'];
 
           $sql_data_array = array('products_name' => tep_db_prepare_input($HTTP_POST_VARS['products_name'][$language_id]),
-                                  'products_description' => tep_db_prepare_input($HTTP_POST_VARS['products_description'][$language_id]),
+                                  'products_description' => ($HTTP_POST_VARS['products_description'][$language_id]),
                                   'products_url' => tep_db_prepare_input($HTTP_POST_VARS['products_url'][$language_id]));
 
           if ($action == 'insert_product') {
