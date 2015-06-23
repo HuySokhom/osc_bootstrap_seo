@@ -55,9 +55,7 @@
   define('FILENAME_ZONES', 'zones.php');
   
   // add new filename
-  define('FILENAME_VEHICLES_TYPE', 'vehicles_type.php');
-  define('FILENAME_VEHICLES_BRAND', 'vehicles_brand.php');
-  define('FILENAME_VEHICLES_MODEL', 'vehicles_model.php');
+  define('FILENAME_VEHICLES_TYPE', 'vehicles.php');
   
   
   
