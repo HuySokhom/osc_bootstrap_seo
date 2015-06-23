@@ -42,6 +42,21 @@
         'code' => FILENAME_PRODUCTS_EXPECTED,
         'title' => BOX_CATALOG_PRODUCTS_EXPECTED,
         'link' => tep_href_link(FILENAME_PRODUCTS_EXPECTED)
+      ),
+      array(
+        'code' => FILENAME_VEHICLES_BRAND,
+        'title' => BOX_CATALOG_VEHICLES_BRAND,
+        'link' => tep_href_link(FILENAME_VEHICLES_BRAND)
+      ),
+      array(
+        'code' => FILENAME_VEHICLES_MODEL,
+        'title' => BOX_CATALOG_VEHICLES_MODLE,
+        'link' => tep_href_link(FILENAME_VEHICLES_MODEL)
+      ),
+      array(
+        'code' => FILENAME_VEHICLES_TYPE,
+        'title' => BOX_CATALOG_VEHICLES_TYPE,
+        'link' => tep_href_link(FILENAME_VEHICLES_TYPE)
       )
     )
   );
