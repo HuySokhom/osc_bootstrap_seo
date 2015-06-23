@@ -53,4 +53,10 @@
   define('FILENAME_VERSION_CHECK', 'version_check.php');
   define('FILENAME_WHOS_ONLINE', 'whos_online.php');
   define('FILENAME_ZONES', 'zones.php');
-?>
+  
+  // add new filename
+  define('FILENAME_VEHICLES_TYPE', 'vehicles.php');
+  
+  
+  
+  

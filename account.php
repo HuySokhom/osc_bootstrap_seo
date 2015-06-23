@@ -25,7 +25,7 @@
 ?>
 
 <div class="page-header">
-  <h1><?php echo HEADING_TITLE; ?></h1>
+  <h3><?php echo HEADING_TITLE; ?></h3>
 </div>
 
 <?php
@@ -35,13 +35,30 @@
 ?>
 
 <div class="contentContainer">
-  <div class="row">
-
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel with-nav-tabs panel-default">
+				<div class="panel-heading">
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#tab1default" data-toggle="tab">Manage Post</a></li>
+						<li><a href="#tab2default" data-toggle="tab">My Account</a></li>
+						<li><a href="#tab3default" data-toggle="tab">Default 3</a></li>
+					</ul>
+				</div>
+				<div class="panel-body">
+					<div class="tab-content">
+						<div class="tab-pane fade in active" id="tab1default">Default 1</div>
+						<div class="tab-pane fade" id="tab2default">Default 2</div>
+						<div class="tab-pane fade" id="tab3default">Default 3</div>
+					</div>
+				</div>
+			</div>
+		</div>
     <?php
-    echo $oscTemplate->getContent('account');
+    	// don't need to show
+    	// echo $oscTemplate->getContent('account');
     ?>
-  
-  </div>
+	</div>
 </div>
 
 
