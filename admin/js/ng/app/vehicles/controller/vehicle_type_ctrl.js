@@ -6,7 +6,7 @@ app.controller(
 	, function ($scope, Factory, Services){
 		
 		$scope.init = function(){
-			Factory.getVehicles('api/VehiclesType').success(function(data){
+			Factory.getVehicles().success(function(data){
 				$scope.modules = data;console.log(data);
 			});
 		};

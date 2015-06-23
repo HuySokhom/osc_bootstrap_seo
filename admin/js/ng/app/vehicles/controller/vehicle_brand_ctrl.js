@@ -6,11 +6,12 @@ app.controller(
 	, function ($scope, Factory, Services){
 		
 		$scope.init = function(){
-			Factory.getVehicles('api/VehiclesBrand').success(function(data){
+			Factory.getVehicles({Type: 'brand'}).success(function(data){
 				$scope.modules = data;console.log(data);
 			});
 		};
 		$scope.init();
+		
 		
 		
 	}
