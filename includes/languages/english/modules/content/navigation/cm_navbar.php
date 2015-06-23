@@ -38,5 +38,5 @@
   define('HEADER_CART_CHECKOUT', '<i class="glyphicon glyphicon-chevron-right"></i> Checkout');
   define('USER_LOCALIZATION', '<abbr title="Selected Language">L:</abbr> %s <abbr title="Selected Currency">C:</abbr> %s');
   
-  define('POST_PRODUCT', '<i class="glyphicon glyphicon-cloud"></i><span class="hidden-sm"> Post Product</span>');
+  define('POST_PRODUCT', '<i class="glyphicon glyphicon-plus"></i><span class="hidden-sm"> Post Product</span>');
 
