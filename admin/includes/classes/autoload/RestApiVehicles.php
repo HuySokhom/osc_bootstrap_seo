@@ -2,13 +2,17 @@
 
 use
 	OSC\Vehicles\Type\Collection
-		as VehiclesType
+		as VehiclesType,
+	OSC\Vehicles\Brand\Collection
+		as VehiclesBrand,
+	OSC\Vehicles\Model\Collection
+		as VehiclesModel
 ;
 
-class RestApiVehiclesType extends RestApi {
+class RestApiVehicles extends RestApi {
 
 	public function get(){
-		$col = new VehiclesType();
+		$col = new VehiclesModel();
 		$this->applyFilters($col, $params);
 		$this->applySortBy($col, $params);
 		return $this->getReturn($col, $params);
