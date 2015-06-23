@@ -4,11 +4,11 @@ app.factory("Factory", [
         
         var obj = {};
         // start get 
-        obj.getVehicles = function(url) {
+        obj.getVehicles = function(params) {
             return $http({
-        		url: url,
+        		url: 'api/Vehicles',
     			method: 'GET',
-//    			params: params
+    			params: params
             });
         };
         
