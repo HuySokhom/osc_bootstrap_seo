@@ -5,14 +5,22 @@ app.controller(
 	, 'Services'
 	, function ($scope, Factory, Services){
 		
+		$scope.header = 'Vehicle Type';
+		$scope.add = function(){
+			$scope.vehicle = '';
+		};
+
 		$scope.init = function(){
 			Factory.getVehicles().success(function(data){
-				$scope.modules = data;console.log(data);
+				$scope.vehicle_type = data;console.log(data);
 			});
 		};
 		$scope.init();
 		
-		$('.message-remove').hide();
+		$scope.edit = function(params){
+			$scope.vehicle = params;
+		};
+
 		$scope.remove = function(params, index){
 			var data = {
 				code: params.code,

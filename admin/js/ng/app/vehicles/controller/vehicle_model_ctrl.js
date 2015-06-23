@@ -6,12 +6,20 @@ app.controller(
 	, '$location'
 	, function ($scope, Factory, Services, $location){
 		
+		$scope.header = 'Vehicle Model';
+		$scope.add = function(){
+			$scope.vehicle = '';
+		};
+
 		$scope.init = function(){
 			Factory.getVehicles({Type: 'model'}).success(function(data){
-				$scope.modules = data;console.log(data);
+				$scope.vehicle_model = data;console.log(data);
 			});
 		};
 		$scope.init();
 		
+		$scope.edit = function(params){
+			$scope.vehicle = params;
+		};
 	}
 ]);

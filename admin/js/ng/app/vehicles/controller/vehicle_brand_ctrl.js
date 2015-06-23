@@ -5,14 +5,21 @@ app.controller(
 	, 'Services'
 	, function ($scope, Factory, Services){
 		
+		$scope.header = 'Vehicle Brand';
+		$scope.add = function(){			
+			$scope.vehicle = '';
+		};
+
 		$scope.init = function(){
 			Factory.getVehicles({Type: 'brand'}).success(function(data){
-				$scope.modules = data;console.log(data);
+				$scope.vehicle_brand = data;console.log(data);
 			});
 		};
 		$scope.init();
 		
-		
+		$scope.edit = function(params){
+			$scope.vehicle = params;
+		};
 		
 	}
 ]);
