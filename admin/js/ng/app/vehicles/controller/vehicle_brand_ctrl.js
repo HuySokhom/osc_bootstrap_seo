@@ -21,5 +21,14 @@ app.controller(
 			$scope.vehicle = params;
 		};
 		
+		$scope.save = function(params){
+			console.log($scope.vehicle);
+		};
+		
+		$scope.remove = function($index, id){
+			console.log(id);
+			$scope.vehicle_brand.elements.splice($index, 1);
+		};
+		
 	}
 ]);

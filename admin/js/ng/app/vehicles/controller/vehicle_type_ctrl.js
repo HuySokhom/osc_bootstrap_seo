@@ -21,18 +21,13 @@ app.controller(
 			$scope.vehicle = params;
 		};
 
-		$scope.remove = function(params, index){
-			var data = {
-				code: params.code,
-				module: module, 
-				path: path
-			};			
-			Factory.remove(data).success(function(data){
-				$scope.modules.splice(index, 1);
-				$scope.count = $scope.count + 1;
-				// alert message
-				Services.alertMessage('.message-remove');	
-			});
+		$scope.save = function(params){
+			console.log($scope.vehicle);
+		};
+		
+		$scope.remove = function($index, id){
+			console.log(id);
+			$scope.vehicle_type.elements.splice($index, 1);
 		};
 		
 	}

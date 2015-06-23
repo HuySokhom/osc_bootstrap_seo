@@ -39,9 +39,7 @@
 			</button>
 			<button
 				class="btn btn-danger"
-				data-ng-click="deleteVehicleType(vehicle.id);"
-				data-target="#brand"
-				data-toggle="modal" 
+				data-ng-click="remove($index, vehicle.id);"
 			>
 				<span class="glyphicon glyphicon-trash"></span>
 			</button>
