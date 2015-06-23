@@ -11,11 +11,19 @@ use
 
 class RestApiVehicles extends RestApi {
 
-	public function get(){
-		$col = new VehiclesModel();
-		$this->applyFilters($col, $params);
-		$this->applySortBy($col, $params);
+	public function get($params){
+		
+		if( $params['GET']['Type'] == 'model'){
+			$col = new VehiclesModel();
+		}
+		elseif ($params['GET']['Type'] == 'brand'){
+			$col = new VehiclesBrand();
+		}else{
+			$col = new VehiclesType();
+		}
+		
 		return $this->getReturn($col, $params);
+		
 	}
 	
 }
