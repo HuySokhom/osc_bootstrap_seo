@@ -31,6 +31,14 @@ require(DIR_WS_INCLUDES . 'template_top.php');
 							<?php echo VEHICLES_MODEL; ?>
 						</a>
 					</li>
+					<li data-ui-sref-active="active">
+						<a 
+							data-ui-sref="/seat" 
+							data-toggle="tab"
+						>
+							<?php echo VEHICLES_SEAT; ?>
+						</a>
+					</li>
 				</ul>
 			</div>
 			<div class="panel-body">
@@ -87,6 +95,10 @@ require(DIR_WS_INCLUDES . 'template_top.php');
 <script 
 	type="text/javascript"
 	src="js/ng/app/vehicles/controller/vehicle_model_ctrl.js"
+></script>
+<script 
+	type="text/javascript"
+	src="js/ng/app/vehicles/controller/vehicle_seat_ctrl.js"
 ></script>
 <script 
 	type="text/javascript"
