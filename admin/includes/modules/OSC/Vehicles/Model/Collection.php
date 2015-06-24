@@ -9,7 +9,7 @@ class Collection extends StdCollection {
 	public function __construct( $params = array() ){
 		parent::__construct($params);
 		
-		$this->addTable('vehicle_type', 'vm');
+		$this->addTable('vehicle_model', 'vm');
 		$this->idField = 'vm.id';
 		$this->setDistinct(true);
 		
