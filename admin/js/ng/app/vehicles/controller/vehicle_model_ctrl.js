@@ -5,7 +5,7 @@ app.controller(
 	, 'Services'
 	, '$location'
 	, function ($scope, Factory, Services, $location){
-		
+		$scope.show_brand = true;
 		$scope.header = 'Vehicle Model';
 		$scope.add = function(){
 			$scope.vehicle = '';
@@ -15,22 +15,26 @@ app.controller(
 			Factory.getVehicles({Type: 'model'}).success(function(data){
 				$scope.vehicle_model = data;console.log(data);
 			});
+			Factory.getVehicles({Type: 'brand'}).success(function(data){
+				$scope.brand = data;
+			});
 		};
 		$scope.init();
 		
 		$scope.edit = function(params){
 			$scope.vehicle = angular.copy(params);
+			$scope.brandId = $scope.vehicle.brand[0].id;
 		};
 		
 		$scope.save = function(params){
 			var data = {
 				name : $scope.vehicle.name,
-				type : 'model'
+				type : 'model',
+				vehicle_brand_id: $scope.brandId
 			};
 			if( $scope.vehicle.id ){
-				// add new object model
-				$scope.vehicle.type = 'model';
-				Factory.save($scope.vehicle).success(function(data){
+				data.id = $scope.vehicle.id;
+				Factory.save(data).success(function(data){
 					$scope.init();
 					$('#brand').modal('hide');
 				});
