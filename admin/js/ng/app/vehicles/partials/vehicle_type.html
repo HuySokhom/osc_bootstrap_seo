@@ -29,20 +29,22 @@
 			<span data-ng-bind="vehicle.name"></span>
 		</td>
 		<td width="10%">
-			<button
-				class="btn btn-primary"
-				 data-toggle="modal" 
-				 data-target="#brand"
-				 data-ng-click="edit(vehicle);"
+			<img 
+				alt="edit" 
+				src="images/icons/edit.png"
+				class="icon"
+				title="edit"
+				data-toggle="modal" 
+				data-target="#brand"
+				data-ng-click="edit(vehicle);"
 			>
-				<span class="glyphicon glyphicon-pencil"></span>
-			</button>
-			<button
-				class="btn btn-danger"
+			<img 
+				alt="edit" 
+				src="images/icons/delete.png"
+				class="icon"
+				title="edit"
 				data-ng-click="remove($index, vehicle.id);"
 			>
-				<span class="glyphicon glyphicon-trash"></span>
-			</button>
 		</td>
 	</tr>
 </table>
