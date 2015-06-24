@@ -2,8 +2,10 @@
 
 namespace OSC\Vehicles\Model;
 
+use OSC;
 use
 	Aedea\Core\Database\StdObject as DbObj
+	, OSC\Vehicles\Brand\Collection as VehicleBrandCol
 ;
 
 class Object extends DbObj {
@@ -11,14 +13,20 @@ class Object extends DbObj {
 	protected
 		$name
 		, $vehicleBrandId
+		, $brand
 	;
+	
+	public function __construct( $params = array() ){
+		parent::__construct($params);	
+		$this->brand = new VehicleBrandCol;
+	}
 	
 	public function toArray( $params = array() ){
 		$args = array(
 			'include' => array(
 				'id',
 				'name',
-				'vehicle_brand_id'
+				'brand'
 			)
 		);
 
@@ -43,8 +51,10 @@ class Object extends DbObj {
 				404
 			);
 		}
-		
 		$this->setProperties($this->dbFetchArray($q));
+		$this->brand->setFilter('id', $this->getVehicleBrandId() );
+		$this->brand->populate();
+		
 	}
 	
 	public function delete(){
@@ -81,11 +91,13 @@ class Object extends DbObj {
 				vehicle_model
 			(
 				name,
+				vehicle_brand_id,
 				created
 			)
 				VALUES
 			(
 				'" . $this->dbEscape( $this->getName() ) . "',
+				'" . (int)$this->getVehicleBrandId() . "',
 				NOW()
 			)
 		");	
@@ -106,6 +118,14 @@ class Object extends DbObj {
 	
 	public function getVehicleBrandId(){
 		return $this->vehicleBrandId;
+	}
+	
+	public function getBrand(){
+		return $this->brand;
+	}
+
+	public function setBrand( $string ){
+		$this->brand = $string;
 	}
 	
 }
