@@ -23,12 +23,31 @@ app.controller(
 		};
 		
 		$scope.save = function(params){
-			console.log($scope.vehicle);
+			var data = {
+				name : $scope.vehicle.name,
+				type : 'model'
+			};
+			if( $scope.vehicle.id ){
+				Factory.save($scope.vehicle).success(function(data){
+					$scope.init();
+				});
+			}else{
+				Factory.insert(data).success(function(data){
+					$scope.init();
+					console.log(data);
+				});
+			}
 		};
 		
 		$scope.remove = function($index, id){
-			console.log(id);
-			$scope.vehicle_model.elements.splice($index, 1);
+			var data = {
+				id: id,
+				type: 'model'
+			};
+			Factory.remove(data).success(function(data){
+				$scope.vehicle_model.elements.splice($index, 1);
+				console.log(data);
+			});
 		};
 		
 	}
