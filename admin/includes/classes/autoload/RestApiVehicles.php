@@ -2,11 +2,17 @@
 
 use
 	OSC\Vehicles\Type\Collection
-		as VehiclesType,
+		as VehiclesTypeCollection,
 	OSC\Vehicles\Brand\Collection
-		as VehiclesBrand,
+		as VehiclesBrandCollection,
 	OSC\Vehicles\Model\Collection
-		as VehiclesModel
+		as VehiclesModelCollection,
+	OSC\Vehicles\Type\Object
+		as VehiclesTypeObject,
+	OSC\Vehicles\Brand\Object
+		as VehiclesBrandObject,
+	OSC\Vehicles\Model\Object
+		as VehiclesModelObject
 ;
 
 class RestApiVehicles extends RestApi {
@@ -14,27 +20,71 @@ class RestApiVehicles extends RestApi {
 	public function get($params){
 		
 		if( $params['GET']['Type'] == 'model'){
-			$col = new VehiclesModel();
+			$col = new VehiclesModelCollection();
 		}
 		elseif ($params['GET']['Type'] == 'brand'){
-			$col = new VehiclesBrand();
+			$col = new VehiclesBrandCollection();
 		}else{
-			$col = new VehiclesType();
+			$col = new VehiclesTypeCollection();
 		}
-		
+		$this->applyFilters($col, $params);
+		$this->applyLimit($col, $params);
+		$this->applySortBy($col, $params);
 		return $this->getReturn($col, $params);
 		
 	}
 	
 	public function post($params){
+		$obj = $this->getModuleName($params['POST']['type']);
+		// unset object type no need to set properties
+		unset($params['POST']['type']);
 		
+		$obj->setProperties($params['POST']);
+		
+		$obj->insert();
+		return array(
+			'data' => array(
+				'id' => $obj->getId()
+			)
+		);
 	}
 	
 	public function put($params){
-		
+		$obj = $this->getModuleName($params['PUT']['type']);	
+		// unset object type no need to set properties
+		unset($params['PUT']['type']);
+		$obj->setProperties($params['PUT']);
+		$obj->update();
+		return array(
+			'data' => array(
+				'id' => $obj->getId()
+			)
+		);
+	}
+	
+	public function getModuleName($type){
+		if( $type == 'model'){
+			$obj = new VehiclesModelObject();
+		}
+		elseif ($type == 'brand'){
+			$obj = new VehiclesBrandObject();
+		}else{
+			$obj = new VehiclesTypeObject();
+		}
+		return $obj;
 	}
 	
 	public function delete($params){
+		// loop to get key from delete parse data in string
+		foreach ($params['DELETE'] as $key => $value) {
+			$name = $key;
+		}
+		// decode string to object
+		$type = json_decode($name);
+		$obj = $this->getModuleName($type->type);
+		
+		$obj->setId($type->id);
+		$obj->delete();
 		
 	}
 	
