@@ -18,6 +18,11 @@ app.config([
 				templateUrl: 'js/ng/app/vehicles/partials/vehicle_brand.html',
                 controller: 'vehicle_brand_ctrl'
 			})
+			.state('/seat', {
+				url: '/seat',
+				templateUrl: 'js/ng/app/vehicles/partials/vehicle_seat.html',
+                controller: 'vehicle_seat_ctrl'
+			})
 		;
 		$urlRouterProvider.otherwise('/type');
 	}
