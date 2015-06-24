@@ -5,7 +5,7 @@ app.controller(
 	, 'Services'
 	, function ($scope, Factory, Services){
 		
-		$scope.header = 'Vehicle Type';
+		$scope.header = 'Vehicle Seat';
 		$scope.add = function(){
 			$scope.vehicle = '';
 		};
