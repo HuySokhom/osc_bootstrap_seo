@@ -23,14 +23,14 @@ app.controller(
 		
 		$scope.edit = function(params){
 			$scope.vehicle = angular.copy(params);
-			$scope.brandId = $scope.vehicle.brand[0].id;
+			$scope.brand.id = $scope.vehicle.brand[0].id;
 		};
 		
 		$scope.save = function(params){
 			var data = {
 				name : $scope.vehicle.name,
 				type : 'model',
-				vehicle_brand_id: $scope.brandId
+				vehicle_brand_id: $scope.brand.id
 			};
 			if( $scope.vehicle.id ){
 				data.id = $scope.vehicle.id;
