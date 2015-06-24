@@ -1,3 +1,4 @@
+<form data-ng-submit="save();">
 <div 
 	class="modal fade"
 	id="brand" 
@@ -19,9 +20,9 @@
 				</h4>
 	      	</div>
 			<div class="modal-body">
-				<table>
+				<table width="100%">
 					<tr>
-						<td>
+						<td width="5%">
 							Name: 
 						</td>
 						<td>
@@ -29,7 +30,22 @@
 								type="text"
 								class="form-control"
 								data-ng-model="vehicle.name"
+								required="required"
 							/>
+						</td>
+						<td data-ng-show="show_brand">
+							Brand:
+						</td>
+						<td data-ng-show="show_brand">
+							<select
+								data-ng-model="brandId"
+								data-ng-options="brand.id as brand.name for brand in brand.elements"
+								data-ng-init="brandId == brand.id"
+								class="form-control"
+								required
+							>
+								<option value="">--Select--</option> 
+							</select>
 						</td>
 					</tr>
 				</table>
@@ -43,7 +59,6 @@
 				</button>
 				<button 
 					class="btn btn-primary"
-					data-ng-click="save();" 
 				>
 					Save
 				</button>
@@ -51,3 +66,6 @@
 		</div>
 	</div>
 </div>
+</form>
+
+
