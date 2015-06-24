@@ -12,7 +12,7 @@ app.controller(
 
 		$scope.init = function(){
 			Factory.getVehicles({Type: 'brand'}).success(function(data){
-				$scope.vehicle_brand = data;console.log(data);
+				$scope.vehicle_brand = data;
 			});
 		};
 		$scope.init();

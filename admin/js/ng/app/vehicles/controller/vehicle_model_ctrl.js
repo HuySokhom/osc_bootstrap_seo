@@ -13,7 +13,7 @@ app.controller(
 
 		$scope.init = function(){
 			Factory.getVehicles({Type: 'model'}).success(function(data){
-				$scope.vehicle_model = data;console.log(data);
+				$scope.vehicle_model = data;
 			});
 			Factory.getVehicles({Type: 'brand'}).success(function(data){
 				$scope.brand = data;
