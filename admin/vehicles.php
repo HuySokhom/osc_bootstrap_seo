@@ -96,6 +96,11 @@ require(DIR_WS_INCLUDES . 'template_top.php');
 	type="text/javascript"
 	src="js/ng/app/vehicles/services/services.js"
 ></script>
+<script 
+	type="text/javascript"
+	src="js/ng/app/vehicles/directive/vehicle_popup.js"
+></script>
+
 <?php
 require(DIR_WS_INCLUDES . 'template_bottom.php');
 require(DIR_WS_INCLUDES . 'application_bottom.php');

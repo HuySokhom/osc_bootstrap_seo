@@ -17,14 +17,14 @@ app.factory("Factory", [
         obj.remove = function(params) {
         	return $http({
         		method: 'DELETE', 
-				url: 'api/Modules',
+				url: 'api/Vehicles',
 				data: params
         	});
         };
         
         obj.insert = function(params){
         	return $http({
-        		url: url,
+        		url: 'api/Vehicles',
     			method: 'POST',
     			data: params
         	});
@@ -32,7 +32,7 @@ app.factory("Factory", [
         
         obj.save = function(params){
         	return $http({
-        		url: 'api/Modules',
+        		url: 'api/Vehicles',
     			method: 'PUT',
     			data: params
         	});

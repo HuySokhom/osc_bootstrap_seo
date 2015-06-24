@@ -5,26 +5,29 @@ app.controller(
 	, 'Services'
 	, function ($scope, Factory, Services){
 		
+		$scope.header = 'Vehicle Type';
+		$scope.add = function(){
+			$scope.vehicle = '';
+		};
+
 		$scope.init = function(){
 			Factory.getVehicles().success(function(data){
-				$scope.modules = data;console.log(data);
+				$scope.vehicle_type = data;console.log(data);
 			});
 		};
 		$scope.init();
 		
-		$('.message-remove').hide();
-		$scope.remove = function(params, index){
-			var data = {
-				code: params.code,
-				module: module, 
-				path: path
-			};			
-			Factory.remove(data).success(function(data){
-				$scope.modules.splice(index, 1);
-				$scope.count = $scope.count + 1;
-				// alert message
-				Services.alertMessage('.message-remove');	
-			});
+		$scope.edit = function(params){
+			$scope.vehicle = params;
+		};
+
+		$scope.save = function(params){
+			console.log($scope.vehicle);
+		};
+		
+		$scope.remove = function($index, id){
+			console.log(id);
+			$scope.vehicle_type.elements.splice($index, 1);
 		};
 		
 	}

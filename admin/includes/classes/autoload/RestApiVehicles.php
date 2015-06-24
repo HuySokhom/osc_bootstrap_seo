@@ -26,4 +26,16 @@ class RestApiVehicles extends RestApi {
 		
 	}
 	
+	public function post($params){
+		
+	}
+	
+	public function put($params){
+		
+	}
+	
+	public function delete($params){
+		
+	}
+	
 }
