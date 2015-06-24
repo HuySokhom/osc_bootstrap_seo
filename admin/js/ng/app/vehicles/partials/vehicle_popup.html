@@ -33,14 +33,14 @@
 								required="required"
 							/>
 						</td>
-						<td data-ng-show="show_brand">
+						<td data-ng-if="show_brand">
 							Brand:
 						</td>
-						<td data-ng-show="show_brand">
+						<td data-ng-if="show_brand">
 							<select
-								data-ng-model="brandId"
+								data-ng-model="brand.id"
 								data-ng-options="brand.id as brand.name for brand in brand.elements"
-								data-ng-init="brandId == brand.id"
+								data-ng-init="brand.id == brand.id"
 								class="form-control"
 								required
 							>
