@@ -7,12 +7,17 @@ use
 		as VehiclesBrandCollection,
 	OSC\Vehicles\Model\Collection
 		as VehiclesModelCollection,
+	OSC\Vehicles\Seat\Collection
+		as VehiclesSeatCollection,
+	// include object
 	OSC\Vehicles\Type\Object
 		as VehiclesTypeObject,
 	OSC\Vehicles\Brand\Object
 		as VehiclesBrandObject,
 	OSC\Vehicles\Model\Object
-		as VehiclesModelObject
+		as VehiclesModelObject,
+	OSC\Vehicles\Seat\Object
+		as VehiclesSeatObject
 ;
 
 class RestApiVehicles extends RestApi {
@@ -24,6 +29,8 @@ class RestApiVehicles extends RestApi {
 		}
 		elseif ($params['GET']['Type'] == 'brand'){
 			$col = new VehiclesBrandCollection();
+		}elseif ($params['GET']['Type'] == 'seat'){
+			$col = new VehiclesSeatCollection();
 		}else{
 			$col = new VehiclesTypeCollection();
 		}
@@ -68,6 +75,8 @@ class RestApiVehicles extends RestApi {
 		}
 		elseif ($type == 'brand'){
 			$obj = new VehiclesBrandObject();
+		}elseif ($type == 'seat'){
+			$obj = new VehiclesSeatObject();
 		}else{
 			$obj = new VehiclesTypeObject();
 		}
