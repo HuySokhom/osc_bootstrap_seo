@@ -67,7 +67,8 @@ class Object extends DbObj {
 			UPDATE
 				vehicle_model
 			SET
-				name = '" . $this->dbEscape( $this->getName() ) . "'
+				name = '" . $this->dbEscape( $this->getName() ) . "',
+				vehicle_brand_id = '" . (int)$this->getVehicleBrandId() . "'
 			WHERE
 				id = '" . (int)$this->getId() . "'
 		");
