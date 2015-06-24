@@ -9,3 +9,7 @@ body{
 .default-font{
 	font-size: 12px;
 }
+.icon{
+	width: 28px;
+	cursor: pointer;
+}
