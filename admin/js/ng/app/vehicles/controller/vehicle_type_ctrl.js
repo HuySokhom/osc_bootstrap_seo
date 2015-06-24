@@ -18,7 +18,7 @@ app.controller(
 		$scope.init();
 		
 		$scope.edit = function(params){
-			$scope.vehicle = params;
+			$scope.vehicle = angular.copy(params);
 		};
 
 		$scope.save = function(params){
@@ -27,13 +27,16 @@ app.controller(
 				type : 'type'
 			};
 			if( $scope.vehicle.id ){
+				// add new object model
+				$scope.vehicle.type = 'type';
 				Factory.save($scope.vehicle).success(function(data){
 					$scope.init();
+					$('#brand').modal('hide');
 				});
 			}else{
 				Factory.insert(data).success(function(data){
 					$scope.init();
-					console.log(data);
+					$('#brand').modal('hide');
 				});
 			}
 		};
