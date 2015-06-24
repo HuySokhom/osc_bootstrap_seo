@@ -15,3 +15,4 @@ define('HEADING_TITLE', 'Vehicles Setup');
 define('VEHICLES_TYPE', 'Vehicles Type');
 define('VEHICLES_BRAND', 'Vehicles Brand');
 define('VEHICLES_MODEL', 'Vehicles Model');
+define('VEHICLES_SEAT', 'Vehicles Seat');

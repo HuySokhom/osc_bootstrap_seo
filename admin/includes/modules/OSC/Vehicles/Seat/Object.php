@@ -9,14 +9,14 @@ use
 class Object extends DbObj {
 		
 	protected
-		$seatCount
+		$name
 	;
 	
 	public function toArray( $params = array() ){
 		$args = array(
 			'include' => array(
 				'id',
-				'seat_count'
+				'name'
 			)
 		);
 
@@ -27,7 +27,7 @@ class Object extends DbObj {
 		$q = $this->dbQuery("
 			SELECT
 				id,
-				seat_count
+				name
 			FROM
 				vehicle_seats
 			WHERE
@@ -64,7 +64,7 @@ class Object extends DbObj {
 			UPDATE
 				vehicle_seats
 			SET
-				seat_count = '" . $this->dbEscape( $this->getName() ) . "'
+				name = '" . $this->dbEscape( $this->getName() ) . "'
 			WHERE
 				id = '" . (int)$this->getId() . "'
 		");
@@ -76,24 +76,24 @@ class Object extends DbObj {
 			INSERT INTO
 				vehicle_seats
 			(
-				seat_count,
+				name,
 				created
 			)
 				VALUES
 			(
-				'" . $this->dbEscape( $this->getSeatCount() ) . "',
+				'" . $this->dbEscape( $this->getName() ) . "',
 				NOW()
 			)
 		");	
 		$this->setId( $this->dbInsertId() );
 	}
 	
-	public function SetSeatCount( $int ){
-		$this->seatCount = (int)$int;
+	public function SetName( $int ){
+		$this->name = (int)$int;
 	}
 	
-	public function getSeatCount(){
-		return $this->seatCount;
+	public function getName(){
+		return $this->name;
 	}
 	
 }
