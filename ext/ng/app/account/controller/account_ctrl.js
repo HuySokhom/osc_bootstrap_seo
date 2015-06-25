@@ -5,17 +5,15 @@ app.controller(
 	, 'Services'
 	, function ($scope, Restful, Services){
 		
-		$scope.init = function(){
-			var url = 'api/Session/Customer';
+		var url = 'api/Session/Customer';
+		$scope.init = function(){			
 			Restful.get(url).success(function(data){
 				$scope.account_info = data;
-				console.log(data);
 			});
 			// get location information
 			var urlLocation = 'api/Location';
 			Restful.get(urlLocation).success(function(data){
 				$scope.location = data;
-				console.log(data);
 			});
 		};
 		$scope.init();
@@ -25,18 +23,14 @@ app.controller(
 		};
 		
 		$scope.save = function(params){
-			var data = {
-				name : $scope.vehicle.name,
-				type : 'brand'
-			};
-			if( $scope.vehicle.id ){
-				// add new object model
-				$scope.vehicle.type = 'brand';
-				Factory.save($scope.vehicle).success(function(data){
-					$scope.init();
-					$('#brand').modal('hide');
+			Restful.put(url, params).success(function(data){
+				$.notify({
+					title: '<strong>Success: </strong>',
+					message: 'Update Account Succesful.'
+				},{
+					type: 'success'
 				});
-			}
+			});
 		};
 
 		
