@@ -17,7 +17,7 @@
           <?php //echo '<li><a href="' . tep_href_link(FILENAME_REVIEWS) . '">' . HEADER_REVIEWS . '</a></li>'; ?>
 		<?php 
 			if (tep_session_is_registered('customer_id')) {
-				echo '<li><a href="' . tep_href_link(FILENAME_POST_PRODUCT, '', 'SSL') . '">' . POST_PRODUCT . '</a>';
+				echo '<li><a href="' . tep_href_link(FILENAME_ACCOUNT . '#/manage', '', 'SSL') . '">' . POST_PRODUCT . '</a>';
 			}
 		?>
         </ul>
@@ -73,7 +73,7 @@
               if(tep_session_is_registered('customer_id')){
               ?>
               <li class="divider"></li>
-              <li><?php echo '<a href="' . tep_href_link(FILENAME_ACCOUNT, '', 'SSL') . '">' . HEADER_ACCOUNT . '</a>'; ?></li>
+              <li><?php echo '<a href="' . tep_href_link(FILENAME_ACCOUNT . '#/account', '', 'SSL') . '">' . HEADER_ACCOUNT . '</a>'; ?></li>
               <li><?php //echo '<a href="' . tep_href_link(FILENAME_ACCOUNT_HISTORY, '', 'SSL') . '">' . HEADER_ACCOUNT_HISTORY . '</a>'; ?></li>
               <li><?php //echo '<a href="' . tep_href_link(FILENAME_ADDRESS_BOOK, '', 'SSL') . '">' . HEADER_ACCOUNT_ADDRESS_BOOK . '</a>'; ?></li>
               <li><?php // echo '<a href="' . tep_href_link(FILENAME_ACCOUNT_PASSWORD, '', 'SSL') . '">' . HEADER_ACCOUNT_PASSWORD . '</a>'; ?></li>
