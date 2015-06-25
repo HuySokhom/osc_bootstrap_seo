@@ -5,6 +5,7 @@ app.controller(
 	, 'Services'
 	, function ($scope, Restful, Services){
 		
+		$scope.disabled = true;
 		var url = 'api/Session/Customer';
 		$scope.init = function(){
 			Restful.get(url).success(function(data){
@@ -14,7 +15,11 @@ app.controller(
 		$scope.init();
 		
 		$scope.edit = function(params){
-			$scope.account = angular.copy(params);
+			if( $scope.disabled == true ){
+				$scope.disabled = false;
+			}else{
+				$scope.disabled = true;
+			}
 		};
 		
 		$scope.save = function(params){
