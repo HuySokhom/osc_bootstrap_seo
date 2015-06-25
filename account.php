@@ -34,22 +34,38 @@
   }
 ?>
 
-<div class="contentContainer">
+<div 
+	class="contentContainer"
+	data-ng-app="main"
+>
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel with-nav-tabs panel-default">
 				<div class="panel-heading">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#tab1default" data-toggle="tab">Manage Post</a></li>
-						<li><a href="#tab2default" data-toggle="tab">My Account</a></li>
-						<li><a href="#tab3default" data-toggle="tab">Default 3</a></li>
+						<li data-ui-sref-active="active">
+							<a 
+								data-ui-sref="/manage" 
+								data-toggle="tab"
+							>
+								<span class="glyphicon glyphicon-folder-close"></span> 
+								<?php echo MANAGE_POST; ?>
+							</a>
+						</li>
+						<li data-ui-sref-active="active">
+							<a 
+								data-ui-sref="/account" 
+								data-toggle="tab"
+							>
+								<span class="glyphicon glyphicon-user"></span> 
+								<?php echo MY_ACCOUNT_TITLE; ?>
+							</a>
+						</li>
 					</ul>
 				</div>
 				<div class="panel-body">
 					<div class="tab-content">
-						<div class="tab-pane fade in active" id="tab1default">Default 1</div>
-						<div class="tab-pane fade" id="tab2default">Default 2</div>
-						<div class="tab-pane fade" id="tab3default">Default 3</div>
+						<div data-ui-view=""></div>
 					</div>
 				</div>
 			</div>
@@ -61,7 +77,61 @@
 	</div>
 </div>
 
+<!-- lib -->
+<script 
+	type="text/javascript" 
+	src="ext/jquery/jquery-1.11.1.min.js"
+></script>
+<script 
+	type="text/javascript" 
+	src="ext/underscore/1.7.0/underscore.js"
+></script>
+<script 
+	type="text/javascript" 
+	src="ext/ng/lib/angular/1.2.25/angular.js"
+></script>
+<script 
+	type="text/javascript" 
+	src="ext/ng/lib/angular-ui-route/angular-ui-router.js"
+></script>
+<script 
+	type="text/javascript" 
+	src="ext/ng/lib/bootstrap/bootstrap-modal.js"
+></script>
+<script 
+	type="text/javascript"
+	src="ext/ng/lib/angular-ui-bootstrap/ui-bootstrap-tpls-0.12.0.js"
+></script>
+<!-- custom file -->
 
+<script 
+	type="text/javascript"
+	src="ext/ng/app/account/main.js"
+></script>
+<script 
+	type="text/javascript"
+	src="ext/ng/app/account/config/route.js"
+></script>
+<script 
+	type="text/javascript"
+	src="ext/ng/app/account/controller/account_ctrl.js"
+></script>
+<script 
+	type="text/javascript"
+	src="ext/ng/app/account/controller/manage_ctrl.js"
+></script>
+<script 
+	type="text/javascript"
+	src="ext/ng/app/core/restful/restful.js"
+></script>
+<script 
+	type="text/javascript"
+	src="ext/ng/app/account/services/services.js"
+></script>
+<script 
+	type="text/javascript"
+	src="ext/ng/app/account/directive/popup.js"
+></script>
 <?php
   require(DIR_WS_INCLUDES . 'template_bottom.php');
   require(DIR_WS_INCLUDES . 'application_bottom.php');
