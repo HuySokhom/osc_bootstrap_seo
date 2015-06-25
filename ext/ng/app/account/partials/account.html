@@ -1,0 +1,89 @@
+<div 
+	data-ng-if="!account_info"
+	class="aling_center"
+>
+	<img 
+		alt="loading"
+		title="loading" 
+		src="images/icons/loading.gif"
+	/>
+</div>
+
+<table 
+	class="table table-striped table-bordered"
+	data-ng-repeat="account in account_info.elements"
+>
+	<tr>
+		<td width="15%">
+			First Name
+		</td>
+		<td>
+			<input
+				type="text"
+				class="form-control"
+				data-ng-model="account.customers_firstname"
+			/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Last Name
+		</td>
+		<td>
+			<input
+				type="text"
+				class="form-control"
+				data-ng-model="account.customers_lastname"
+			/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Telephone
+		</td>
+		<td>
+			<input
+				type="text"
+				class="form-control"
+				data-ng-model="account.customers_telephone"
+			/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Location
+		</td>
+		<td>
+			<select
+				data-ng-model="account.customers_location"
+				data-ng-options="location.id as location.location_name for location in location.elements"
+				data-ng-init="account.customers_location == location.id"
+				class="form-control"
+			> 
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Address
+		</td>
+		<td>
+			<textarea 
+				rows="4" 
+				cols=""
+				class="form-control"
+				data-ng-model="account.customers_address"
+			>
+			</textarea>
+		</td>
+	</tr>
+</table>
+<button
+	class="btn btn-primary"
+	data-ng-click="save();"
+>
+	<span class="glyphicon glyphicon-ok-circle"></span>
+	Save
+</button>
+<vehicle:popup></vehicle:popup>
+
