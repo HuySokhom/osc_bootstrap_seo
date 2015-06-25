@@ -102,6 +102,10 @@
 	type="text/javascript"
 	src="ext/ng/lib/angular-ui-bootstrap/ui-bootstrap-tpls-0.12.0.js"
 ></script>
+<script 
+	type="text/javascript"
+	src="ext/ng/lib/bootstrap-notify/bootstrap-notify.min.js"
+></script>
 <!-- custom file -->
 
 <script 
@@ -131,6 +135,10 @@
 <script 
 	type="text/javascript"
 	src="ext/ng/app/account/directive/popup.js"
+></script>
+<script 
+	type="text/javascript"
+	src="ext/ng/app/account/directive/location.js"
 ></script>
 <?php
   require(DIR_WS_INCLUDES . 'template_bottom.php');

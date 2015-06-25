@@ -54,13 +54,7 @@
 			Location
 		</td>
 		<td>
-			<select
-				data-ng-model="account.customers_location"
-				data-ng-options="location.id as location.location_name for location in location.elements"
-				data-ng-init="account.customers_location == location.id"
-				class="form-control"
-			> 
-			</select>
+			<span location:account></span>
 		</td>
 	</tr>
 	<tr>
@@ -77,13 +71,17 @@
 			</textarea>
 		</td>
 	</tr>
+	<tr>
+		<td colspan="2">
+			<button
+				class="btn btn-primary"
+				data-ng-click="save(account);"
+			>
+				<span class="glyphicon glyphicon-ok-circle"></span>
+				Save
+			</button>
+		</td>
+	</tr>
 </table>
-<button
-	class="btn btn-primary"
-	data-ng-click="save();"
->
-	<span class="glyphicon glyphicon-ok-circle"></span>
-	Save
-</button>
 <vehicle:popup></vehicle:popup>
 

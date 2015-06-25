@@ -6,14 +6,9 @@ app.controller(
 	, function ($scope, Restful, Services){
 		
 		var url = 'api/Session/Customer';
-		$scope.init = function(){			
+		$scope.init = function(){
 			Restful.get(url).success(function(data){
 				$scope.account_info = data;
-			});
-			// get location information
-			var urlLocation = 'api/Location';
-			Restful.get(urlLocation).success(function(data){
-				$scope.location = data;
 			});
 		};
 		$scope.init();
