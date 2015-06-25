@@ -86,13 +86,13 @@ class Object extends DbObj {
 			UPDATE
 				customers
 			SET
-				customers_firstname = '" . (int)$this->getCustomersFirstname() . "',
-				customers_lastname = '" . (int)$this->getCustomersLastname() . "',
-				customers_telephone = '" . (int)$this->getCustomersTelephone() . "',
+				customers_firstname = '" . $this->dbEscape( $this->getCustomersFirstname() ) . "',
+				customers_lastname = '" . $this->dbEscape( $this->getCustomersLastname() ) . "',
+				customers_telephone = '" . $this->dbEscape( $this->getCustomersTelephone() ) . "',
 				customers_location = '" . (int)$this->getCustomersLocation() . "',
-				customers_address = '" . (int)$this->getCustomersAddress() . "'
+				customers_address = '" . $this->dbEscape( $this->getCustomersAddress() ) . "'
 			WHERE
-				id = '" . (int)$this->getId() . "'
+				customers_id = '" . (int)$this->getId() . "'
 		");
 	
 	}
