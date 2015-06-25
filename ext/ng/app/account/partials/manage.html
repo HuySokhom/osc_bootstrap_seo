@@ -1,0 +1,63 @@
+<div 
+	data-ng-if="!products_post"
+	class="aling_center"
+>
+	<img 
+		alt="loading"
+		title="loading" 
+		src="images/icons/loading.gif"
+	/>
+</div>
+<button
+	class="btn btn-default"
+	data-ng-click="add();"
+>
+	<span class="glyphicon glyphicon-plus-sign"></span>
+	Post Product
+</button>
+
+<div
+	data-ng-if="products_post.elements == 0"
+>
+	<div class="alert alert-warning alert-dismissible">
+		<strong>Warning!</strong> No product post.
+	</div>
+</div>
+<div class="clear_fix"></div>
+<div
+	data-ng-repeat="product in products_post.elements"
+	class="main"
+>
+	<a href="/#">
+		<img 
+			src="images/samsung/galaxy_tab_1.jpg" 
+			alt="There's Something About Mary" 
+			title="There's Something About Mary" 
+			class="img"
+		>
+	</a>
+	<div
+		data-ng-bind="product.post_title"
+		class="p-title"
+	>
+	</div>
+	<div
+		data-ng-bind="product.description | limitTo:50"
+		class="p-description"
+	>
+	</div>
+	<div class="align_center">
+		<button
+			class="btn btn-default"
+		>
+			Edit
+		</button>
+		<button
+			class="btn btn-danger"
+		>
+			Delete
+		</button>
+	</div>
+</div>
+<product:post:popup></product:post:popup>
+
