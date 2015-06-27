@@ -1,14 +1,14 @@
 <?php
 
 use
-	GoodSend\Catalog\FontFamily\Collection
-		as FontFamilyCol
+	OSC\ProductPost\Collection
+		as ProductPostCol
 ;
 
-class RestApiFontFamily extends RestApi {
+class RestApiProductPost extends RestApi {
 
 	public function get(){
-		$col = new FontFamilyCol();
+		$col = new ProductPostCol();
 		// filter with default status 1
 		$params['filters']['status'] = 1;
 		$this->applyFilters($col, $params);

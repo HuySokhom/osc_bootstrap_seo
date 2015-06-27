@@ -466,3 +466,6 @@ p.lead del {
 	font-weight: bold;
 	text-align: right;
 }
+.align_center{
+	text-align: center;
+}

@@ -14,6 +14,13 @@ class Object extends DbObj {
 		, $customersEmailAddress
 		, $customersAddress
 		, $customersTelephone
+		, $customersType
+		, $customersLocation
+		, $customersSocialNetwork
+		, $customersAppId
+		, $customersCompanyName
+		, $customersContactName
+		, $customersGender
 	;
 	
 	public function toArray( $params = array() ){
@@ -24,7 +31,14 @@ class Object extends DbObj {
 				'customers_lastname',
 				'customers_email_address',
 				'customers_address',
-				'customers_telephone'
+				'customers_telephone',
+				'customers_type',
+				'customers_location',
+				'customers_social_network',
+				'customers_app_id',
+				'customers_company_name',
+				'customers_contact_name',
+				'customers_gender',
 			)
 		);
 	
@@ -38,7 +52,14 @@ class Object extends DbObj {
 				customers_lastname,
 				customers_email_address,
 				customers_telephone,
-				customers_address
+				customers_address,
+				customers_type,
+				customers_location,
+				customers_social_network,
+				customers_app_id,
+				customers_company_name,
+				customers_contact_name,
+				customers_gender
 			FROM
 				customers
 			WHERE
@@ -53,6 +74,27 @@ class Object extends DbObj {
 		}
 	
 		$this->setProperties($this->dbFetchArray($q));
+	}
+	
+	public function update() {
+	
+		if( !$this->getId() ) {
+			throw new Exception("save method requires id");
+		}
+	
+		$q = $this->dbQuery("
+			UPDATE
+				customers
+			SET
+				customers_firstname = '" . $this->dbEscape( $this->getCustomersFirstname() ) . "',
+				customers_lastname = '" . $this->dbEscape( $this->getCustomersLastname() ) . "',
+				customers_telephone = '" . $this->dbEscape( $this->getCustomersTelephone() ) . "',
+				customers_location = '" . (int)$this->getCustomersLocation() . "',
+				customers_address = '" . $this->dbEscape( $this->getCustomersAddress() ) . "'
+			WHERE
+				customers_id = '" . (int)$this->getId() . "'
+		");
+	
 	}
 	
 	public function setCustomersFirstname( $string ){
@@ -94,4 +136,61 @@ class Object extends DbObj {
 	public function getCustomersTelephone(){
 		return $this->customersTelephone;
 	}
+	
+	public function setCustomersAppId( $string ){
+		$this->customersAppId = (string)$string;
+	}
+	
+	public function getCustomersAppId(){
+		return $this->customersAppId;
+	}
+	
+	public function setCustomersCompanyName( $string ){
+		$this->customersCompanyName = (string)$string;
+	}
+	
+	public function getCustomersCompanyName(){
+		return $this->customersCompanyName;
+	}
+	
+	public function setCustomersContactName( $string ){
+		$this->customersContactName = (string)$string;
+	}
+	
+	public function getCustomersContactName(){
+		return $this->customersContactName;
+	}
+	
+	public function setCustomersGender( $string ){
+		$this->customersGender = (string)$string;
+	}
+	
+	public function getCustomersGender(){
+		return $this->customersGender;
+	}
+	
+	public function setCustomersLocation( $string ){
+		$this->customersLocation = (int)$string;
+	}
+	
+	public function getCustomersLocation(){
+		return $this->customersLocation;
+	}
+	
+	public function setCustomersSocialNetwork( $string ){
+		$this->customersSocialNetwork = $string;
+	}
+	
+	public function getCustomersSocialNetwork(){
+		return $this->customersSocialNetwork;
+	}
+	
+	public function setCustomersType( $string ){
+		$this->customersType = $string;
+	}
+	
+	public function getCustomersType(){
+		return $this->customersType;
+	}
+	
 }

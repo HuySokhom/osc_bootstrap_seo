@@ -1,0 +1,7 @@
+<select 
+	class="form-control" 
+	data-ng-model="account.customers_location" 
+	data-ng-options="location.id as location.location_name for location in location.elements" 
+	data-ng-init="account.customers_location == location.id" 
+	data-ng-disabled="disabled"
+></select>

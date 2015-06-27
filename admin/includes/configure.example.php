@@ -40,4 +40,23 @@
   define('USE_PCONNECT', 'false');
   define('STORE_SESSIONS', 'mysql');
   define('CFG_TIME_ZONE', 'Europe/Berlin');
-?>
+
+   // autoload methods
+  
+  function gsAutoload( $class ) {
+    $fileName = DIR_FS_ADMIN . DIR_WS_CLASSES . 'autoload/' . $class . '.php';
+  
+    if( file_exists( $fileName ) ) {
+      require_once( $fileName );
+    }
+  }
+  
+  function __autoload_namespaced_module($class) {
+    $path = str_replace('\\', '/', $class);
+    if (file_exists($file = (DIR_FS_ADMIN . DIR_WS_MODULES . $path . '.php'))) {
+      require_once($file);
+    }
+  }
+  spl_autoload_register();
+  spl_autoload_register('gsAutoload');
+  spl_autoload_register('__autoload_namespaced_module');
