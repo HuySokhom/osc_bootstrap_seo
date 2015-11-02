@@ -55,7 +55,7 @@
   define('FILENAME_ZONES', 'zones.php');
   
   // add new filename
-  define('FILENAME_VEHICLES_TYPE', 'vehicles.php');
+  define('FILENAME_IMAGE_SLIDER', 'image_slider.php');
   
   
   

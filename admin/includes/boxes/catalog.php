@@ -44,9 +44,9 @@
         'link' => tep_href_link(FILENAME_PRODUCTS_EXPECTED)
       ),
       array(
-        'code' => FILENAME_VEHICLES_TYPE,
-        'title' => BOX_CATALOG_VEHICLES_TYPE,
-        'link' => tep_href_link(FILENAME_VEHICLES_TYPE)
+        'code' => FILENAME_IMAGE_SLIDER,
+        'title' => BOX_CATALOG_IMAGE_SLIDER,
+        'link' => tep_href_link(FILENAME_IMAGE_SLIDER)
       )
     )
   );
