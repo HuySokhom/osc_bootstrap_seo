@@ -32,7 +32,9 @@
 <link href="ext/bootstrap/css/bootstrap.css" rel="stylesheet">
 <link href="custom.css" rel="stylesheet">
 <link href="user.css" rel="stylesheet">
-
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,greek,greek-ext,vietnamese,cyrillic-ext,latin-ext,cyrillic'
+        rel='stylesheet'
+        type='text/css'>
 <!--[if lt IE 9]>
    <script src="ext/js/html5shiv.js"></script>
    <script src="ext/js/respond.min.js"></script>
@@ -51,7 +53,7 @@
   <?php echo $oscTemplate->getContent('navigation'); ?>
   
   <div id="bodyWrapper" class="<?php echo BOOTSTRAP_CONTAINER; ?>">
-    <div class="row">
+    <div class="row" style="margin-top: 135px;">
 
       <?php require(DIR_WS_INCLUDES . 'header.php'); ?>
 
