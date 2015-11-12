@@ -186,6 +186,7 @@ define('IMAGE_BUTTON_CHANGE_ADDRESS', 'Change Address');
 define('IMAGE_BUTTON_CHECKOUT', 'Checkout');
 define('IMAGE_BUTTON_CONFIRM_ORDER', 'Confirm Order');
 define('IMAGE_BUTTON_CONTINUE', 'Continue');
+define('IMAGE_BUTTON_REGISTER', 'Register Now');
 define('IMAGE_BUTTON_CONTINUE_SHOPPING', 'Continue Shopping');
 define('IMAGE_BUTTON_DELETE', 'Delete');
 define('IMAGE_BUTTON_EDIT_ACCOUNT', 'Edit Account');
