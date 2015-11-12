@@ -304,6 +304,7 @@ define('MODULE_CONTENT_BOOTSTRAP_ROW_DESCRIPTION', '<p>Content Width can be 12 o
 
 // add new file name vehicles
 define('BOX_CATALOG_VEHICLES_TYPE', 'Vehicles');
+define('BOX_CATALOG_LOCATION', 'Location');
 
 
 

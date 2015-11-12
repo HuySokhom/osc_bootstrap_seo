@@ -56,7 +56,8 @@
   
   // add new filename
   define('FILENAME_VEHICLES_TYPE', 'vehicles.php');
-  
+define('FILENAME_LOCATION', 'location.php');
+
   
   
   

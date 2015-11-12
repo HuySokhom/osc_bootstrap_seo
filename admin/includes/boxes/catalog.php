@@ -47,6 +47,11 @@
         'code' => FILENAME_VEHICLES_TYPE,
         'title' => BOX_CATALOG_VEHICLES_TYPE,
         'link' => tep_href_link(FILENAME_VEHICLES_TYPE)
+      ),
+      array(
+          'code' => FILENAME_LOCATION,
+          'title' => BOX_CATALOG_LOCATION,
+          'link' => tep_href_link(FILENAME_LOCATION)
       )
     )
   );
