@@ -79,7 +79,7 @@
 ?>
 
 <div class="page-header">
-  <h1><?php echo HEADING_TITLE; ?></h1>
+  <h3><?php echo HEADING_TITLE; ?></h3>
 </div>
 
 <?php
