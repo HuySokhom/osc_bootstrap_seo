@@ -251,7 +251,7 @@
 ?>
 
 <div class="page-header">
-  <h1><?php echo HEADING_TITLE; ?></h1>
+  <h3>Latest Ads</h3>
 </div>
 
 <?php
@@ -261,7 +261,7 @@
 ?>
 
 <div class="contentContainer">
-  <div class="alert alert-info">
+  <div class="alert alert-info" style="display: none;">
     <?php echo tep_customer_greeting(); ?>
   </div>
 
@@ -277,7 +277,7 @@
     }
 
     include(DIR_WS_MODULES . FILENAME_NEW_PRODUCTS);
-    include(DIR_WS_MODULES . FILENAME_UPCOMING_PRODUCTS);
+//    include(DIR_WS_MODULES . FILENAME_UPCOMING_PRODUCTS);
 ?>
 
 </div>

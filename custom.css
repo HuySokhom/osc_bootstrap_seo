@@ -493,5 +493,21 @@ p.lead del {
     border: 1px solid #3f9923;
 }
 h1 > span{
-    color: #FF3500;
+    color: rgb(142,11,0);
+    font-weight: bold;
+}
+.price {
+    color: rgb(142,11,0);
+    font-weight: bold;
+}
+.background{
+    background: #3f9923;
+}
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus,
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    color: #fff;
+    background-color: #3f9923;
+}
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus{
+    color: black;
 }
