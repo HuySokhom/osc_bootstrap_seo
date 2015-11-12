@@ -25,7 +25,21 @@
           <a href="news.php">News</a>
         </li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <b class="caret"></b></a>
+          <?php
+          if (tep_session_is_registered('customer_id')) {
+          ?>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <span class="glyphicon glyphicon-user"></span>
+              <?php echo $_SESSION['customer_first_name'] . ' ' . $_SESSION['customer_last_name'];?>
+              <b class="caret"></b>
+            </a>
+          <?php
+          }else{
+          ?>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <b class="caret"></b></a>
+          <?php
+          }
+          ?>
           <ul class="dropdown-menu">
             <?php
             if (tep_session_is_registered('customer_id')) {

@@ -72,7 +72,7 @@
 		</div>
     <?php
     	// don't need to show
-    	// echo $oscTemplate->getContent('account');
+//    	 echo $oscTemplate->getContent('account');
     ?>
 	</div>
 </div>
