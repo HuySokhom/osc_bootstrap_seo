@@ -1,99 +1,18 @@
-<div 
-	data-ng-if="!account_info"
-	class="align_center"
->
-	<img 
-		alt="loading"
-		title="loading" 
-		src="images/icons/loading.gif"
-	/>
+<div class="panel-body">
+	<ul class="accountLinkList">
+		<li>
+			<i class="glyphicon glyphicon-user"></i>
+			<a href="http://localhost.54/khmermarket/osc_bootstrap_seo/account_edit.php">
+				View or change my account information.
+			</a>
+		</li>
+		<li>
+			<i class="glyphicon glyphicon-cog"></i>
+			<a href="http://localhost.54/khmermarket/osc_bootstrap_seo/account_password.php">
+				Change my account password.
+			</a>
+		</li>
+	</ul>
 </div>
-<button
-	data-ng-click="edit();"
-	class="btn btn-default "
->
-	<span class="glyphicon glyphicon-edit"></span>
-	Edit
-</button>
-<br/><br/>
-<table 
-	class="table table-striped table-bordered"
-	data-ng-repeat="account in account_info.elements"
->
-	<tr>
-		<td width="15%">
-			First Name
-		</td>
-		<td>
-			<input
-				type="text"
-				class="form-control"
-				data-ng-model="account.customers_firstname"
-				data-ng-disabled="disabled"
-			/>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Last Name
-		</td>
-		<td>
-			<input
-				type="text"
-				class="form-control"
-				data-ng-disabled="disabled"
-				data-ng-model="account.customers_lastname"
-			/>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Telephone
-		</td>
-		<td>
-			<input
-				type="text"
-				data-ng-disabled="disabled"
-				class="form-control"
-				data-ng-model="account.customers_telephone"
-			/>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Location
-		</td>
-		<td>
-			<span location:account data-ng-disabled="disabled"></span>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Address
-		</td>
-		<td>
-			<textarea 
-				data-ng-disabled="disabled"
-				rows="4" 
-				cols=""
-				class="form-control"
-				data-ng-model="account.customers_address"
-			>
-			</textarea>
-		</td>
-	</tr>
-	<tr>
-		<td colspan="2">
-			<button
-				class="btn btn-primary"
-				data-ng-disabled="disabled"
-				data-ng-click="save(account);"
-			>
-				<span class="glyphicon glyphicon-ok-circle"></span>
-				Save
-			</button>
-		</td>
-	</tr>
-</table>
 <vehicle:popup></vehicle:popup>
 
