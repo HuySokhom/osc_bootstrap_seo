@@ -489,3 +489,9 @@ p.lead del {
 .align_center{
 	text-align: center;
 }
+.thumbnail:hover, .productHolder:hover {
+    border: 1px solid #3f9923;
+}
+h1 > span{
+    color: #FF3500;
+}
