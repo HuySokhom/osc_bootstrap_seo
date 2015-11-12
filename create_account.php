@@ -108,11 +108,11 @@
       $messageStack->add('create_account', ENTRY_STREET_ADDRESS_ERROR);
     }
 
-    if (strlen($postcode) < ENTRY_POSTCODE_MIN_LENGTH) {
-      $error = true;
-
-      $messageStack->add('create_account', ENTRY_POST_CODE_ERROR);
-    }
+//    if (strlen($postcode) < ENTRY_POSTCODE_MIN_LENGTH) {
+//      $error = true;
+//
+//      $messageStack->add('create_account', ENTRY_POST_CODE_ERROR);
+//    }
 
     if (strlen($city) < ENTRY_CITY_MIN_LENGTH) {
       $error = true;
@@ -142,11 +142,11 @@
           $messageStack->add('create_account', ENTRY_STATE_ERROR_SELECT);
         }
       } else {
-        if (strlen($state) < ENTRY_STATE_MIN_LENGTH) {
-          $error = true;
-
-          $messageStack->add('create_account', ENTRY_STATE_ERROR);
-        }
+//        if (strlen($state) < ENTRY_STATE_MIN_LENGTH) {
+//          $error = true;
+//
+//          $messageStack->add('create_account', ENTRY_STATE_ERROR);
+//        }
       }
     }
 
@@ -259,7 +259,7 @@
 ?>
 
 <div class="page-header">
-  <h1><?php echo HEADING_TITLE; ?></h1>
+  <h3><?php echo HEADING_TITLE; ?></h3>
 </div>
 
 <?php
@@ -275,10 +275,10 @@
 <?php echo tep_draw_form('create_account', tep_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL'), 'post', 'class="form-horizontal" onsubmit="return check_form(create_account);"', true) . tep_draw_hidden_field('action', 'process'); ?>
 
 <div class="contentContainer">
-
-  <h2><?php echo CATEGORY_PERSONAL; ?></h2>
   <div class="contentText">
-
+  <div class="col-sm-6">
+    <div class="panel panel-success">
+      <div class="panel-body">
 <?php
   if (ACCOUNT_GENDER == 'true') {
 ?>
@@ -344,30 +344,6 @@
         ?>
       </div>
     </div>
-  </div>
-<?php
-  if (ACCOUNT_COMPANY == 'true') {
-?>
-
-  <h2><?php echo CATEGORY_COMPANY; ?></h2>
-  
-  <div class="contentText">
-    <div class="form-group">
-      <label for="inputCompany" class="control-label col-sm-3"><?php echo ENTRY_COMPANY; ?></label>
-      <div class="col-sm-9">
-        <?php
-        echo tep_draw_input_field('company', NULL, 'id="inputCompany" placeholder="' . ENTRY_COMPANY . '"');
-        if (tep_not_null(ENTRY_COMPANY_TEXT)) echo '<span class="help-block">' . ENTRY_COMPANY_TEXT . '</span>';
-        ?>
-      </div>
-    </div>
-  </div>
-
-<?php
-  }
-?>
-
-  <h2><?php echo CATEGORY_ADDRESS; ?></h2>
   <div class="contentText">
     <div class="form-group has-feedback">
       <label for="inputStreet" class="control-label col-sm-3"><?php echo ENTRY_STREET_ADDRESS; ?></label>
@@ -379,22 +355,7 @@
         ?>
       </div>
     </div>
-
-<?php
-  if (ACCOUNT_SUBURB == 'true') {
-?>
-    <div class="form-group">
-    <label for="inputSuburb" class="control-label col-sm-3"><?php echo ENTRY_SUBURB; ?></label>
-      <div class="col-sm-9">
-        <?php
-        echo tep_draw_input_field('suburb', NULL, 'id="inputSuburb" placeholder="' . ENTRY_SUBURB . '"');
-        if (tep_not_null(ENTRY_SUBURB_TEXT)) echo '<span class="help-block">' . ENTRY_SUBURB_TEXT . '</span>';
-        ?>
-      </div>
-    </div>
-<?php
-  }
-?>
+</div>
     <div class="form-group has-feedback">
       <label for="inputCity" class="control-label col-sm-3"><?php echo ENTRY_CITY; ?></label>
       <div class="col-sm-9">
@@ -406,47 +367,6 @@
       </div>
     </div>
     <div class="form-group has-feedback">
-      <label for="inputZip" class="control-label col-sm-3"><?php echo ENTRY_POST_CODE; ?></label>
-      <div class="col-sm-9">
-        <?php
-        echo tep_draw_input_field('postcode', NULL, 'required aria-required="true" id="inputZip" placeholder="' . ENTRY_POST_CODE . '"');
-        echo FORM_REQUIRED_INPUT;
-        if (tep_not_null(ENTRY_POST_CODE_TEXT)) echo '<span class="help-block">' . ENTRY_POST_CODE_TEXT . '</span>';
-        ?>
-     </div>
-    </div>
-<?php
-  if (ACCOUNT_STATE == 'true') {
-?>
-    <div class="form-group has-feedback">
-      <label for="inputState" class="control-label col-sm-3"><?php echo ENTRY_STATE; ?></label>
-      <div class="col-sm-9">
-        <?php
-        if ($process == true) {
-          if ($entry_state_has_zones == true) {
-            $zones_array = array();
-            $zones_query = tep_db_query("select zone_name from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "' order by zone_name");
-            while ($zones_values = tep_db_fetch_array($zones_query)) {
-              $zones_array[] = array('id' => $zones_values['zone_name'], 'text' => $zones_values['zone_name']);
-            }
-            echo tep_draw_pull_down_menu('state', $zones_array, 0, 'id="inputState"');
-            echo FORM_REQUIRED_INPUT;
-          } else {
-            echo tep_draw_input_field('state', NULL, 'id="inputState" placeholder="' . ENTRY_STATE . '"');
-            echo FORM_REQUIRED_INPUT;
-          }
-        } else {
-          echo tep_draw_input_field('state', NULL, 'id="inputState" placeholder="' . ENTRY_STATE    . '"');
-          echo FORM_REQUIRED_INPUT;
-        }
-        if (tep_not_null(ENTRY_STATE_TEXT)) echo '<span class="help-block">' . ENTRY_STATE_TEXT . '</span>';
-        ?>
-      </div>
-    </div>
-<?php
-  }
-?>
-    <div class="form-group has-feedback">
       <label for="inputCountry" class="control-label col-sm-3"><?php echo ENTRY_COUNTRY; ?></label>
       <div class="col-sm-9">
         <?php
@@ -456,10 +376,6 @@
         ?>
       </div>
     </div>
-  </div>
-
-  <h2><?php echo CATEGORY_CONTACT; ?></h2>
-  
   <div class="contentText">
     <div class="form-group has-feedback">
       <label for="inputTelephone" class="control-label col-sm-3"><?php echo ENTRY_TELEPHONE_NUMBER; ?></label>
@@ -471,31 +387,8 @@
         ?>
       </div>
     </div>
-    <div class="form-group">
-      <label for="inputFax" class="control-label col-sm-3"><?php echo ENTRY_FAX_NUMBER; ?></label>
-      <div class="col-sm-9">
-        <?php
-        echo tep_draw_input_field('fax', '', 'id="inputFax" placeholder="' . ENTRY_FAX_NUMBER . '"', 'tel');
-        if (tep_not_null(ENTRY_FAX_NUMBER_TEXT)) echo '<span class="help-block">' . ENTRY_FAX_NUMBER_TEXT . '</span>';
-        ?>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="inputNewsletter" class="control-label col-sm-3"><?php echo ENTRY_NEWSLETTER; ?></label>
-      <div class="col-sm-9">
-        <div class="checkbox">
-          <label>
-            <?php echo tep_draw_checkbox_field('newsletter', '1', NULL, 'id="inputNewsletter"'); ?>
-            <?php if (tep_not_null(ENTRY_NEWSLETTER_TEXT)) echo ENTRY_NEWSLETTER_TEXT; ?>
-          </label>
-        </div>
-      </div>
-    </div>
-  
   </div>
 
-  <h2><?php echo CATEGORY_PASSWORD; ?></h2>
-  
   <div class="contentText">
     <div class="form-group has-feedback">
       <label for="inputPassword" class="control-label col-sm-3"><?php echo ENTRY_PASSWORD; ?></label>
@@ -523,9 +416,20 @@
     <div class="text-right"><?php echo tep_draw_button(IMAGE_BUTTON_CONTINUE, 'glyphicon glyphicon-user', null, 'primary', null, 'btn-success'); ?></div>
   </div>
 
-</div>
-
 </form>
+</div></div></div>
+    <div class="col-sm-6">
+  <div class="panel panel-info">
+    <div class="panel-body">
+      <h4>Register Today and Enjoy :</h4>
+      <p><span class="glyphicon glyphicon-user icon-font"></span>Join <strong>Free</strong></p>
+      <p><span class="glyphicon glyphicon-check icon-font"></span>Posting your ads for <strong>Free</strong></p>
+      <p><span class="glyphicon glyphicon-thumbs-up icon-font"></span><strong>Easy</strong> ways to manage your Ads</p>
+    </div>
+  </div>
+    </div>
+  </div>
+</div>
 
 <?php
   require(DIR_WS_INCLUDES . 'template_bottom.php');
