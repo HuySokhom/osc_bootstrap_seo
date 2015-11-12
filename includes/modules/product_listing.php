@@ -148,7 +148,7 @@
        $prod_list_contents .= '    </dl>';
     }
 
-	  $prod_list_contents .= '      <div class="row">';
+	  $prod_list_contents .= '<p class="price">'. $currencies->display_price($listing['products_price'], tep_get_tax_rate($listing['products_tax_class_id'])) .'</p>      <div class="row" style="display: none;">';
     if (tep_not_null($listing['specials_new_products_price'])) {
       $prod_list_contents .= '      <div class="col-xs-6"><div class="btn-group" role="group"><button type="button" class="btn btn-default"><del>' .  $currencies->display_price($listing['products_price'], tep_get_tax_rate($listing['products_tax_class_id'])) . '</del></span>&nbsp;&nbsp;<span class="productSpecialPrice">' . $currencies->display_price($listing['specials_new_products_price'], tep_get_tax_rate($listing['products_tax_class_id'])) . '</button></div></div>';
     } else {
