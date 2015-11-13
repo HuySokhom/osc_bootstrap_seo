@@ -9,17 +9,17 @@ class Collection extends StdCollection {
 	public function __construct( $params = array() ){
 		parent::__construct($params);
 		
-		$this->addTable('post_products', 'pp');
-		$this->idField = 'pp.id';
+		$this->addTable('products', 'p');
+		$this->idField = 'p.products_id';
 		$this->setDistinct(true);		
 		$this->objectType = __NAMESPACE__ . '\Object';	
 	}
 	
 	public function filterByStatus( $arg ){
-		$this->addWhere("pp.status = '" . (int)$arg . "'");
+		$this->addWhere("p.products_status = '" . (int)$arg . "'");
 	}
 	
-	public function filterByPostId( $arg ){
-		$this->addWhere("pp.id = '" . (int)$arg. "' ");
+	public function filterById( $arg ){
+		$this->addWhere("p.products_id = '" . (int)$arg. "' ");
 	}
 }
