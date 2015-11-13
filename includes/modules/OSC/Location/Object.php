@@ -9,14 +9,14 @@ use
 class Object extends DbObj {
 		
 	protected
-		$locationName
+		$name
 	;
 	
 	public function toArray( $params = array() ){
 		$args = array(
 			'include' => array(
 				'id',
-				'location_name',
+				'name',
 			)
 		);
 
@@ -26,7 +26,7 @@ class Object extends DbObj {
 	public function load( $params = array() ){
 		$q = $this->dbQuery("
 			SELECT
-				location_name
+				name
 			FROM
 				location
 			WHERE
@@ -44,12 +44,12 @@ class Object extends DbObj {
 		
 	}
 	
-	public function setLocationName( $string ){
-		$this->locationName = (string)$string;
+	public function setName( $string ){
+		$this->name = (string)$string;
 	}
 	
-	public function getLocationName(){
-		return $this->locationName;
+	public function getName(){
+		return $this->name;
 	}
 	
 }
