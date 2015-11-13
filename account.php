@@ -80,10 +80,6 @@
 <!-- lib -->
 <script 
 	type="text/javascript" 
-	src="ext/jquery/jquery-1.11.1.min.js"
-></script>
-<script 
-	type="text/javascript" 
 	src="ext/underscore/1.7.0/underscore.js"
 ></script>
 <script 
@@ -93,10 +89,6 @@
 <script 
 	type="text/javascript" 
 	src="ext/ng/lib/angular-ui-route/angular-ui-router.js"
-></script>
-<script 
-	type="text/javascript" 
-	src="ext/ng/lib/bootstrap/bootstrap-modal.js"
 ></script>
 <script 
 	type="text/javascript"
