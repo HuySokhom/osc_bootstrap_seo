@@ -18,7 +18,11 @@ class Collection extends StdCollection {
 	public function filterByStatus( $arg ){
 		$this->addWhere("p.products_status = '" . (int)$arg . "'");
 	}
-	
+
+	public function filterByCustomersId( $arg ){
+		$this->addWhere("p.customers_id = '" . (int)$arg. "' ");
+	}
+
 	public function filterById( $arg ){
 		$this->addWhere("p.products_id = '" . (int)$arg. "' ");
 	}
