@@ -207,12 +207,6 @@
       <?php echo FORM_REQUIRED_INPUT; ?>
     </div>
   </div>
-  <div class="form-group">
-    <label for="inputFax" class="control-label col-sm-3"><?php echo ENTRY_FAX_NUMBER; ?></label>
-    <div class="col-sm-9">
-      <?php echo tep_draw_input_field('fax', $account['customers_fax'], 'id="inputFax" placeholder="' . ENTRY_FAX_NUMBER . '"'); ?>
-    </div>
-  </div>
 
   <div class="buttonSet row">
     <div class="col-xs-6"><?php echo tep_draw_button(IMAGE_BUTTON_BACK, 'glyphicon glyphicon-chevron-left', tep_href_link(FILENAME_ACCOUNT, '', 'SSL')); ?></div>
