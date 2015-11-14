@@ -2,15 +2,13 @@
 	data-ng-if="!products_post"
 	class="align_center"
 >
-	<img 
-		alt="loading"
-		title="loading" 
-		src="images/icons/loading.gif"
-	/>
+	<i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
 </div>
 <button
 	class="btn btn-default"
 	data-ng-click="add();"
+	data-toggle="modal"
+	data-target="#product-popup"
 >
 	<span class="glyphicon glyphicon-plus-sign"></span>
 	Post Product
@@ -28,32 +26,27 @@
 	data-ng-repeat="product in products_post.elements"
 	class="main"
 >
-	<a href="/#">
-		<img 
-			src="images/samsung/galaxy_tab_1.jpg" 
-			alt="{{product.post_title}}" 
-			title="{{product.post_title}}" 
-			class="img"
-		>
-	</a>
-	<div
-		data-ng-bind="product.post_title"
-		class="p-title"
+	<img
+		src="images/{{product.products_image}}"
+		alt="{{product.post_title}}"
+		title="{{product.post_title}}"
+		class="img"
 	>
-	</div>
 	<div
-		data-ng-bind="product.description | limitTo:50"
-		class="p-description"
+		data-ng-bind="product.fields[0].products_name"
+		class="p-title"
 	>
 	</div>
 	<div class="align_center">
 		<button
 			class="btn btn-default"
+			data-ng-click="edit(product);"
 		>
 			Edit
 		</button>
 		<button
 			class="btn btn-danger"
+			data-ng-click="remove(product.id);"
 		>
 			Delete
 		</button>
