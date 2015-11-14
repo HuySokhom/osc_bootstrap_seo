@@ -4,6 +4,8 @@ namespace OSC\ProductPost;
 
 use
 	Aedea\Core\Database\StdObject as DbObj
+	, OSC\ProductDescription\Collection
+			as ProductDescriptionCol
 ;
 
 class Object extends DbObj {
@@ -17,6 +19,7 @@ class Object extends DbObj {
 		, $productsDateAdded
 		, $productsStatus
 		, $manufacturersId
+		, $fields
 	;
 	
 	public function toArray( $params = array() ){
@@ -30,15 +33,16 @@ class Object extends DbObj {
 				'products_date_added',
 				'products_status',
 				'manufacturers_id',
+				'fields'
 			)
 		);
 		return parent::toArray($args);
 	}
 
 	public function __construct( $params = array() ){
-// 		parent::__construct($params);
+ 		parent::__construct($params);
 		
-// 		$this->fields = new FieldsCol;
+ 		$this->fields = new ProductDescriptionCol;
 	}
 
 	public function load( $params = array() ){
@@ -66,9 +70,8 @@ class Object extends DbObj {
 		
 		$this->setProperties($this->dbFetchArray($q));
 		
-// 		$this->fields->setFilter('template_id', $this->getId());
-// 		// @todo: filter by status (passed as param?)
-// 		$this->fields->populate();
+ 		$this->fields->setFilter('id', $this->getId());
+ 		$this->fields->populate();
 	}
 	
 	public function updateStatus() {
@@ -192,6 +195,13 @@ class Object extends DbObj {
 
 	public function getManufacturersId(){
 		return $this->manufacturersId;
+	}
+
+	public function getFields(){
+		return $this->fields;
+	}
+	public function setFields( $int ){
+		$this->fields = $int;
 	}
 
 	public function getProductsPrice(){
