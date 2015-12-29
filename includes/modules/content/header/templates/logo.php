@@ -8,8 +8,8 @@
         <span class="icon-bar"></span>
       </button>
       <?php
-        echo '<a href="' . tep_href_link('index.php') . '" style="padding: 2px;">'
-            . tep_image(DIR_WS_IMAGES . STORE_LOGO, STORE_NAME) . '</a>';
+        echo '<a href="' . tep_href_link('index.php') . '">
+            <img src="' . DIR_WS_IMAGES . STORE_LOGO .'" style="width: 55px;" /></a>';
       ?>
     </div>
     <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
@@ -17,7 +17,7 @@
           <li>
             <a href="advanced_search.php">Advance Search</a>
           </li>
-          <li class="active">
+          <li>
             <a href="news.php">News</a>
           </li>
           <li class="dropdown">
