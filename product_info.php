@@ -238,9 +238,9 @@
 </form>
 <script>
     $(function() {
-        $( "#columnLeft" ).css('display', 'none');
-        $( "#bodyContent" ).removeClass('col-md-9 col-md-push-3');
-        $( "#bodyContent" ).addClass('col-md-12');
+//        $( "#columnLeft" ).css('display', 'none');
+//        $( "#bodyContent" ).removeClass('col-md-9 col-md-push-3');
+//        $( "#bodyContent" ).addClass('col-md-12');
     });
 </script>
 <?php
