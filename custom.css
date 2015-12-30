@@ -11,8 +11,7 @@ body {
 }
 .header-style{
     border: 0px;
-    -webkit-box-shadow: 0 5px 5px 1px #3f9923;
-    /*box-shadow: 0 5px 5px 1px #3f9923);*/
+    box-shadow: 0 5px 5px 1px #3f9923;
     background: #ffffff;
 }
 a{
