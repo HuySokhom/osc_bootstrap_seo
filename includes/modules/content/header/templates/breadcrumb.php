@@ -1,8 +1,8 @@
 <?php
-  $urlName = basename($_SERVER['PHP_SELF']);
   $url = $_SERVER['REQUEST_URI'];
   $fullUrl = end((explode('/', $url)));
-  if($urlName == $fullUrl){
+  // check url if is index page
+  if( $fullUrl === 'index.php'){
 ?>
     <link href="ext/css/slider.css" rel="stylesheet">
     <script type="text/javascript" src="ext/js/slider/jssor.slider.mini.js"></script>
