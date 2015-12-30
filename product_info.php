@@ -71,7 +71,8 @@
 <div itemscope itemtype="http://schema.org/Product">
 
 <div class="page-header">
-  <h1 class="pull-right" itemprop="offers" itemscope itemtype="http://schema.org/Offer"><?php echo $products_price; ?></h1>
+  <h1 class="pull-right product_price" itemprop="offers" itemscope itemtype="http://schema.org/Offer"><?php echo $products_price;
+  ?></h1>
   <h1><?php echo $products_name; ?></h1>
 </div>
 
@@ -120,7 +121,8 @@
             $pi_html[] = '<div id="piGalDiv_' . $pi_counter . '">' . $pi['htmlcontent'] . '</div>';
           }
 
-          echo tep_image(DIR_WS_IMAGES . $pi['image'], '', '', '', 'id="piGalImg_' . $pi_counter . '"');
+          echo tep_image(DIR_WS_IMAGES . $pi['image'], '', '', '', 'id="piGalImg_' . $pi_counter . '"', '',
+          'img-responsive img-thumbnail');
         }
 ?>
 

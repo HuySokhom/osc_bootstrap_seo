@@ -490,8 +490,8 @@ p.lead del {
     border: 1px solid #3f9923;
 }
 h1 > span{
-    color: rgb(142,11,0);
-    font-weight: bold;
+    /*color: rgb(142,11,0);*/
+    /*font-weight: bold;*/
 }
 .price {
     color: rgb(142,11,0);
@@ -514,4 +514,16 @@ h1 > span{
 }
 h1, .h1 {
     font-size: 25px;
+}
+.product_price{
+    font-size: 32px;
+    color: #FFF;
+    background-color: #5cb85c;
+    border-color: #5cb85c;
+    padding: 1px;
+    text-align: center;
+    margin-top: 0px;
+    font-weight: bold;
+    position: relative;
+    border-radius: 3px;
 }

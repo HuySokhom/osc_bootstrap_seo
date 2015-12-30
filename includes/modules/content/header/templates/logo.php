@@ -1,15 +1,26 @@
 <nav class="navbar header-style navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+    <div class="navbar-header" style="padding: 10px;">
+      <button
+          type="button"
+          class="navbar-toggle collapsed"
+          data-toggle="collapse"
+          data-target="#navbar"
+          style="background: #3f9923;border: 0px;"
+      >
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+      <a href="index.php">
+        <span style="text-shadow: 3px 4px 5px rgba(168, 186, 165, 1);font-size: 30px;">
+          FREE POSTING
+        </span>
+      </a>
       <?php
-        echo '<a href="' . tep_href_link('index.php') . '">
-            <img src="' . DIR_WS_IMAGES . STORE_LOGO .'" style="width: 55px;" /></a>';
+//        echo '<a href="' . tep_href_link('index.php') . '">
+//            <img src="' . DIR_WS_IMAGES . STORE_LOGO .'" style="width: 55px;" /></a>';
       ?>
     </div>
     <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
