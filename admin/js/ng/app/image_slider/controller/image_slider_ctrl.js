@@ -3,9 +3,14 @@ app.controller(
 	'$scope'
 	, 'Factory'
 	, 'Services'
-	, function ($scope, Factory, Services){
+	, 'Upload'
+	, '$timeout'
+	, function ($scope, Factory, Services, Upload, $timeout){
 		$scope.add = function(){
 			$scope.image_slider = '';
+			if($scope.picFile){
+				$scope.picFile = null;
+			}
 		};
 
 		$scope.init = function(){
@@ -17,6 +22,9 @@ app.controller(
 		
 		$scope.edit = function(params){
 			$scope.image_slider = angular.copy(params);
+			if($scope.picFile){
+				$scope.picFile = null;
+			}
 		};
 
 		$scope.save = function(params){
@@ -51,6 +59,27 @@ app.controller(
 				});
 			}
 		};
-		
+
+		//functionality upload
+		$scope.uploadPic = function(file) {
+			if (file) {
+				file.upload = Upload.upload({
+					url: 'api/ImageUpload',
+					data: {file: file, username: $scope.username},
+				});
+				file.upload.then(function (response) {
+					$timeout(function () {
+						file.result = response.data;
+						$scope.image_slider.image = file.result.substring(1,  file.result.length - 1);
+					});
+				}, function (response) {
+					if (response.status > 0)
+						$scope.errorMsg = response.status + ': ' + response.data;
+				}, function (evt) {
+					// Math.min is to fix IE which reports 200% sometimes
+					file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+				});
+			}
+		}
 	}
 ]);
