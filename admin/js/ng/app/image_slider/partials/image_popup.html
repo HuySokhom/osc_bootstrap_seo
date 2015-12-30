@@ -1,0 +1,82 @@
+<form data-ng-submit="save();">
+<div
+	class="modal fade"
+	id="brand"
+	data-keyboard="false"
+	data-backdrop="static"
+>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button
+					type="button"
+					class="close"
+					data-dismiss="modal"
+				>
+					<span>&times;</span>
+				</button>
+				<h4>
+					<label>Image Slider</label>
+				</h4>
+	      	</div>
+			<div class="modal-body">
+				<table class="table table-bordered table-responsive">
+					<tr>
+						<td width="5%">
+							Name:
+						</td>
+						<td>
+							<input
+								type="text"
+								class="form-control"
+								data-ng-model="image_slider.text"
+								required="required"
+							/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Image:
+						</td>
+						<td>
+							<input type="file" />
+							<span data-ng-bind="image_slider.image"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Sort Order:
+						</td>
+						<td>
+							<input type="text" data-ng-model="image_slider.sort_order" class="form-control"/>
+						</td>
+					</tr>
+					<tr data-ng-hide="true">
+						<td>
+							Link:
+						</td>
+						<td>
+							<input type="text" data-ng-model="image_slider.link" class="form-control"/>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<button
+					class="btn btn-default"
+					data-dismiss="modal"
+				>
+					Close
+				</button>
+				<button
+					class="btn btn-primary"
+				>
+					Save
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+</form>
+
+
