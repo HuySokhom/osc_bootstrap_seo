@@ -73,7 +73,9 @@ class Object extends DbObj {
 			UPDATE
 				image_slider
 			SET
-				name = '" . $this->dbEscape( $this->getName() ) . "'
+				text = '" . $this->dbEscape( $this->getText() ) . "',
+				image = '" . $this->dbEscape( $this->getImage() ) . "',
+				sort_order = '" . $this->dbEscape( $this->getSortOrder() ) . "'
 			WHERE
 				id = '" . (int)$this->getId() . "'
 		");
@@ -90,14 +92,14 @@ class Object extends DbObj {
 				link,
 				image,
 				sort_order,
-				create
+				created
 			)
 				VALUES
 			(
 				'" . $this->dbEscape($this->getText()) . "',
 				'" . $this->dbEscape($this->getLink()) . "',
 				'" . $this->dbEscape($this->getImage()) . "',
-				'" . $this->dbEscape($this->getSortOrder()) . "',
+				'" . (int)$this->getSortOrder() . "',
 				NOW()
 			)
 		");
