@@ -59,7 +59,7 @@
 
     $products_price .= '<meta itemprop="priceCurrency" content="' . tep_output_string($currency) . '" />';
 
-    $products_name = '<a href="' . tep_href_link('product_info.php', 'products_id=' . $product_info['products_id']) . '" itemprop="url"><span itemprop="name">' . $product_info['products_name'] . '</span></a>';
+    $products_name = '<span itemprop="name" class="product_name">' . $product_info['products_name'] . '</span>';
 
     if (tep_not_null($product_info['products_model'])) {
       $products_name .= '<br /><small>[<span itemprop="model">' . $product_info['products_model'] . '</span>]</small>';

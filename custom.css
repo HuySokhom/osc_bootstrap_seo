@@ -527,3 +527,7 @@ h1, .h1 {
     position: relative;
     border-radius: 3px;
 }
+.product_name{
+    color: #5cb85c;
+    font-weight: bold;
+}
