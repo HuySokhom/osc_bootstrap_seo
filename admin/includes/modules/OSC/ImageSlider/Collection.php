@@ -14,5 +14,8 @@ class Collection extends StdCollection {
 		$this->setDistinct(true);
 		$this->objectType = __NAMESPACE__ . '\Object';		
 	}
-	
+
+	public function sortByOrder($arg){
+		$this->addOrderBy('i.sort_order', $arg);
+	}
 }
