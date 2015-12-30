@@ -1,4 +1,4 @@
-<nav class="navbar header-style navbar-inverse navbar-fixed-top" role="navigation">
+<nav class="navbar header-style navbar-inverse navbar-fixed-top" role="navigation" style="position: absolute;">
   <div class="container">
     <div class="navbar-header" style="padding: 10px;">
       <button
