@@ -41,13 +41,15 @@ app.controller(
 		};
 		
 		$scope.remove = function($index, id){
-			var data = {
-				id: id
-			};
-			Factory.remove(data).success(function(data){
-				$scope.image_sliders.elements.splice($index, 1);
-				console.log(data);
-			}); 
+			if (confirm('Are you sure you want to delete this image?')) {
+				var data = {
+					id: id
+				};
+				Factory.remove(data).success(function(data){
+					$scope.image_sliders.elements.splice($index, 1);
+					console.log(data);
+				});
+			}
 		};
 		
 	}
