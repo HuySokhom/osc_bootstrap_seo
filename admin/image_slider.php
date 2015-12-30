@@ -7,6 +7,7 @@ require('includes/application_top.php');
 require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
 <link rel="stylesheet" type="text/css" href="css/custom.css">
+<link rel="stylesheet" type="text/css" href="css/image_slider.css">
 <body data-ng-app="main">
 <h4>Image Slider</h4>
 <div class="col-md-12">
@@ -52,6 +53,9 @@ require(DIR_WS_INCLUDES . 'template_top.php');
     type="text/javascript"
     src="js/ng/lib/angular-ui-bootstrap/ui-bootstrap-tpls-0.12.0.js"
     ></script>
+<script src="js/ng/lib/angular-upload/ng-file-upload-shim.js"></script>
+<!-- for no html5 browsers support -->
+<script src="js/ng/lib/angular-upload/ng-file-upload.js"></script>
 <!-- custom file -->
 
 <script
