@@ -29,16 +29,42 @@ class RestApiImageUpload extends RestApi {
 				$file['tmp_name'],
 				DIR_FS_CATALOG . 'images/' . $file['name']
 			)){
-				$image = $file['name'];
+				$image = DIR_FS_CATALOG . 'images/' . $file['name'];
+				// to make image thumbnail uncomment
+//				$imgThumbnail = DIR_FS_CATALOG . 'images/image-thumbnail/' . $file['name'];
+//				$this->make_thumb($file, $image, $imgThumbnail, 250);
 			} else {
 				$image = 'error';
 			}
 
 			return array(
-				'data' => $image
+				'data' => $file['name']
 			);
 		}
 
+	}
+
+	function make_thumb($file, $src, $dest, $desired_width) {
+		/* read the source image */
+		if( $file['type'] == 'image/jpeg' ){
+			$source_image = imagecreatefromjpeg($src);
+		}else{
+			$source_image = imagecreatefrompng($src);
+		}
+		$width = imagesx($source_image);
+		$height = imagesy($source_image);
+
+		/* find the "desired height" of this thumbnail, relative to the desired width  */
+		$desired_height = floor($height * ($desired_width / $width));
+
+		/* create a new, "virtual" image */
+		$virtual_image = imagecreatetruecolor($desired_width, $desired_height);
+
+		/* copy source image at a resized size */
+		imagecopyresampled($virtual_image, $source_image, 0, 0, 0, 0, $desired_width, $desired_height, $width, $height);
+
+		/* create the physical thumbnail image to its destination */
+		imagejpeg($virtual_image, $dest);
 	}
 	
 }
