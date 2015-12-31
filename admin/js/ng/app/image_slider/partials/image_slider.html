@@ -7,6 +7,7 @@
 	<span class="glyphicon glyphicon-plus"></span>
 	Add Image
 </button>
+<br/><br/>
 <table class="table table-striped table-bordered default-font">
 	<tr>
 		<th>
@@ -32,7 +33,15 @@
 			<span data-ng-bind="image_slider.text"></span>
 		</td>
 		<td>
-			<img src="../images/{{image_slider.image_thumbnail}}">
+			<img
+				src="../images/{{image_slider.image_thumbnail}}"
+				data-ng-show="image_slider.image_thumbnail"
+			>
+			<img
+				src="../images/noimg.gif"
+				data-ng-show="!image_slider.image_thumbnail"
+				style="width: 100px;"
+			>
 		</td>
 		<td width="10%">
 			<img 
