@@ -21,36 +21,42 @@
 		<strong>Warning!</strong> No product post.
 	</div>
 </div>
-<div class="clear_fix"></div>
-<div
-	data-ng-repeat="product in products_post.elements"
-	class="main"
->
-	<img
-		src="images/{{product.products_image}}"
-		alt="{{product.post_title}}"
-		title="{{product.post_title}}"
-		class="img"
-	>
-	<div
-		data-ng-bind="product.fields[0].products_name"
-		class="p-title"
-	>
-	</div>
-	<div class="align_center">
-		<button
-			class="btn btn-default"
-			data-ng-click="edit(product);"
-		>
-			Edit
-		</button>
-		<button
-			class="btn btn-danger"
-			data-ng-click="remove(product.id);"
-		>
-			Delete
-		</button>
-	</div>
-</div>
+<br/><br/>
+<table class="table table-bordered table-striped">
+	<thead>
+		<th>
+			Title
+		</th>
+		<th>
+			Image
+		</th>
+		<th>
+			Price
+		</th>
+		<th width="150px">
+			Action
+		</th>
+	</thead>
+	<tr data-ng-repeat="product in products_post.elements">
+		<td>
+			<span data-ng-bind="product.fields[0].products_name"></span>
+		</td>
+		<td>
+			<img
+				src="images/{{product.products_image_thumbnail}}"
+				alt="{{product.fields[0].products_name}}"
+				title="{{product.fields[0].products_name}}"
+				class="img"
+			>
+		</td>
+		<td>
+			<span data-ng-bind="product.products_price | currency"></span>
+		</td>
+		<td>
+			<button class="btn btn-default">Edit</button>
+			<button class="btn btn-danger">Delete</button>
+		</td>
+	</tr>
+</table>
 <product:post:popup></product:post:popup>
 
