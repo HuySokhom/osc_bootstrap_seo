@@ -13,12 +13,13 @@ app.controller(
 			}
 		};
 
-		$scope.init = function(){
-			Factory.getImageSlider().success(function(data){
+		function init(params){
+			Factory.get(params).success(function(data){
 				$scope.image_sliders = data;
+				$scope.totalItems = data.count;
 			});
 		};
-		$scope.init();
+		init();
 		
 		$scope.edit = function(params){
 			$scope.image_slider = angular.copy(params);
@@ -27,23 +28,25 @@ app.controller(
 			}
 		};
 
-		$scope.save = function(params){
+		$scope.save = function(){
 			var data = {
-				text : $scope.image_slider.text,
-				image : $scope.image_slider.image,
+				text: $scope.image_slider.text,
+				image: $scope.image_slider.image,
+				image_thumbnail: $scope.image_slider.image_thumbnail,
 				sort_order: $scope.image_slider.sort_order
-			};
+			};console.log(data);
+			$scope.isDisabled = true;
 			if( $scope.image_slider.id ){
 				Factory.save(data, $scope.image_slider.id).success(function(data){
-					$scope.init();
+					init();
 					$('#brand').modal('hide');
-					console.log(data);
+					$scope.isDisabled = false;
 				});
 			}else{
 				Factory.insert(data).success(function(data){
-					$scope.init();
-					console.log(data);
-					$('#brand').modal('hide');
+					init();console.log(data);
+					$('#brand').modal('hide')
+					$scope.isDisabled = false;
 				});
 			}
 		};
@@ -55,7 +58,6 @@ app.controller(
 				};
 				Factory.remove(data).success(function(data){
 					$scope.image_sliders.elements.splice($index, 1);
-					console.log(data);
 				});
 			}
 		};
@@ -66,11 +68,14 @@ app.controller(
 				file.upload = Upload.upload({
 					url: 'api/ImageUpload',
 					data: {file: file, username: $scope.username},
-				});
+				});console.log(file);
 				file.upload.then(function (response) {
 					$timeout(function () {
 						file.result = response.data;
-						$scope.image_slider.image = file.result.substring(1,  file.result.length - 1);
+						console.log(response.data.image);
+						$scope.image_slider.image = response.data.image;
+						$scope.image_slider.image_thumbnail = response.data.image_thumbnail;
+						//file.result.substring(1, file.result.length - 1);
 					});
 				}, function (response) {
 					if (response.status > 0)
@@ -81,5 +86,17 @@ app.controller(
 				});
 			}
 		}
+
+		/**
+		 * start functionality pagination
+		 */
+		var params = {};
+		$scope.currentPage = 1;
+		//get another portions of data on page changed
+		$scope.pageChanged = function() {
+			$scope.pageSize = 10 * ( $scope.currentPage - 1 );
+			params.start = $scope.pageSize;
+			init(params);
+		};
 	}
 ]);

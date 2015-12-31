@@ -3,5 +3,6 @@ var app = angular.module(
 	[
 	 	'ui.router'
 		, 'ngFileUpload'
+		, 'ui.bootstrap'
 	]
 );

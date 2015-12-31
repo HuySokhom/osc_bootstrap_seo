@@ -51,9 +51,11 @@
 							<i ng-show="myForm.file.$error.maxSize">
 								File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M
 							</i>
-							<img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb">
-							<img ng-show="image_slider.image" class="thumb" src="../images/{{image_slider.image}}">
-							<button ng-click="picFile = null" ng-show="picFile">Remove</button>
+							<img
+								ng-show="image_slider.image"
+								class="thumb"
+								src="../images/{{image_slider.image_thumbnail}}"
+							>
 							<span class="progress" ng-show="picFile.progress >= 0">
 								<div
 									style="width:{{picFile.progress}}%"
@@ -92,7 +94,7 @@
 				</button>
 				<button
 					class="btn btn-primary"
-					ng-disabled="!myForm.$valid"
+					data-ng-disabled="isDisabled"
 				>
 					Save
 				</button>

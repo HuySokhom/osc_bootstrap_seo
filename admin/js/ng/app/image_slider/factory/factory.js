@@ -4,7 +4,7 @@ app.factory("Factory", [
         
         var obj = {};
         // start get 
-        obj.getImageSlider = function(params) {
+        obj.get = function(params) {console.log(params);
             return $http({
         		url: 'api/ImageSlider',
     			method: 'GET',
