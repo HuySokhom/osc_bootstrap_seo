@@ -12,8 +12,16 @@ use
         as ImageSliderObject
 ;
 class RestApiImageSlider extends RestApi {
-    public function get(){
+    public function get($params){
         $col = new ImageSliderCollection();
+        // start limit page
+        $showDataPerPage = 10;
+        $start = $params['GET']['start'];
+        $this->applyLimit($col,
+            array(
+                'limit' => array( $start, $showDataPerPage )
+            )
+        );
 //        $this->applyFilters($col, $params);
         $col->sortByOrder('ASC');
         return $this->getReturn($col, $params);
