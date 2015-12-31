@@ -23,6 +23,11 @@
 			Action
 		</th>
 	</tr>
+	<tr data-ng-if="totalItems <= 0">
+		<td colspan="4" align="center">
+			<img src="images/icons/gettestr-large-spinner-orange.gif"/>
+		</td>
+	</tr>
 	<tr
 		data-ng-repeat="image_slider in image_sliders.elements"
 	>

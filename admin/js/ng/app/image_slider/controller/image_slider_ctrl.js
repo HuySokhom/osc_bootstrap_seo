@@ -12,7 +12,7 @@ app.controller(
 				$scope.picFile = null;
 			}
 		};
-
+		$scope.totalItems = 0;
 		function init(params){
 			Factory.get(params).success(function(data){
 				$scope.image_sliders = data;
