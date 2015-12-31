@@ -15,6 +15,7 @@ class Object extends DbObj {
 		, $productsId
 		, $locationId
 		, $productsImage
+		, $productsImageThumbnail
 		, $productsPrice
 		, $productsDateAdded
 		, $productsStatus
@@ -29,6 +30,7 @@ class Object extends DbObj {
 				'customers_id',
 				'location_id',
 				'products_image',
+				'products_image_thumbnail',
 				'products_price',
 				'products_date_added',
 				'products_status',
@@ -54,7 +56,8 @@ class Object extends DbObj {
 				products_price,
 				products_date_added,
 				products_status,
-				manufacturers_id
+				manufacturers_id,
+				products_image_thumbnail
 			FROM
 				products
 			WHERE
@@ -107,6 +110,7 @@ class Object extends DbObj {
 			SET
 				location_id = '" . (int)$this->getLocationId() . "',
 				products_image = '" . $this->getProductsImage() . "',
+				products_image_thumbnail = '" . $this->getProductsImageThumbnail() . "',
  				products_price = '" . $this->getProductsPrice() . "'
 			WHERE
 				products_id = '" . (int)$this->getProductsId() . "'
@@ -122,6 +126,7 @@ class Object extends DbObj {
 				customers_id,
 				location_id,
 				products_image,
+				products_image_thumbnail,
 				products_price,
 				products_date_added,
 				products_status,
@@ -132,6 +137,7 @@ class Object extends DbObj {
 				'" . (int)$this->getCustomersId() . "',
 				'" . (int)$this->getLocationId() . "',
  				'" . $this->dbEscape( $this->getProductsImage() ) . "',
+ 				'" . $this->dbEscape( $this->getProductsImageThumbnail() ) . "',
 				'" . $this->getProductsPrice() . "',
  				NOW(),
  				'" . (int)$this->getProductsStatus() . "',
@@ -171,6 +177,14 @@ class Object extends DbObj {
 	
 	public function getProductsDateAdded(){
 		return $this->productsDateAdded;
+	}
+
+	public function setProductsImageThumbnail( $string ){
+		$this->productsImageThumbnail = (string)$string;
+	}
+
+	public function getProductsImageThumbnail(){
+		return $this->productsImageThumbnail;
 	}
 
 	public function setProductsImage( $string ){
