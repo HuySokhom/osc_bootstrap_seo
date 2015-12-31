@@ -29,7 +29,7 @@
             <a href="advanced_search.php">Advance Search</a>
           </li>
           <li>
-            <a href="account.php#/manage">Post Free Ad</a>
+            <a href="account.php#/manage">Manage Ad</a>
           </li>
           <li class="dropdown">
             <?php
