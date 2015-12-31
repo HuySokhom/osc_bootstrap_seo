@@ -34,7 +34,7 @@ app.controller(
 				image: $scope.image_slider.image,
 				image_thumbnail: $scope.image_slider.image_thumbnail,
 				sort_order: $scope.image_slider.sort_order
-			};console.log(data);
+			};
 			$scope.isDisabled = true;
 			if( $scope.image_slider.id ){
 				Factory.save(data, $scope.image_slider.id).success(function(data){
@@ -44,7 +44,7 @@ app.controller(
 				});
 			}else{
 				Factory.insert(data).success(function(data){
-					init();console.log(data);
+					init();
 					$('#brand').modal('hide')
 					$scope.isDisabled = false;
 				});
@@ -72,7 +72,6 @@ app.controller(
 				file.upload.then(function (response) {
 					$timeout(function () {
 						file.result = response.data;
-						console.log(response.data.image);
 						$scope.image_slider.image = response.data.image;
 						$scope.image_slider.image_thumbnail = response.data.image_thumbnail;
 						//file.result.substring(1, file.result.length - 1);
