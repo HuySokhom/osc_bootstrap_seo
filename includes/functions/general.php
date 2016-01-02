@@ -549,7 +549,7 @@
                                   'text' => $indent . $categories['categories_name']);
 
       if ($categories['categories_id'] != $parent_id) {
-        $categories_array = tep_get_categories($categories_array, $categories['categories_id'], $indent . '&nbsp;&nbsp;');
+        $categories_array = tep_get_categories($categories_array, $categories['categories_id'], $indent . '&nbsp;&nbsp;&nbsp;&nbsp;');
       }
     }
 
