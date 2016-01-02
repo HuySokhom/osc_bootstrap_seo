@@ -22,7 +22,7 @@
   $breadcrumb->add(NAVBAR_TITLE, tep_href_link(FILENAME_ACCOUNT, '', 'SSL'));
 
 	require(DIR_WS_INCLUDES . 'template_top.php');
-	require( 'ext/ng/app/account/partials/popup.php');
+	require('ext/ng/app/account/partials/popup.html');
 ?>
 <link href="ext/css/product_post.css" rel="stylesheet">
 <div class="page-header">
