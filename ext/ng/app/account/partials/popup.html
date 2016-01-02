@@ -16,39 +16,132 @@
 					<span>&times;</span>
 				</button>
 				<h4> 
-					<label data-ng-bind="header"></label>
+					<label>Post Your Ad</label>
 				</h4>
 	      	</div>
 			<div class="modal-body">
-				<table width="100%">
-					<tr>
-						<td width="5%">
-							Name: 
-						</td>
-						<td>
-							<input
-								type="text"
+				<div >
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" role="tablist">
+						<li class="active">
+							<a href="#home" role="tab" data-toggle="tab">
+								<icon class="fa fa-home"></icon> Product
+							</a>
+						</li>
+						<li><a href="#profile" role="tab" data-toggle="tab">
+								<i class="fa fa-user"></i> Contact
+							</a>
+						</li>
+					</ul>
+					<!-- Tab panes -->
+					<div class="tab-content">
+						<div class="tab-pane fade active in" id="home">
+							<h5><label>Product Info</label></h5>
+							<table class="table table-bordered">
+								<tr>
+									<td>
+										Category
+									</td>
+									<td>
+										<div id="category"></div>
+									</td>
+								</tr>
+								<tr>
+									<td width="5%">
+										Title:
+									</td>
+									<td>
+										<input
+											type="text"
+											class="form-control"
+											data-ng-model="title"
+											required="required"
+										/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Kind of
+									</td>
+									<td>
+										<select
+											data-ng-model="manufacturer.id"
+											data-ng-options="manufacturer.id as manufacturer.manufacturers_name for manufacturer in manufacturers.elements"
+											data-ng-init="manufacturer.id == manufacturer.id"
+											class="form-control"
+											required
+										>
+											<option value="">--Select--</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Location
+									</td>
+									<td>
+										<location:account></location:account>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Price
+									</td>
+									<td>
+										<input
+											type="text"
+											class="form-control"
+											data-ng-model="price"
+											only-numbers
+										/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Description
+									</td>
+									<td>
+							<textarea
 								class="form-control"
-								data-ng-model="vehicle.name"
-								required="required"
-							/>
-						</td>
-						<td data-ng-if="show_brand">
-							Brand:
-						</td>
-						<td data-ng-if="show_brand">
-							<select
-								data-ng-model="brand.id"
-								data-ng-options="brand.id as brand.name for brand in brand.elements"
-								data-ng-init="brand.id == brand.id"
-								class="form-control"
-								required
-							>
-								<option value="">--Select--</option> 
-							</select>
-						</td>
-					</tr>
-				</table>
+								rows="10"
+								data-ng-model="description"
+								>
+							</textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Add Photo Main
+									</td>
+									<td>
+										<input type="file" class="form-control"/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Add Photo Detail
+									</td>
+									<td>
+										<input type="file" class="form-control"/>
+										<input type="file" class="form-control"/>
+										<input type="file" class="form-control"/>
+										<input type="file" class="form-control"/>
+										<input type="file" class="form-control"/>
+										<input type="file" class="form-control"/>
+										<input type="file" class="form-control"/>
+										<input type="file" class="form-control"/>
+										<input type="file" class="form-control"/>
+										<input type="file" class="form-control"/>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div class="tab-pane fade" id="profile">
+							<h5><label>Contact Info</label></h5>
+							<img src="http://lorempixel.com/400/400/cats/2" alt="Cats"/>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="modal-footer">
 				<button 
