@@ -8,16 +8,24 @@ app.controller(
 		$scope.init = function(){
 			Restful.get(url).success(function(data){
 				$scope.products_post = data;
-				console.log(data);
 			});
 		};
 		$scope.init();
 
+		Restful.get('api/Manufacturers').success(function(data){
+			$scope.manufacturers = data;
+		});
+
+		Restful.get('api/Category').success(function(data){
+			$('#category').html(data.html);
+		});
 
 		$scope.disabled = true;
 
 		$scope.edit = function(params){
-			console.log(params);
+			$scope.products = params;
+			$('#product-popup').modal('show');
+
 		};
 
 		$scope.save = function(params){
@@ -31,7 +39,8 @@ app.controller(
 			});
 		};
 
-		$scope.remove = function(id){
+		$scope.remove = function(id, $index){
+			console.log(id);
 			if (confirm('Are you sure you want to delete this product?')) {
 				$.notify({
 					title: '<strong>Success: </strong>',
@@ -39,6 +48,7 @@ app.controller(
 				},{
 					type: 'success'
 				});
+				$scope.products_post.elements.splice($index, 1);
 			}
 		}
 	}

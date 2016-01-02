@@ -7,14 +7,6 @@
 	<span class="glyphicon glyphicon-plus-sign"></span>
 	Post Product
 </button>
-
-<div
-	data-ng-if="products_post.elements == 0"
->
-	<div class="alert alert-warning alert-dismissible">
-		<strong>Warning!</strong> No product post.
-	</div>
-</div>
 <br/><br/>
 <table class="table table-bordered table-striped">
 	<thead>
@@ -48,10 +40,17 @@
 		</td>
 		<td>
 			<button class="btn btn-default" data-ng-click="edit(product);">Edit</button>
-			<button class="btn btn-danger" data-ng-click="remove(product.id);">Delete</button>
+			<button class="btn btn-danger" data-ng-click="remove(product.id, $index);">Delete</button>
 		</td>
 	</tr>
 </table>
+<div
+	data-ng-if="products_post.elements == 0"
+>
+	<div class="alert alert-warning alert-dismissible">
+		<strong>Warning!</strong> No product post.
+	</div>
+</div>
 <div
 	data-ng-if="!products_post"
 	class="align_center"
