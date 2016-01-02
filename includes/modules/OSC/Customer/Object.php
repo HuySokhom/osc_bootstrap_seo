@@ -32,12 +32,7 @@ class Object extends DbObj {
 				'customers_email_address',
 				'customers_address',
 				'customers_telephone',
-				'customers_type',
 				'customers_location',
-				'customers_social_network',
-				'customers_app_id',
-				'customers_company_name',
-				'customers_contact_name',
 				'customers_gender',
 			)
 		);
@@ -53,12 +48,7 @@ class Object extends DbObj {
 				customers_email_address,
 				customers_telephone,
 				customers_address,
-				customers_type,
 				customers_location,
-				customers_social_network,
-				customers_app_id,
-				customers_company_name,
-				customers_contact_name,
 				customers_gender
 			FROM
 				customers
