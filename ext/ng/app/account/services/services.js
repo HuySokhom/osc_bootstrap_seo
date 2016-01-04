@@ -1,15 +1,14 @@
-app.service("Services", 
-	function() {
-		
-        this.alertMessage = function(attr){
-        	
+app.service("Services", [
+    'Restful'
+	, function(Restful) {
+        var account = function(){
+            var self = this;
         };
-        
-        this.getAllElements = function(){
-        	var array = [];
-			
-			return array;
+        account.prototype.getUser = function(){
+            //@todo
         };
+
+        return account;
         
  	}
-);
+]);

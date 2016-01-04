@@ -9,7 +9,7 @@ class RestApiSessionCustomer extends RestApi {
 
 	public function get(){		
 		$col = new CustomerCol();
-		$customerId = $this->getOwner()->getId();		
+		$customerId = $this->getOwner()->getId();
 		if ( ! $customerId ) {
 			throw new \Exception(
 				"403: Access Denied",
