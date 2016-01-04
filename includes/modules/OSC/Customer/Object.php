@@ -21,12 +21,14 @@ class Object extends DbObj {
 		, $customersCompanyName
 		, $customersContactName
 		, $customersGender
+		, $userName
 	;
 	
 	public function toArray( $params = array() ){
 		$args = array(
 			'include' => array(
 				'id',
+				'user_name',
 				'customers_firstname',
 				'customers_lastname',
 				'customers_email_address',
@@ -44,6 +46,7 @@ class Object extends DbObj {
 		$q = $this->dbQuery("
 			SELECT
 				customers_firstname,
+				user_name,
 				customers_lastname,
 				customers_email_address,
 				customers_telephone,
@@ -86,7 +89,15 @@ class Object extends DbObj {
 		");
 	
 	}
-	
+
+	public function setUserName( $string ){
+		$this->userName = (string)$string;
+	}
+
+	public function getUserName(){
+		return $this->userName;
+	}
+
 	public function setCustomersFirstname( $string ){
 		$this->customersFirstname = (string)$string;
 	}
