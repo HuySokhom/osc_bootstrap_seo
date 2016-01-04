@@ -13,6 +13,7 @@ class RestApiUploadImage extends RestApi {
             $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
 
             // check extension is valid image
+
             if( ! in_array($ext, array(
                 'jpg',
                 'jpeg',
