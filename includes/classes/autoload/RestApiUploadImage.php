@@ -13,7 +13,6 @@ class RestApiUploadImage extends RestApi {
             $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
 
             // check extension is valid image
-
             if( ! in_array($ext, array(
                 'jpg',
                 'jpeg',
@@ -26,23 +25,23 @@ class RestApiUploadImage extends RestApi {
             // add timestamp to image name to prevent against overwrites
             $file['name'] = substr($file['name'], 0, strlen($ext) * -1)
                 . time()
-                . '.png'
+                . '.' . $ext
             ;
 
             if(move_uploaded_file(
                 $file['tmp_name'],
-                DIR_FS_CATALOG_IMAGES . $file['name']
+                DIR_FS_CATALOG . 'images/' . $file['name']
             )){
-                $imgOriginal = DIR_FS_CATALOG_IMAGES . $file['name'];
-                $imgThumbnail = DIR_FS_CATALOG_IMAGES . 'image-thumbnail/' . $file['name'];
+                $imgOriginal = DIR_FS_CATALOG . 'images/' . $file['name'];
+                $imgThumbnail = DIR_FS_CATALOG  . 'images/image-thumbnail/' . $file['name'];
 
-                $this->make_thumb($file, $imgOriginal, $imgThumbnail, 200);
+                $this->make_thumb($file, $imgOriginal, $imgThumbnail, 120);
             }
 
             return array(
                 'data' => array(
-                    'img_original' => $file['name'],
-                    'img_thumbnail' => 'image-thumbnail/' . $file['name']
+                    'image' => $file['name'],
+                    'image_thumbnail' => 'image-thumbnail/' . $file['name']
                 )
             );
         }
