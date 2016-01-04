@@ -64,7 +64,7 @@ class Object extends DbObj {
 				products_to_categories
 			(
 				categories_id,
-				products_id,
+				products_id
 			)
 				VALUES
 			(

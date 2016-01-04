@@ -140,7 +140,7 @@ class Object extends DbObj {
  				'" . $this->dbEscape( $this->getProductsImageThumbnail() ) . "',
 				'" . $this->getProductsPrice() . "',
  				NOW(),
- 				'" . (int)$this->getProductsStatus() . "',
+ 				1,
 				'" . (int) $this->getManufacturersId() . "'
 			)
 		");	

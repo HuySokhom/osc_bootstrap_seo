@@ -87,9 +87,9 @@ class Object extends DbObj {
 			)
 				VALUES
 			(
- 				'" . $this->dbEscape( $this->getProductsImage() ) . "',
- 				'" . $this->dbEscape( $this->getProductsImage() ) . "',
-				'" . $this->getProductsPrice() . "'
+ 				'" . $this->dbEscape( $this->getProductsName() ) . "',
+ 				'" . $this->dbEscape( $this->getProductsDescription() ) . "',
+				'" . $this->getProductsId() . "'
 			)
 		");
 	}

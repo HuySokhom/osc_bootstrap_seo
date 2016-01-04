@@ -107,7 +107,7 @@ class Object extends DbObj {
  				'" . $this->getContactPhone() . "',
  				'" . $this->dbEscape( $this->getContactEmail() ) . "',
 				'" . $this->getContactLocation() . "',
-				'" . $this->dbEscape( $this->getContactAddress() ) . "',
+				'" . $this->dbEscape( $this->getContactAddress() ) . "'
 			)
 		");
 	}
