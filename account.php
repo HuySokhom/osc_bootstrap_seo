@@ -98,6 +98,10 @@
 	type="text/javascript"
 	src="ext/ng/lib/bootstrap-notify/bootstrap-notify.min.js"
 ></script>
+<script src="ext/ng/lib/angular-upload/ng-file-upload-shim.js"></script>
+<!-- for no html5 browsers support -->
+<script src="ext/ng/lib/angular-upload/ng-file-upload.js"></script>
+<!-- custom file -->
 <!-- custom file -->
 
 <script 
