@@ -4,7 +4,7 @@ class RestApiCategory extends RestApi {
         return array(
             data => array(
                 html => tep_draw_pull_down_menu('categories_id', tep_get_categories(array(array('id' => '', 'text' =>
-                    '--Select--'))), NULL, 'id="entryCategories"')
+                    '--Select--'))), NULL, 'id="entryCategories" required')
             )
         );
 
