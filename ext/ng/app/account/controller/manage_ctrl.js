@@ -16,6 +16,10 @@ app.controller(
 			$scope.manufacturers = data;
 		});
 
+		Restful.get('api/Session/Customer').success(function(data){
+			$scope.user = data.elements[0];
+		});
+
 		Restful.get('api/Category').success(function(data){
 			$('#category').html(data.html);
 		});
