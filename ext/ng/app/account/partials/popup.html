@@ -1,4 +1,4 @@
-<form data-ng-submit="save();">
+<form data-ng-submit="save();" name="myForm">
 <div 
 	class="modal fade"
 	id="product-popup"
@@ -47,7 +47,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td width="5%">
+									<td>
 										Title:
 									</td>
 									<td>
@@ -93,6 +93,7 @@
 											class="form-control"
 											data-ng-model="price"
 											only-numbers
+											required
 										/>
 									</td>
 								</tr>
@@ -101,12 +102,13 @@
 										Description
 									</td>
 									<td>
-							<textarea
-								class="form-control"
-								rows="10"
-								data-ng-model="description"
-								>
-							</textarea>
+										<textarea
+											class="form-control"
+											rows="10"
+											data-ng-model="description"
+											required
+										>
+										</textarea>
 									</td>
 								</tr>
 								<tr>
@@ -114,7 +116,38 @@
 										Add Photo Main
 									</td>
 									<td>
-										<input type="file" class="form-control"/>
+										<input
+											type="file"
+											ng-model="picFile"
+											name="file"
+											accept="image/*"
+											ngf-max-size="2MB"
+											ngf-model-invalid="errorFiles"
+											ngf-select="uploadPic(picFile, 'main_image')"
+											required
+											class="form-control"
+											ngf-pattern="'.jpg,.png'"
+										>
+										<i data-ng-show="myForm.file.$error.errorFiles">
+											Invalid file
+										</i>
+										<i data-ng-show="myForm.file.$error.maxSize">
+											File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M
+										</i>
+										<img
+											ng-show="image"
+											class="thumb"
+											src="images/{{image_thumbnail}}"
+										>
+										<span class="progress" data-ng-show="picFile.progress >= 0">
+											<div
+												style="width:{{picFile.progress}}%"
+												ng-bind="picFile.progress + '%'"
+											>
+											</div>
+										</span>
+										<span ng-show="picFile.result">Upload Successful</span>
+										<span class="err" ng-show="errorMsg">{{errorMsg}}</span>
 									</td>
 								</tr>
 								<tr>
@@ -122,27 +155,89 @@
 										Add Photo Detail
 									</td>
 									<td>
-										<input type="file" class="form-control"/>
-										<input type="file" class="form-control"/>
-										<input type="file" class="form-control"/>
-										<input type="file" class="form-control"/>
-										<input type="file" class="form-control"/>
-										<input type="file" class="form-control"/>
-										<input type="file" class="form-control"/>
-										<input type="file" class="form-control"/>
-										<input type="file" class="form-control"/>
-										<input type="file" class="form-control"/>
+										<div image></div>
 									</td>
 								</tr>
 							</table>
 						</div>
 						<div class="tab-pane fade" id="profile">
 							<h5><label>Contact Info</label></h5>
-							<img src="http://lorempixel.com/400/400/cats/2" alt="Cats"/>
+							<table class="table table-bordered">
+								<tr>
+									<td>
+										Name
+									</td>
+									<td>
+										<input
+											type="text"
+											class="form-control"
+											data-ng-model="user.user_name"
+											required="required"
+										/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Telephone Number
+									</td>
+									<td>
+										<input
+											type="text"
+											class="form-control"
+											data-ng-model="user.customers_telephone"
+											required="required"
+											only-numbers
+										/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Email
+									</td>
+									<td>
+										<input
+											type="email"
+											class="form-control"
+											data-ng-model="user.customers_email_address"
+											required="required"
+										/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Location
+									</td>
+									<td>
+										<select
+											class="form-control"
+											data-ng-model="user.customers_location"
+											data-ng-options="location.id as location.name for location in location.elements"
+											data-ng-init="user.customers_location == location.id"
+											required
+										>
+											<option value="">--Select--</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Address
+									</td>
+									<td>
+										<textarea
+											class="form-control"
+											data-ng-model="user.customers_address"
+											required="required"
+											rows="5"
+										></textarea>
+									</td>
+								</tr>
+							</table>
 						</div>
 					</div>
 				</div>
 			</div>
+			{{testtest}}
 			<div class="modal-footer">
 				<button 
 					class="btn btn-default" 
@@ -152,6 +247,7 @@
 				</button>
 				<button 
 					class="btn btn-primary"
+					data-ng-disabled="!disabled"
 				>
 					Save
 				</button>

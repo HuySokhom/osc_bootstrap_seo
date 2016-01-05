@@ -140,6 +140,10 @@
 	type="text/javascript"
 	src="ext/ng/app/core/directive/number.js"
 ></script>
+<script
+	type="text/javascript"
+	src="ext/ng/app/account/directive/image.js"
+></script>
 <?php
   require(DIR_WS_INCLUDES . 'template_bottom.php');
   require(DIR_WS_INCLUDES . 'application_bottom.php');
