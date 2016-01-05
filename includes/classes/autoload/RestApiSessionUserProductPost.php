@@ -77,10 +77,12 @@ class RestApiSessionUserProductPost extends RestApi {
 
 			$fields = $params['POST']['products_image'];
 			foreach ( $fields as $k => $v){
-				$productImageObject = new ProductImageObj();
-				$productImageObject->setProperties($v);
-				$productImageObject->setProductsId($productId);
-				$productImageObject->insert();
+				if( isset($v['image']) ) {
+					$productImageObject = new ProductImageObj();
+					$productImageObject->setProperties($v);
+					$productImageObject->setProductsId($productId);
+					$productImageObject->insert();
+				}
 			}
 			unset($params);
 			return array(
