@@ -26,4 +26,8 @@ class Collection extends StdCollection {
 	public function filterById( $arg ){
 		$this->addWhere("p.products_id = '" . (int)$arg. "' ");
 	}
+
+	public function sortByDate($arg){
+		$this->addOrderBy('p.products_date_added', $arg);
+	}
 }

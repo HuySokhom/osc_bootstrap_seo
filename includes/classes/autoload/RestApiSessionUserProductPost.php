@@ -17,7 +17,7 @@ use
 
 class RestApiSessionUserProductPost extends RestApi {
 
-	public function get(){
+	public function get($params){
 		$col = new ProductPostCol();
 		$userId = $this->getOwner()->getId();
 		if( !$userId ){
@@ -26,6 +26,15 @@ class RestApiSessionUserProductPost extends RestApi {
 				403
 			);
 		}else {
+			// start limit page
+			$showDataPerPage = 10;
+			$start = $params['GET']['start'];
+			$this->applyLimit($col,
+				array(
+					'limit' => array( $start, $showDataPerPage )
+				)
+			);
+			$col->sortByDate('DESC');
 			$col->filterByCustomersId($userId);
 			// filter with default status 1
 //			$params['filters']['status'] = 1;
