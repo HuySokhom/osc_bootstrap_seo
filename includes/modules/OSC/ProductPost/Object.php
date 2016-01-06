@@ -6,6 +6,8 @@ use
 	Aedea\Core\Database\StdObject as DbObj
 	, OSC\ProductDescription\Collection
 			as ProductDescriptionCol
+	, OSC\ProductToCategory\Collection
+		as ProductToCategoryCol
 ;
 
 class Object extends DbObj {
@@ -21,6 +23,7 @@ class Object extends DbObj {
 		, $productsStatus
 		, $manufacturersId
 		, $fields
+		, $category
 	;
 	
 	public function toArray( $params = array() ){
@@ -35,7 +38,8 @@ class Object extends DbObj {
 				'products_date_added',
 				'products_status',
 				'manufacturers_id',
-				'fields'
+				'fields',
+				'category'
 			)
 		);
 		return parent::toArray($args);
@@ -44,7 +48,8 @@ class Object extends DbObj {
 	public function __construct( $params = array() ){
  		parent::__construct($params);
 		
- 		$this->fields = new ProductDescriptionCol;
+ 		$this->fields = new ProductDescriptionCol();
+		$this->category = new ProductToCategoryCol();
 	}
 
 	public function load( $params = array() ){
@@ -72,9 +77,12 @@ class Object extends DbObj {
 		}
 		
 		$this->setProperties($this->dbFetchArray($q));
-		
+
  		$this->fields->setFilter('id', $this->getId());
  		$this->fields->populate();
+
+		$this->category->setFilter('id', $this->getId());
+		$this->category->populate();
 	}
 	
 	public function updateStatus() {
@@ -238,6 +246,13 @@ class Object extends DbObj {
 
 	public function getManufacturersId(){
 		return $this->manufacturersId;
+	}
+
+	public function getCategory(){
+		return $this->category;
+	}
+	public function setCategory( $array ){
+		$this->category = $array;
 	}
 
 	public function getFields(){

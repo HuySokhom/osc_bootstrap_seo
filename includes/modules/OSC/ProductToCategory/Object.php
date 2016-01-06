@@ -16,7 +16,6 @@ class Object extends DbObj {
 	public function toArray( $params = array() ){
 		$args = array(
 			'include' => array(
-				'products_id',
 				'categories_id',
 			)
 		);
@@ -27,12 +26,11 @@ class Object extends DbObj {
 	public function load( $params = array() ){
 		$q = $this->dbQuery("
 			SELECT
-				products_to_categories
-			FROM
-				products_id,
 				categories_id
+			FROM
+				products_to_categories
 			WHERE
-				products_to_categories = '" . (int)$this->getId() . "'
+				products_id = '" . (int)$this->getId() . "'
 		");
 		
 		if( ! $this->dbNumRows($q) ){
