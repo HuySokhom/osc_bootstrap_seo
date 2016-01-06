@@ -39,15 +39,27 @@ app.controller(
 
 		$scope.edit = function(params){
 			$scope.products = params;
+			// category
+			$("div#category select").val($scope.products.category[0].categories_id);
+			//$( "#entryCategories option:selected" ).val();
 			// product detail
 			$scope.title = $scope.products.fields[0].products_name;
 			$scope.description = $scope.products.fields[0].products_description;
+
 			// product
 			$scope.products_location = $scope.products.location_id;
-			$scope.manufacturer = $scope.products.manufacturer_id;
+			$scope.manufacturer = $scope.products.manufacturers_id;
 			$scope.image = $scope.products.products_image;
 			$scope.image_thumbnail = $scope.products.products_image_thumbnail;
 			$scope.price = $scope.products.products_price;
+
+			// product image
+			//$scope.image_thumbnail1 =
+			//	angular.isDefined( $scope.products.image[0].image_thumbnail )
+			//		?
+			//	$scope.products.image[0].image_thumbnail
+			//		:
+			//	"";
 
 			// contact
 			$scope.user.user_name = $scope.products.contact[0].contact_name;
@@ -87,7 +99,7 @@ app.controller(
 				products_image: [
 					{
 						image: $scope.image1,
-						image_thumbnail: $scope.imageThumbnail1
+						image_thumbnail: $scope.image_thumbnail1
 					},
 					{
 						image: $scope.image2,
