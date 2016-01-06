@@ -77,7 +77,7 @@ class RestApiSessionUserProductPost extends RestApi {
 
 			$fields = $params['POST']['products_image'];
 			foreach ( $fields as $k => $v){
-				if( isset($v['image']) ) {
+				if( $v['image'] != '') {
 					$productImageObject = new ProductImageObj();
 					$productImageObject->setProperties($v);
 					$productImageObject->setProductsId($productId);
@@ -94,11 +94,58 @@ class RestApiSessionUserProductPost extends RestApi {
 	}
 
 	public function put($params){
+		$userId = $this->getOwner()->getId();
+		if( !$userId ){
+			throw new \Exception(
+				"403: Access Denied",
+				403
+			);
+		}else {
+			$cols = new ProductPostCol();
+			$cols->filterByCustomersId($userId);
+			$cols->filterById( $this->getId() );
+			if( $cols->getTotalCount() > 0 ){
+				$cols->populate();
+				$col = $cols->getFirstElement();
 
+				// set fields for update template field
+				$fields = $params['PUT']['fields'];
+				$col->setProperties($params['PUT']);
+				$col->update();
+				$tf = new TemplateFieldObj();
+				foreach ( $fields as $k => $v){
+					$tf->setProperties($v);
+					$tf->update();
+					unset($v);
+				}
+			}
+		}
 	}
 
-	public function delete($params){
-
+	public function delete(){
+		$userId = $this->getOwner()->getId();
+		if( !$userId ){
+			throw new \Exception(
+				"403: Access Denied",
+				403
+			);
+		}else {
+			$cols = new ProductPostCol();
+			$cols->filterByCustomersId($userId);
+			$cols->filterById( $this->getId() );
+			if( $cols->getTotalCount() > 0 ){
+				$cols->populate();
+				$col = $cols->getFirstElement();
+				$col->setProductsId($this->getId());
+				$col->delete();
+				var_dump($this->getId());
+			}
+			return array(
+				'data' => array(
+					'data' => 'success'
+				)
+			);
+		}
 	}
 
 }
