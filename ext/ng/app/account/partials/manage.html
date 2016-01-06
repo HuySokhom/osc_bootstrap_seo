@@ -17,6 +17,9 @@
 			Image
 		</th>
 		<th>
+			Product View
+		</th>
+		<th>
 			Price
 		</th>
 		<th width="150px">
@@ -34,6 +37,9 @@
 				title="{{product.fields[0].products_name}}"
 				class="img"
 			>
+		</td>
+		<td>
+			<span data-ng-bind="product.fields[0].products_viewed"></span>
 		</td>
 		<td>
 			<span data-ng-bind="product.products_price | currency"></span>

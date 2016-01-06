@@ -19,9 +19,17 @@ app.controller(
 			$scope.manufacturers = data;
 		});
 
-		Restful.get('api/Session/Customer').success(function(data){
-			$scope.user = data.elements[0];
-		});
+		function initCustomer() {
+			Restful.get('api/Session/Customer').success(function (data) {
+				$scope.user = data.elements[0];
+			});
+		};
+		initCustomer();
+
+		$scope.closeForm = function(){
+			clear();
+			initCustomer();
+		};
 
 		Restful.get('api/Category').success(function(data){
 			$('#category').html(data.html);
@@ -31,8 +39,23 @@ app.controller(
 
 		$scope.edit = function(params){
 			$scope.products = params;
-			$('#product-popup').modal('show');
+			// product detail
+			$scope.title = $scope.products.fields[0].products_name;
+			$scope.description = $scope.products.fields[0].products_description;
+			// product
+			$scope.products_location = $scope.products.location_id;
+			$scope.manufacturer = $scope.products.manufacturer_id;
+			$scope.image = $scope.products.products_image;
+			$scope.image_thumbnail = $scope.products.products_image_thumbnail;
+			$scope.price = $scope.products.products_price;
 
+			// contact
+			$scope.user.user_name = $scope.products.contact[0].contact_name;
+			$scope.user.customers_telephone = $scope.products.contact[0].contact_phone;
+			$scope.user.customers_address = $scope.products.contact[0].contact_address;
+			$scope.user.customers_location = $scope.products.contact[0].contact_location;
+			$scope.user.customers_email_address = $scope.products.contact[0].contact_email;
+			$('#product-popup').modal('show');
 		};
 
 		$scope.save = function(){
@@ -99,7 +122,7 @@ app.controller(
 			console.log(params);
 			Restful.save('api/Session/User/ProductPost', params).success(function(data){
 				$scope.init();
-				clear();
+				$scope.closeForm();
 				console.log(data);
 				$scope.disabled = true;
 				$('#product-popup').modal('hide');
@@ -243,6 +266,12 @@ app.controller(
 			$scope.picFile6 = '';
 			$scope.picFile7 = '';
 			$scope.picFile8 = '';
+			// contact
+			$scope.user.user_name = '';
+			$scope.user.customers_telephone = '';
+			$scope.user.customers_address = '';
+			$scope.user.customers_location = '';
+			$scope.user.customers_email_address = '';
 		}
 	}
 ]);

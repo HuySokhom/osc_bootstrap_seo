@@ -11,7 +11,8 @@
 				<button 
 					type="button" 
 					class="close" 
-					data-dismiss="modal" 
+					data-dismiss="modal"
+					data-ng-click="closeForm();"
 				>
 					<span>&times;</span>
 				</button>
@@ -65,9 +66,9 @@
 									</td>
 									<td>
 										<select
-											data-ng-model="manufacturer.id"
+											data-ng-model="manufacturer"
 											data-ng-options="manufacturer.id as manufacturer.manufacturers_name for manufacturer in manufacturers.elements"
-											data-ng-init="manufacturer.id == manufacturer.id"
+											data-ng-init="manufacturer == manufacturer.id"
 											class="form-control"
 											required
 										>
@@ -242,6 +243,7 @@
 				<button 
 					class="btn btn-default" 
 					data-dismiss="modal"
+					data-ng-click="closeForm();"
 				>
 					Close
 				</button>
