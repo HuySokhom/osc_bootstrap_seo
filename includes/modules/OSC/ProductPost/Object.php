@@ -101,6 +101,35 @@ class Object extends DbObj {
 			WHERE
 				products_id = '" . (int)$this->getProductsId() . "'
 		");
+
+		// remove products description
+		$this->dbQuery("
+			DELETE FROM
+				products_description
+			WHERE
+				products_id = '" . (int)$this->getProductsId() . "'
+		");
+		// remove products to categories
+		$this->dbQuery("
+			DELETE FROM
+				products_to_categories
+			WHERE
+				products_id = '" . (int)$this->getProductsId() . "'
+		");
+		// remove products contact
+		$this->dbQuery("
+			DELETE FROM
+				product_contact_person
+			WHERE
+				products_id = '" . (int)$this->getProductsId() . "'
+		");
+		// remove products image
+		$this->dbQuery("
+			DELETE FROM
+				products_images
+			WHERE
+				products_id = '" . (int)$this->getProductsId() . "'
+		");
 	}
 
 	public function update(){
