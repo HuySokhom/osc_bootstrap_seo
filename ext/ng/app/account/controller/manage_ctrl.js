@@ -48,8 +48,8 @@ app.controller(
 					categories_id: category_id
 				}],
 				product: [{
-					location_id: $scope.account.customers_location,
-					manufacturers_id: $scope.manufacturer.id,
+					location_id: $scope.products_location,
+					manufacturers_id: $scope.manufacturer,
 					products_image:	$scope.image,
 					products_image_thumbnail: $scope.image_thumbnail,
 					products_price: $scope.price,
@@ -68,36 +68,38 @@ app.controller(
 					},
 					{
 						image: $scope.image2,
-						image_thumbnail: $scope.imageThumbnail2
+						image_thumbnail: $scope.image_thumbnail2
 					},
 					{
 						image: $scope.image3,
-						image_thumbnail: $scope.imageThumbnail3
+						image_thumbnail: $scope.image_thumbnail3
 					},
 					{
 						image: $scope.image4,
-						image_thumbnail: $scope.imageThumbnail4
+						image_thumbnail: $scope.image_thumbnail4
 					},
 					{
 						image: $scope.image5,
-						image_thumbnail: $scope.imageThumbnail5
+						image_thumbnail: $scope.image_thumbnail5
 					},
 					{
 						image: $scope.image6,
-						image_thumbnail: $scope.imageThumbnail6
+						image_thumbnail: $scope.image_thumbnail6
 					},
 					{
 						image: $scope.image7,
-						image_thumbnail: $scope.imageThumbnail7
+						image_thumbnail: $scope.image_thumbnail7
 					},
 					{
 						image: $scope.image8,
-						image_thumbnail: $scope.imageThumbnail8
+						image_thumbnail: $scope.image_thumbnail8
 					}
 				]
 			};
 			console.log(params);
 			Restful.save('api/Session/User/ProductPost', params).success(function(data){
+				$scope.init();
+				clear();
 				console.log(data);
 				$scope.disabled = true;
 				$('#product-popup').modal('hide');
@@ -120,15 +122,19 @@ app.controller(
 		};
 
 		$scope.remove = function(id, $index){
-			console.log(id);
 			if (confirm('Are you sure you want to delete this product?')) {
-				$.notify({
-					title: '<strong>Success: </strong>',
-					message: 'Delete Success.'
-				},{
-					type: 'success'
+				Restful.delete( 'api/Session/User/ProductPost/' + id ).success(function(data){
+					console.log(data);
+					$.notify({
+						title: '<strong>Success: </strong>',
+						message: 'Delete Success.'
+					},{
+						type: 'success'
+					});
+					$scope.init();
+					$scope.products_post.elements.splice($index, 1);
 				});
-				$scope.products_post.elements.splice($index, 1);
+
 			}
 		};
 
@@ -140,15 +146,43 @@ app.controller(
 					data: {file: file, username: $scope.username},
 				});
 				file.upload.then(function (response) {
-					$timeout(function () {
+					$timeout(function () {console.log(response);
 						file.result = response.data;
 						if(type == 'main_image'){
 							$scope.image = response.data.image;
 							$scope.image_thumbnail = response.data.image_thumbnail;
-						}else{
-							for(var i; i >= type; i++){
-								console.log(type);
-							}
+						}
+						if(type == '1'){
+							$scope.image1 = response.data.image;
+							$scope.image_thumbnail1 = response.data.image_thumbnail;
+						}
+						if(type == '2'){
+							$scope.image2 = response.data.image;
+							$scope.image_thumbnail2 = response.data.image_thumbnail;
+						}
+						if(type == '3'){
+							$scope.image3 = response.data.image;
+							$scope.image_thumbnail3 = response.data.image_thumbnail;
+						}
+						if(type == '4'){
+							$scope.image4 = response.data.image;
+							$scope.image_thumbnail4 = response.data.image_thumbnail;
+						}
+						if(type == '5'){
+							$scope.image5 = response.data.image;
+							$scope.image_thumbnail5 = response.data.image_thumbnail;
+						}
+						if(type == '6'){
+							$scope.image6 = response.data.image;
+							$scope.image_thumbnail6 = response.data.image_thumbnail;
+						}
+						if(type == '7'){
+							$scope.image7 = response.data.image;
+							$scope.image_thumbnail7 = response.data.image_thumbnail;
+						}
+						if(type == '8'){
+							$scope.image8 = response.data.image;
+							$scope.image_thumbnail8 = response.data.image_thumbnail;
 						}
 
 					});
@@ -173,5 +207,42 @@ app.controller(
 			params.start = $scope.pageSize;
 			$scope.init(params);
 		};
+
+		function clear(){
+			$scope.title = '';
+			$scope.description = '';
+			//$( "#entryCategories option:selected");
+			$("#entryCategories option[value='']").attr('selected', true);
+			$scope.products_location = '';
+			$scope.manufacturer = '';
+			$scope.image = '';
+			$scope.image_thumbnail = '';
+			$scope.price = '';
+			$scope.image1 = '';
+			$scope.imageThumbnail1 = '';
+			$scope.image2 = '';
+			$scope.image_thumbnail2 = '';
+			$scope.image3 = '';
+			$scope.image_thumbnail3 = '';
+			$scope.image4 = '';
+			$scope.image_thumbnail4 = '';
+			$scope.image5 = '';
+			$scope.image_thumbnail5 = '';
+			$scope.image6 = '';
+			$scope.image_thumbnail6 = '';
+			$scope.image7 = '';
+			$scope.image_thumbnail7 = '';
+			$scope.image8 = '';
+			$scope.image_thumbnail8 = '';
+			$scope.picFile = '';
+			$scope.picFile1 = '';
+			$scope.picFile2 = '';
+			$scope.picFile3 = '';
+			$scope.picFile4 = '';
+			$scope.picFile5 = '';
+			$scope.picFile6 = '';
+			$scope.picFile7 = '';
+			$scope.picFile8 = '';
+		}
 	}
 ]);
