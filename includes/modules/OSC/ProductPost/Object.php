@@ -10,6 +10,8 @@ use
 		as ProductToCategoryCol
 	, OSC\ProductContactPerson\Collection
 		as ProductContactPerson
+	, OSC\ProductImage\Collection
+		as ProductImageCol
 ;
 
 class Object extends DbObj {
@@ -27,6 +29,7 @@ class Object extends DbObj {
 		, $fields
 		, $category
 		, $contact
+		, $image
 	;
 	
 	public function toArray( $params = array() ){
@@ -43,6 +46,7 @@ class Object extends DbObj {
 				'manufacturers_id',
 				'fields',
 				'category',
+				'image',
 				'contact'
 			)
 		);
@@ -55,6 +59,7 @@ class Object extends DbObj {
  		$this->fields = new ProductDescriptionCol();
 		$this->category = new ProductToCategoryCol();
 		$this->contact = new ProductContactPerson();
+		$this->image = new ProductImageCol();
 	}
 
 	public function load( $params = array() ){
@@ -91,6 +96,9 @@ class Object extends DbObj {
 
 		$this->category->setFilter('id', $this->getId());
 		$this->category->populate();
+
+		$this->image->setFilter('products_id', $this->getId());
+		$this->image->populate();
 	}
 	
 	public function updateStatus() {
@@ -268,6 +276,13 @@ class Object extends DbObj {
 	}
 	public function setContact( $array ){
 		$this->contact = $array;
+	}
+
+	public function getImage(){
+		return $this->image;
+	}
+	public function setImage( $int ){
+		$this->image = $int;
 	}
 
 	public function getFields(){

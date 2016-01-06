@@ -18,7 +18,6 @@ class Object extends DbObj {
 	public function toArray( $params = array() ){
 		$args = array(
 			'include' => array(
-				'products_id',
 				'image',
 				'image_thumbnail',
 				'sort_order'
@@ -31,14 +30,14 @@ class Object extends DbObj {
 	public function load( $params = array() ){
 		$q = $this->dbQuery("
 			SELECT
-				products_images
-			FROM
 				products_id,
 				image,
 				image_thumbnail,
 				sort_order
+			FROM
+				products_images
 			WHERE
-				products_images = '" . (int)$this->getId() . "'
+				id = '" . (int)$this->getId() . "'
 		");
 		
 		if( ! $this->dbNumRows($q) ){
