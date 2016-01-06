@@ -8,6 +8,8 @@ use
 			as ProductDescriptionCol
 	, OSC\ProductToCategory\Collection
 		as ProductToCategoryCol
+	, OSC\ProductContactPerson\Collection
+		as ProductContactPerson
 ;
 
 class Object extends DbObj {
@@ -24,6 +26,7 @@ class Object extends DbObj {
 		, $manufacturersId
 		, $fields
 		, $category
+		, $contact
 	;
 	
 	public function toArray( $params = array() ){
@@ -39,7 +42,8 @@ class Object extends DbObj {
 				'products_status',
 				'manufacturers_id',
 				'fields',
-				'category'
+				'category',
+				'contact'
 			)
 		);
 		return parent::toArray($args);
@@ -50,6 +54,7 @@ class Object extends DbObj {
 		
  		$this->fields = new ProductDescriptionCol();
 		$this->category = new ProductToCategoryCol();
+		$this->contact = new ProductContactPerson();
 	}
 
 	public function load( $params = array() ){
@@ -77,6 +82,9 @@ class Object extends DbObj {
 		}
 		
 		$this->setProperties($this->dbFetchArray($q));
+
+		$this->contact->setFilter('products_id', $this->getId());
+		$this->contact->populate();
 
  		$this->fields->setFilter('id', $this->getId());
  		$this->fields->populate();
@@ -253,6 +261,13 @@ class Object extends DbObj {
 	}
 	public function setCategory( $array ){
 		$this->category = $array;
+	}
+
+	public function getContact(){
+		return $this->contact;
+	}
+	public function setContact( $array ){
+		$this->contact = $array;
 	}
 
 	public function getFields(){

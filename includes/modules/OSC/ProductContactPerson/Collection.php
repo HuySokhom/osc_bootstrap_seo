@@ -15,7 +15,7 @@ class Collection extends StdCollection {
 		$this->objectType = __NAMESPACE__ . '\Object';	
 	}
 
-	public function filterById( $arg ){
-		$this->addWhere("pcp.id = '" . (int)$arg. "' ");
+	public function filterByProductsId( $arg ){
+		$this->addWhere("pcp.products_id = '" . (int)$arg. "' ");
 	}
 }
