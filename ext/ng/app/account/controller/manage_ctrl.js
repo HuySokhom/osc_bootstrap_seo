@@ -38,20 +38,20 @@ app.controller(
 		$scope.disabled = true;
 
 		$scope.edit = function(params){
-			$scope.products = params;
+			$scope.id = params.id;
 			// category
-			$("div#category select").val($scope.products.category[0].categories_id);
+			$("div#category select").val(params.category[0].categories_id);
 			//$( "#entryCategories option:selected" ).val();
 			// product detail
-			$scope.title = $scope.products.fields[0].products_name;
-			$scope.description = $scope.products.fields[0].products_description;
+			$scope.title = params.fields[0].products_name;
+			$scope.description = params.fields[0].products_description;
 
 			// product
-			$scope.products_location = $scope.products.location_id;
-			$scope.manufacturer = $scope.products.manufacturers_id;
-			$scope.image = $scope.products.products_image;
-			$scope.image_thumbnail = $scope.products.products_image_thumbnail;
-			$scope.price = $scope.products.products_price;
+			$scope.products_location = params.location_id;
+			$scope.manufacturer = params.manufacturers_id;
+			$scope.image = params.products_image;
+			$scope.image_thumbnail = params.products_image_thumbnail;
+			$scope.price = params.products_price;
 
 			// product image
 			//$scope.image_thumbnail1 =
@@ -62,12 +62,30 @@ app.controller(
 			//	"";
 
 			// contact
-			$scope.user.user_name = $scope.products.contact[0].contact_name;
-			$scope.user.customers_telephone = $scope.products.contact[0].contact_phone;
-			$scope.user.customers_address = $scope.products.contact[0].contact_address;
-			$scope.user.customers_location = $scope.products.contact[0].contact_location;
-			$scope.user.customers_email_address = $scope.products.contact[0].contact_email;
+			$scope.user.user_name = params.contact[0].contact_name;
+			$scope.user.customers_telephone = params.contact[0].contact_phone;
+			$scope.user.customers_address = params.contact[0].contact_address;
+			$scope.user.customers_location = params.contact[0].contact_location;
+			$scope.user.customers_email_address = params.contact[0].contact_email;
 			$('#product-popup').modal('show');
+		};
+
+		$scope.refreshDate = function(params){console.log(params.id);
+			Restful.patch('api/Session/User/ProductPost/'+params.id).success(function(data){
+				console.log(data);
+				$scope.init();
+			});
+		};
+
+		$scope.updateStatus = function(params){
+			console.log(params.id);
+			params.products_status == 1 ? params.products_status = 0 : params.products_status = 1;
+			var data = { status: params.products_status, name: "update_status"};
+			console.log(data);
+			Restful.patch('api/Session/User/ProductPost/'+params.id, data).success(function(data){
+				console.log(data);
+				$scope.init();
+			});
 		};
 
 		$scope.save = function(){
@@ -132,28 +150,36 @@ app.controller(
 				]
 			};
 			console.log(params);
-			Restful.save('api/Session/User/ProductPost', params).success(function(data){
-				$scope.init();
-				$scope.closeForm();
-				console.log(data);
+			if($scope.id) {
+				console.log($scope.id);
 				$scope.disabled = true;
-				$('#product-popup').modal('hide');
-				$.notify({
-					title: '<strong>Success: </strong>',
-					message: 'Save Success.'
-				},{
-					type: 'success'
+				Restful.put('api/Session/User/ProductPost/' + $scope.id, params).success(function (data) {
+					console.log(data);
+					$scope.init();
+					$scope.closeForm();
+					$.notify({
+						title: '<strong>Success: </strong>',
+						message: 'Update Success.'
+					}, {
+						type: 'success'
+					});
+					$('#product-popup').modal('hide');
 				});
-			});
-			return;
-			Restful.put(url, params).success(function(data){
-				$.notify({
-					title: '<strong>Success: </strong>',
-					message: 'Update Success.'
-				},{
-					type: 'success'
+			}else {
+				Restful.save('api/Session/User/ProductPost', params).success(function (data) {
+					$scope.init();
+					$scope.closeForm();
+					console.log(data);
+					$scope.disabled = true;
+					$('#product-popup').modal('hide');
+					$.notify({
+						title: '<strong>Success: </strong>',
+						message: 'Save Success.'
+					}, {
+						type: 'success'
+					});
 				});
-			});
+			}
 		};
 
 		$scope.remove = function(id, $index){
@@ -181,7 +207,7 @@ app.controller(
 					data: {file: file, username: $scope.username},
 				});
 				file.upload.then(function (response) {
-					$timeout(function () {console.log(response);
+					$timeout(function () {
 						file.result = response.data;
 						if(type == 'main_image'){
 							$scope.image = response.data.image;
@@ -244,6 +270,7 @@ app.controller(
 		};
 
 		function clear(){
+			$scope.id = '';
 			$scope.title = '';
 			$scope.description = '';
 			//$( "#entryCategories option:selected");

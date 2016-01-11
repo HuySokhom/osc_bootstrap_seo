@@ -17,6 +17,7 @@
   $breadcrumb->add(NAVBAR_TITLE);
 
   tep_session_unregister('customer_id');
+  tep_session_unregister('customer_user_name');
   tep_session_unregister('customer_default_address_id');
   tep_session_unregister('customer_first_name');
   tep_session_unregister('customer_last_name');

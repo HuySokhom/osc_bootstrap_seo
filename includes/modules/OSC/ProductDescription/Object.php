@@ -53,12 +53,12 @@ class Object extends DbObj {
 		if( !$this->getProductsId() ) {
 			throw new Exception("save method requires id");
 		}
-		$q = $this->dbQuery("
+		$this->dbQuery("
 			UPDATE
 				products_description
 			SET 
-				products_name = '" . (int)$this->getProductsStatus() . "',
-				products_description = '" . (int)$this->getProductsStatus() . "'
+				products_name = '" .  $this->dbEscape($this->getProductsName() ). "',
+				products_description = '" .  $this->dbEscape($this->getProductsDescription() ). "'
 			WHERE
 				products_id = '" . (int)$this->getProductsId() . "'
 		");

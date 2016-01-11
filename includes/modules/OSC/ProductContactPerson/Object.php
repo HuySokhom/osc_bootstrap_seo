@@ -68,9 +68,9 @@ class Object extends DbObj {
 				contact_phone = '" . $this->dbEscape( $this->getContactPhone() ) . "',
 				contact_email = '" . $this->dbEscape( $this->getContactEmail() ) . "',
 				contact_location = '" . (int)$this->getContactLocation() . "',
-				contact_address = '" . $this->dbEscape( $this->getContactAddress() ) . "',
+				contact_address = '" . $this->dbEscape( $this->getContactAddress() ) . "'
 			WHERE
-				id = '" . (int)$this->getId() . "'
+				products_id = '" . (int)$this->getProductsId() . "'
 		");
 	}
 

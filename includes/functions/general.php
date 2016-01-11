@@ -214,6 +214,27 @@
   }
 
 ////
+// Returns an array with countries
+// TABLES: countries
+function tep_get_location($id = '') {
+  $location_array = array();
+  if (tep_not_null($id)) {
+    $locations = tep_db_query("select name from location where id = '" . (int)$id . "'");
+    $locations_values = tep_db_fetch_array($locations);
+    $location_array = array('name' => $locations_values['name']);
+  } else {
+    $locations = tep_db_query("select id, name from location order by name");
+    while ($locations_values = tep_db_fetch_array($locations)) {
+      $location_array[] = array('id' => $locations_values['id'],
+          'name' => $locations_values['name']);
+    }
+  }
+
+  return $location_array;
+}
+
+
+////
 // Alias function to tep_get_countries, which also returns the countries iso codes
   function tep_get_countries_with_iso_codes($countries_id) {
     return tep_get_countries($countries_id, true);

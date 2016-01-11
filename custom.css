@@ -94,7 +94,7 @@ ul.shoppingCartList li.newItemInCart, ul.shoppingCartList li.newItemInCart A {
 }
 
 .productHolder:hover {
-  border: 1px solid #428bca;
+  /*border: 1px solid #428bca;*/
 }
 
 .productHolder h2 {
@@ -487,7 +487,7 @@ p.lead del {
 	text-align: center;
 }
 .thumbnail:hover, .productHolder:hover {
-    border: 1px solid #3f9923;
+    /*border: 1px solid #3f9923;*/
 }
 h1 > span{
     /*color: rgb(142,11,0);*/

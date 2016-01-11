@@ -105,7 +105,7 @@ class Object extends DbObj {
 		if( !$this->getProductsId() ) {
 			throw new Exception("save method requires id");
 		}
-		$q = $this->dbQuery("
+		$this->dbQuery("
 			UPDATE
 				products
 			SET 
@@ -156,6 +156,16 @@ class Object extends DbObj {
 		");
 	}
 
+	public function refreshDate(){
+		$this->dbQuery("
+			UPDATE
+				products
+			SET
+				products_date_added = NOW()
+			WHERE
+				products_id = '" . (int)$this->getProductsId() . "'
+		");
+	}
 	public function update(){
 		$this->dbQuery("
 			UPDATE
@@ -164,7 +174,8 @@ class Object extends DbObj {
 				location_id = '" . (int)$this->getLocationId() . "',
 				products_image = '" . $this->getProductsImage() . "',
 				products_image_thumbnail = '" . $this->getProductsImageThumbnail() . "',
- 				products_price = '" . $this->getProductsPrice() . "'
+ 				products_price = '" . $this->getProductsPrice() . "',
+ 				manufacturers_id = '" . (int)$this->getManufacturersId() . "'
 			WHERE
 				products_id = '" . (int)$this->getProductsId() . "'
 		");

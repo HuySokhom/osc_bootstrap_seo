@@ -16,13 +16,13 @@
 		<th>
 			Image
 		</th>
-		<th>
+		<th width="100px">
 			Product View
 		</th>
 		<th>
 			Price
 		</th>
-		<th width="150px">
+		<th width="220px">
 			Action
 		</th>
 	</thead>
@@ -45,8 +45,32 @@
 			<span data-ng-bind="product.products_price | currency"></span>
 		</td>
 		<td>
-			<button class="btn btn-default" data-ng-click="edit(product);">Edit</button>
-			<button class="btn btn-danger" data-ng-click="remove(product.id, $index);">Delete</button>
+			<button class="btn btn-default" data-ng-click="edit(product);">
+				<span class="glyphicon glyphicon-plus-sign"></span>
+			</button>
+			<button class="btn btn-danger" data-ng-click="remove(product.id, $index);">
+				<span class="glyphicon glyphicon-plus-sign"></span>
+			</button>
+			<button
+				class="btn btn-warning"
+				data-ng-click="updateStatus(product);"
+				data-ng-show="product.products_status == 0"
+			>
+				<span class="glyphicon glyphicon-plus-sign"></span>
+			</button>
+			<button
+				class="btn btn-success"
+				data-ng-click="updateStatus(product);"
+				data-ng-show="product.products_status == 1"
+			>
+				<span class="glyphicon glyphicon-plus-sign"></span>
+			</button>
+			<button
+				class="btn btn-info"
+				data-ng-click="refreshDate(product);"
+			>
+				<span class="glyphicon glyphicon-plus-sign"></span>
+			</button>
 		</td>
 	</tr>
 </table>

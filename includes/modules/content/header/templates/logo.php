@@ -37,7 +37,7 @@
               ?>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <span class="glyphicon glyphicon-user"></span>
-                <?php echo $_SESSION['customer_first_name'] . ' ' . $_SESSION['customer_last_name'];?>
+                <?php echo $_SESSION['user_name']?>
                 <b class="caret"></b>
               </a>
               <?php

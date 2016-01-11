@@ -1,5 +1,5 @@
 <div class="create-account-link <?php echo (MODULE_CONTENT_CREATE_ACCOUNT_LINK_CONTENT_WIDTH == 'Half') ? 'col-sm-6' : 'col-sm-12'; ?>">
-  <div class="panel panel-info">
+  <div class="panel panel-default">
     <div class="panel-body">
       <h4><?php echo MODULE_CONTENT_LOGIN_HEADING_NEW_CUSTOMER; ?></h4>
       <p><span class="glyphicon glyphicon-user icon-font"></span>Join <strong>Free</strong></p>
