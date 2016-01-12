@@ -163,7 +163,7 @@
       for ($i=0, $n=sizeof($column_list); $i<$n; $i++) {
         if ($column_list[$i] == 'PRODUCT_LIST_NAME') {
           $HTTP_GET_VARS['sort'] = $i+1 . 'a';
-          $listing_sql .= " order by pd.products_name";
+          $listing_sql .= " order by p.products_date_added desc";
           break;
         }
       }
