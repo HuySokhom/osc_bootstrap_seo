@@ -38,7 +38,9 @@
 
 <?php
   } else {
-    $product_info_query = tep_db_query("select p.products_id, pd.products_name, pd.products_description, p.products_model, p.products_quantity, p.products_image, pd.products_url, p.products_price, p.products_tax_class_id, p.products_date_added, p.products_date_available, p.manufacturers_id from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd where p.products_status = '1' and p.products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "' and pd.products_id = p.products_id and pd.language_id = '" . (int)$languages_id . "'");
+    $product_info_query = tep_db_query("select p.products_id, p.products_image_thumbnail, pd.products_name, pd.products_description, p.products_model, p
+.products_quantity, p
+.products_image, pd.products_url, p.products_price, p.products_tax_class_id, p.products_date_added, p.products_date_available, p.manufacturers_id from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd where p.products_status = '1' and p.products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "' and pd.products_id = p.products_id and pd.language_id = '" . (int)$languages_id . "'");
     $product_info = tep_db_fetch_array($product_info_query);
 
     tep_db_query("update " . TABLE_PRODUCTS_DESCRIPTION . " set products_viewed = products_viewed+1 where products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "' and language_id = '" . (int)$languages_id . "'");
@@ -84,66 +86,63 @@
 
 <div class="contentContainer">
   <div class="contentText">
-
+<script type="text/javascript" src="ext/js/slider/jssor.slider.mini.js"></script>
+    <!-- use jssor.slider.debug.js instead for debug -->
+    <script type="text/javascript" src="ext/js/slide_product.js"></script>
+    <link href="ext/css/slider_product.css" rel="stylesheet">
 <?php
     if (tep_not_null($product_info['products_image'])) {
 
-      echo tep_image(DIR_WS_IMAGES . $product_info['products_image'], NULL, NULL, NULL, 'itemprop="image" style="display:none;"');
-
-      $photoset_layout = '1';
-
-      $pi_query = tep_db_query("select image, htmlcontent from " . TABLE_PRODUCTS_IMAGES . " where products_id = '" . (int)$product_info['products_id'] . "' order by sort_order");
+//      echo tep_image(DIR_WS_IMAGES . $product_info['products_image'], NULL, NULL, NULL, 'itemprop="image" style="display:none;"');
+      $pi_query = tep_db_query("select image, image_thumbnail, htmlcontent from " . TABLE_PRODUCTS_IMAGES . " where
+      products_id = '" . (int)$product_info['products_id'] . "'order by sort_order");
       $pi_total = tep_db_num_rows($pi_query);
-
-      if ($pi_total > 0) {
-        $pi_sub = $pi_total-1;
-
-        while ($pi_sub > 5) {
-          $photoset_layout .= 5;
-          $pi_sub = $pi_sub-5;
-        }
-
-        if ($pi_sub > 0) {
-          $photoset_layout .= ($pi_total > 5) ? 5 : $pi_sub;
-        }
-?>
-
-    <div id="piGal" data-imgcount="<?php echo $photoset_layout; ?>">
-
-<?php
-        $pi_counter = 0;
-        $pi_html = array();
-
-        while ($pi = tep_db_fetch_array($pi_query)) {
-          $pi_counter++;
-
-          if (tep_not_null($pi['htmlcontent'])) {
-            $pi_html[] = '<div id="piGalDiv_' . $pi_counter . '">' . $pi['htmlcontent'] . '</div>';
-          }
-
-          echo tep_image(DIR_WS_IMAGES . $pi['image'], '', '', '', 'id="piGalImg_' . $pi_counter . '"', '',
-          'img-responsive img-thumbnail');
-        }
-?>
-
+      ?>
+      <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 800px; height: 456px; overflow: hidden; visibility: hidden; background-color: #24262e;">
+        <!-- Loading Screen -->
+        <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
+            <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
+            <div style="position:absolute;display:block;background:url('images/product_slider/loading.gif') no-repeat center center;
+            top:0px;left:0px;width:100%;height:100%;"></div>
+        </div>
+        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 800px; height: 356px; overflow: hidden;">
+          <div data-p="144.50" style="display: none;">
+            <img data-u="image" src="<?php echo DIR_WS_IMAGES . $product_info['products_image'];?>" />
+            <img data-u="thumb" src="<?php echo DIR_WS_IMAGES . $product_info['products_image_thumbnail'];?>" />
+          </div>
+          <?php
+            if ($pi_total > 0) {
+                while ($pi = tep_db_fetch_array($pi_query)) {
+                    echo '<div data-p="144.50" style="display: none;">';
+                    echo '<img data-u="image" src="' . DIR_WS_IMAGES . $pi['image'] . '" />';
+                    echo '<img data-u="thumb" src="' . DIR_WS_IMAGES . $pi['image_thumbnail'] . '" />';
+                    echo '</div>';
+                }
+            }
+        ?>
+        </div>
+        <!-- Thumbnail Navigator -->
+        <div data-u="thumbnavigator" class="jssort01" style="position:absolute;left:0px;bottom:0px;width:800px;height:100px;" data-autocenter="1">
+            <!-- Thumbnail Item Skin Begin -->
+            <div data-u="slides" style="cursor: default;">
+                <div data-u="prototype" class="p">
+                    <div class="w">
+                        <div data-u="thumbnailtemplate" class="t"></div>
+                    </div>
+                    <div class="c"></div>
+                </div>
+            </div>
+            <!-- Thumbnail Item Skin End -->
+        </div>
+        <!-- Arrow Navigator -->
+        <span data-u="arrowleft" class="jssora05l" style="top:158px;left:8px;width:40px;height:40px;"></span>
+        <span data-u="arrowright" class="jssora05r" style="top:158px;right:8px;width:40px;height:40px;"></span>
+        <a href="http://www.jssor.com" style="display:none">Bootstrap Carousel</a>
     </div>
-
 <?php
-        if ( !empty($pi_html) ) {
-          echo '    <div style="display: none;">' . implode('', $pi_html) . '</div>';
-        }
-      } else {
-?>
-
-    <div id="piGal">
-      <?php echo tep_image(DIR_WS_IMAGES . $product_info['products_image'], addslashes($product_info['products_name'])); ?>
-    </div>
-
-<?php
-      }
     }
 ?>
-
+<h4 class="page-header">Description:</h4>
 <div itemprop="description">
   <?php echo stripslashes($product_info['products_description']); ?>
 </div>
@@ -236,7 +235,6 @@
 </div>
 
 </div>
-
 </form>
 <script>
     $(function() {
