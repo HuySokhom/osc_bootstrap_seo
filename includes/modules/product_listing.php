@@ -114,20 +114,25 @@
 
   while ($listing = tep_db_fetch_array($listing_query)) {
     $prod_list_contents .= '<div class="item list-group-item col-sm-3">';
-	  $prod_list_contents .= '  <div class="productHolder equal-height">';
+	  $prod_list_contents .= '  <div class="productHolder equal-height"  style="height: 230px;">';
     if (isset($HTTP_GET_VARS['manufacturers_id'])  && tep_not_null($HTTP_GET_VARS['manufacturers_id'])) {
-      $prod_list_contents .= '    <a href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'manufacturers_id=' . $HTTP_GET_VARS['manufacturers_id'] . '&products_id=' . $listing['products_id']) . '">' . tep_image(DIR_WS_IMAGES . $listing['products_image'], $listing['products_name'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT, NULL, NULL, 'img-responsive thumbnail group list-group-image') . '</a>';
+      $prod_list_contents .= '    <a href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'manufacturers_id=' . $HTTP_GET_VARS['manufacturers_id'] . '&products_id=' . $listing['products_id']) . '">' . tep_image(DIR_WS_IMAGES . $listing['products_image'], $listing['products_name'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT, NULL, NULL, 'img-responsive thumbnail group list-group-image new-image') . '</a>';
     } else {
-      $prod_list_contents .= '    <a href="' . tep_href_link(FILENAME_PRODUCT_INFO, ($sort ? 'sort=' . $sort . '&' : '') . ($cPath ? 'cPath=' . $cPath . '&' : '') . 'products_id=' . $listing['products_id']) . '">' . tep_image(DIR_WS_IMAGES . $listing['products_image'], $listing['products_name'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT, NULL, NULL, 'img-responsive thumbnail group list-group-image') . '</a>';
+      $prod_list_contents .= '    <a href="' . tep_href_link(FILENAME_PRODUCT_INFO, ($sort ? 'sort=' . $sort . '&' :
+                  '') . ($cPath ? 'cPath=' . $cPath . '&' : '') . 'products_id=' . $listing['products_id']) . '">' . tep_image(DIR_WS_IMAGES . $listing['products_image'], $listing['products_name'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT, NULL, NULL, 'img-responsive thumbnail group new-image list-group-image') . '</a>';
     }
     $prod_list_contents .= '    <div class="caption">';
-    $prod_list_contents .= '      <h2 class="group inner list-group-item-heading">';
+    $prod_list_contents .= '      <p class="text-center">';
     if (isset($HTTP_GET_VARS['manufacturers_id']) && tep_not_null($HTTP_GET_VARS['manufacturers_id'])) {
-      $prod_list_contents .= '    <a href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'manufacturers_id=' . $HTTP_GET_VARS['manufacturers_id'] . '&products_id=' . $listing['products_id']) . '">' . $listing['products_name'] . '</a>';
+      $prod_list_contents .= '    <a href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'manufacturers_id=' . $HTTP_GET_VARS['manufacturers_id'] . '&products_id=' . $listing['products_id']) . '">'
+          . $listing['products_name'] . '</a>';
     } else {
-      $prod_list_contents .= '    <a href="' . tep_href_link(FILENAME_PRODUCT_INFO, ($cPath ? 'cPath=' . $cPath . '&' : '') . 'products_id=' . $listing['products_id']) . '">' . $listing['products_name'] . '</a>';
+      if (strlen($listing['products_name']) > 50) $listing['products_name'] = substr($listing['products_name'], 0,
+              45) . '...';
+      $prod_list_contents .= '    <a href="' . tep_href_link(FILENAME_PRODUCT_INFO, ($cPath ? 'cPath=' . $cPath . '&' : '') . 'products_id=' . $listing['products_id']) . '">'
+          . $listing['products_name'] . '</a>';
     }
-    $prod_list_contents .= '      </h2>';
+    $prod_list_contents .= '      </p>';
 
     $prod_list_contents .= '      <p class="group inner list-group-item-text">' . strip_tags($listing['products_description'], '<br>') . '&hellip;</p><div class="clearfix"></div>';
 
@@ -148,7 +153,12 @@
        $prod_list_contents .= '    </dl>';
     }
 
-	  $prod_list_contents .= '<p class="price">'. $currencies->display_price($listing['products_price'], tep_get_tax_rate($listing['products_tax_class_id'])) .'</p>      <div class="row" style="display: none;">';
+	  $prod_list_contents .= '<span class="price">'. $currencies->display_price($listing['products_price'],
+              tep_get_tax_rate($listing['products_tax_class_id']))
+          .'</span><span style="float:right;display:none;">view: 120 </span>     <div
+class="row"
+style="display:
+ none;">';
     if (tep_not_null($listing['specials_new_products_price'])) {
       $prod_list_contents .= '      <div class="col-xs-6"><div class="btn-group" role="group"><button type="button" class="btn btn-default"><del>' .  $currencies->display_price($listing['products_price'], tep_get_tax_rate($listing['products_tax_class_id'])) . '</del></span>&nbsp;&nbsp;<span class="productSpecialPrice">' . $currencies->display_price($listing['specials_new_products_price'], tep_get_tax_rate($listing['products_tax_class_id'])) . '</button></div></div>';
     } else {
