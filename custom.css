@@ -7,11 +7,11 @@ body {
     font: normal 13px/22px "Roboto", sans-serif;
     color: #777777;
     background: #ffffff;
-    background-image: url("images/bg.png");
+    /*background-image: url("images/bg.png");*/
 }
 .header-style{
     border: 0px;
-    box-shadow: 0 5px 5px 1px #3f9923;
+    /*box-shadow: 0 5px 5px 1px #3f9923;*/
     background: #ffffff;
 }
 a{
@@ -495,7 +495,7 @@ h1 > span{
 }
 .price {
     color: rgb(142,11,0);
-    font-weight: bold;
+    /*font-weight: bold;*/
 }
 .background{
     background: #3f9923;
@@ -530,4 +530,7 @@ h1, .h1 {
 .product_name{
     color: #5cb85c;
     font-weight: bold;
+}
+.new-image{
+    height: 110px;
 }

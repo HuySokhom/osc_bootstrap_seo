@@ -46,30 +46,30 @@
 		</td>
 		<td>
 			<button class="btn btn-default" data-ng-click="edit(product);">
-				<span class="glyphicon glyphicon-plus-sign"></span>
+				<span class="glyphicon glyphicon-edit"></span>
 			</button>
 			<button class="btn btn-danger" data-ng-click="remove(product.id, $index);">
-				<span class="glyphicon glyphicon-plus-sign"></span>
+				<span class="glyphicon glyphicon-trash"></span>
 			</button>
 			<button
 				class="btn btn-warning"
 				data-ng-click="updateStatus(product);"
 				data-ng-show="product.products_status == 0"
 			>
-				<span class="glyphicon glyphicon-plus-sign"></span>
+				<span class="glyphicon glyphicon-minus"></span>
 			</button>
 			<button
 				class="btn btn-success"
 				data-ng-click="updateStatus(product);"
 				data-ng-show="product.products_status == 1"
 			>
-				<span class="glyphicon glyphicon-plus-sign"></span>
+				<span class="glyphicon glyphicon-ok"></span>
 			</button>
 			<button
 				class="btn btn-info"
 				data-ng-click="refreshDate(product);"
 			>
-				<span class="glyphicon glyphicon-plus-sign"></span>
+				<span class="glyphicon glyphicon-refresh"></span>
 			</button>
 		</td>
 	</tr>
