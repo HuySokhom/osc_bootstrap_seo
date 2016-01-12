@@ -15,10 +15,10 @@ body {
     background: #ffffff;
 }
 a{
-    color: #3f9923;
+    color: #777777;
 }
 a:hover{
-    color: #3f9923;
+    color: #777777;
     text-decoration: none;
 }
 .buttonSet {
@@ -518,8 +518,8 @@ h1, .h1 {
 .product_price{
     font-size: 32px;
     color: #FFF;
-    background-color: #5cb85c;
-    border-color: #5cb85c;
+    background-color: #777777;
+    border-color: #777777;
     padding: 1px;
     text-align: center;
     margin-top: 0px;
@@ -528,7 +528,7 @@ h1, .h1 {
     border-radius: 3px;
 }
 .product_name{
-    color: #5cb85c;
+    color: #777777;
     font-weight: bold;
 }
 .new-image{

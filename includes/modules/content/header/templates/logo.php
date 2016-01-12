@@ -14,7 +14,7 @@
         <span class="icon-bar"></span>
       </button>
       <a href="index.php">
-        <span style="text-shadow: 3px 4px 5px rgba(168, 186, 165, 1);font-size: 30px;">
+        <span style="text-shadow: 3px 4px 5px #777777;font-size: 30px;">
           FREE POSTING
         </span>
       </a>

@@ -109,17 +109,19 @@
 
   <?php
   $listing_query = tep_db_query($listing_split->sql_query);
-
   $prod_list_contents = NULL;
 
   while ($listing = tep_db_fetch_array($listing_query)) {
     $prod_list_contents .= '<div class="item list-group-item col-sm-3">';
 	  $prod_list_contents .= '  <div class="productHolder equal-height"  style="height: 230px;">';
     if (isset($HTTP_GET_VARS['manufacturers_id'])  && tep_not_null($HTTP_GET_VARS['manufacturers_id'])) {
-      $prod_list_contents .= '    <a href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'manufacturers_id=' . $HTTP_GET_VARS['manufacturers_id'] . '&products_id=' . $listing['products_id']) . '">' . tep_image(DIR_WS_IMAGES . $listing['products_image'], $listing['products_name'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT, NULL, NULL, 'img-responsive thumbnail group list-group-image new-image') . '</a>';
+      $prod_list_contents .= '    <a href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'manufacturers_id=' .
+              $HTTP_GET_VARS['manufacturers_id'] . '&products_id=' . $listing['products_id']) . '">' . tep_image
+          (DIR_WS_IMAGES . $listing['products_image_thumbnail'], $listing['products_name'], SMALL_IMAGE_WIDTH,
+              SMALL_IMAGE_HEIGHT, NULL, NULL, 'img-responsive thumbnail group list-group-image new-image') . '</a>';
     } else {
       $prod_list_contents .= '    <a href="' . tep_href_link(FILENAME_PRODUCT_INFO, ($sort ? 'sort=' . $sort . '&' :
-                  '') . ($cPath ? 'cPath=' . $cPath . '&' : '') . 'products_id=' . $listing['products_id']) . '">' . tep_image(DIR_WS_IMAGES . $listing['products_image'], $listing['products_name'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT, NULL, NULL, 'img-responsive thumbnail group new-image list-group-image') . '</a>';
+                  '') . ($cPath ? 'cPath=' . $cPath . '&' : '') . 'products_id=' . $listing['products_id']) . '">' . tep_image(DIR_WS_IMAGES . $listing['products_image_thumbnail'], $listing['products_name'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT, NULL, NULL, 'img-responsive thumbnail group new-image list-group-image') . '</a>';
     }
     $prod_list_contents .= '    <div class="caption">';
     $prod_list_contents .= '      <p class="text-center">';

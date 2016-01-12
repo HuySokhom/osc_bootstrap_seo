@@ -142,11 +142,36 @@
 <?php
     }
 ?>
-<h4 class="page-header">Description:</h4>
-<div itemprop="description">
-  <?php echo stripslashes($product_info['products_description']); ?>
+<div class="col-sm-6 col-md-8">
+    <h4 class="page-header">Description:</h4>
+    <div itemprop="description">
+      <?php echo stripslashes($product_info['products_description']); ?>
+    </div>
 </div>
-
+<div class="col-sm-6 col-md-4">
+    <h4 class="page-header">Contact:</h4>
+    <?php
+        $customer_query = tep_db_query("
+          select contact_name, contact_phone, contact_address, contact_email, customers_id
+          from product_contact_person
+          where
+            products_id = ". (int)$HTTP_GET_VARS['products_id'] . "
+                and
+            customers_id = " . (int)$_SESSION['customer_id'] . "
+        ");
+        $customer = tep_db_fetch_array($customer_query);
+        if (tep_db_num_rows($customer_query) > 0) {
+            echo '<table>';
+            echo '<tr><td><span class="glyphicon glyphicon-user icon-font"></span>' . $customer['contact_name'] . '</td></tr>';
+            echo '<tr><td><span class="glyphicon glyphicon-phone icon-font"></span>' . $customer['contact_phone'] . '</td></tr>';
+            echo '<tr><td><span class="glyphicon glyphicon-globe icon-font"></span>' . $customer['contact_address'] . '</td></tr>';
+            echo '<tr><td><span class="glyphicon glyphicon-envelope icon-font"></span>' . $customer['contact_email'] . '</td></tr>';
+            echo '<tr><td><span class="glyphicon glyphicon-home icon-font"></span>
+                <a href="user.php?id='. $customer['customers_id'] .'">Store</a></td></tr>';
+            echo '</table>';
+        }
+    ?>
+</div>
 <?php
     $products_attributes_query = tep_db_query("select count(*) as total from " . TABLE_PRODUCTS_OPTIONS . " popt, " . TABLE_PRODUCTS_ATTRIBUTES . " patrib where patrib.products_id='" . (int)$HTTP_GET_VARS['products_id'] . "' and patrib.options_id = popt.products_options_id and popt.language_id = '" . (int)$languages_id . "'");
     $products_attributes = tep_db_fetch_array($products_attributes_query);
