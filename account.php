@@ -33,7 +33,6 @@
     echo $messageStack->output('account');
   }
 ?>
-
 <div 
 	class="contentContainer"
 	data-ng-app="main"
@@ -76,7 +75,7 @@
     ?>
 	</div>
 </div>
-
+<textarea style="display: none;"></textarea>
 <!-- lib -->
 <script 
 	type="text/javascript" 
@@ -101,7 +100,9 @@
 <script src="ext/ng/lib/angular-upload/ng-file-upload-shim.js"></script>
 <!-- for no html5 browsers support -->
 <script src="ext/ng/lib/angular-upload/ng-file-upload.js"></script>
-<!-- custom file -->
+
+<script src="ext/tinymce/tinymce.min.js"></script>
+<script>tinymce.init({ selector:'textarea' });</script>
 <!-- custom file -->
 
 <script 
