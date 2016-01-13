@@ -38,6 +38,8 @@ app.controller(
 		$scope.disabled = true;
 
 		$scope.edit = function(params){
+			tinymce.init({ selector:'#description' });
+			tinymce.get('description').setContent(params.fields[0].products_description);
 			$scope.id = params.id;
 			// category
 			$("div#category select").val(params.category[0].categories_id);
@@ -72,30 +74,34 @@ app.controller(
 
 		$scope.refreshDate = function(params){console.log(params.id);
 			Restful.patch('api/Session/User/ProductPost/'+params.id).success(function(data){
-				console.log(data);
 				$scope.init();
 			});
 		};
 
 		$scope.updateStatus = function(params){
-			console.log(params.id);
 			params.products_status == 1 ? params.products_status = 0 : params.products_status = 1;
 			var data = { status: params.products_status, name: "update_status"};
-			console.log(data);
-			Restful.patch('api/Session/User/ProductPost/'+params.id, data).success(function(data){
-				console.log(data);
-				$scope.init();
+			Restful.patch('api/Session/User/ProductPost/'+params.id, data).success(function(data){});
+		};
+
+		$scope.link = function(id){
+			window.open('product_info.php?products_id=' + id,'_blank');
+		};
+
+		$scope.add = function(){
+			tinymce.init({
+				selector:'#description',
+				plugins: 'media'
 			});
 		};
 
 		$scope.save = function(){
 			var category_id = $( "#entryCategories option:selected" ).val();
-			$scope.disabled = false;
 			// set object to save into product
 			var params ={
 				product_detail: [{
 					products_name: $scope.title,
-					products_description: $scope.description
+					products_description: tinymce.get('description').getContent()
 				}],
 				categories: [{
 					categories_id: category_id
@@ -149,7 +155,14 @@ app.controller(
 					}
 				]
 			};
-			console.log(params);
+			if(params.product_detail[0].products_description == ''){
+				return alert('Please input product description.');
+			}
+
+			if(angular.isUndefined(params.product[0].products_image) ){
+				return alert('Please file add photo main image.');
+			}
+			$scope.disabled = false;
 			if($scope.id) {
 				console.log($scope.id);
 				$scope.disabled = true;
@@ -193,7 +206,7 @@ app.controller(
 						type: 'success'
 					});
 					$scope.init();
-					$scope.products_post.elements.splice($index, 1);
+					//$scope.products_post.elements.splice($index, 1);
 				});
 
 			}
@@ -274,6 +287,7 @@ app.controller(
 			$scope.title = '';
 			$scope.description = '';
 			//$( "#entryCategories option:selected");
+			tinymce.get('description').setContent('');
 			$("#entryCategories option[value='']").attr('selected', true);
 			$scope.products_location = '';
 			$scope.manufacturer = '';
@@ -281,7 +295,7 @@ app.controller(
 			$scope.image_thumbnail = '';
 			$scope.price = '';
 			$scope.image1 = '';
-			$scope.imageThumbnail1 = '';
+			$scope.image_thumbnail1 = '';
 			$scope.image2 = '';
 			$scope.image_thumbnail2 = '';
 			$scope.image3 = '';

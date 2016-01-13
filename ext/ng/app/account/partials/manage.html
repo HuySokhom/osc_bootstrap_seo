@@ -22,7 +22,7 @@
 		<th>
 			Price
 		</th>
-		<th width="220px">
+		<th width="240px">
 			Action
 		</th>
 	</thead>
@@ -70,6 +70,12 @@
 				data-ng-click="refreshDate(product);"
 			>
 				<span class="glyphicon glyphicon-refresh"></span>
+			</button>
+			<button
+				class="btn btn-default"
+				data-ng-click="link(product.id);"
+			>
+				<span class="glyphicon glyphicon-link"></span>
 			</button>
 		</td>
 	</tr>

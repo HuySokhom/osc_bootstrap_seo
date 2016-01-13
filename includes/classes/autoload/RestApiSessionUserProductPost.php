@@ -158,7 +158,6 @@ class RestApiSessionUserProductPost extends RestApi {
 				$col->setProductsId($this->getId());
 				if( $params['PATCH']['name'] ){
 					$col->setProductsStatus($params['PATCH']['status']);
-					var_dump($params['PATCH']['status']);
 					$col->updateStatus();
 				}else{
 					$col->refreshDate();
