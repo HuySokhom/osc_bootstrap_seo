@@ -32,9 +32,7 @@
 <link href="ext/bootstrap/css/bootstrap.css" rel="stylesheet">
 <link href="custom.css" rel="stylesheet">
 <link href="user.css" rel="stylesheet">
-  <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,greek,greek-ext,vietnamese,cyrillic-ext,latin-ext,cyrillic'
-        rel='stylesheet'
-        type='text/css'>
+<link href='ext/css/google_fonts.css' rel='stylesheet' type='text/css'>
 <!--[if lt IE 9]>
    <script src="ext/js/html5shiv.js"></script>
    <script src="ext/js/respond.min.js"></script>
@@ -44,7 +42,7 @@
 <script src="ext/jquery/jquery-1.11.1.min.js"></script>
 
 <!-- font awesome -->
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="ext/css/Font-Awesome-master/css/font-awesome.min.css">
 
 <?php echo $oscTemplate->getBlocks('header_tags'); ?>
 </head>
