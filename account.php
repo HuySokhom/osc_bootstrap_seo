@@ -39,35 +39,7 @@
 >
 	<div class="row">
 		<div class="col-md-12">
-			<div class="panel with-nav-tabs panel-default">
-				<div class="panel-heading">
-					<ul class="nav nav-tabs">
-						<li data-ui-sref-active="active">
-							<a 
-								data-ui-sref="/manage" 
-								data-toggle="tab"
-							>
-								<span class="glyphicon glyphicon-folder-close"></span> 
-								<?php echo MANAGE_POST; ?>
-							</a>
-						</li>
-						<li data-ui-sref-active="active">
-							<a 
-								data-ui-sref="/account" 
-								data-toggle="tab"
-							>
-								<span class="glyphicon glyphicon-user"></span> 
-								<?php echo MY_ACCOUNT_TITLE; ?>
-							</a>
-						</li>
-					</ul>
-				</div>
-				<div class="panel-body">
-					<div class="tab-content">
-						<div data-ui-view=""></div>
-					</div>
-				</div>
-			</div>
+			<div data-ui-view=""></div>
 		</div>
     <?php
     	// don't need to show
@@ -140,6 +112,10 @@
 <script
 	type="text/javascript"
 	src="ext/ng/app/core/directive/number.js"
+></script>
+<script
+	type="text/javascript"
+	src="ext/ng/app/account/directive/account.js"
 ></script>
 <script
 	type="text/javascript"

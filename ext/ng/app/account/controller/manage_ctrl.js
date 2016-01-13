@@ -196,7 +196,7 @@ app.controller(
 		};
 
 		$scope.remove = function(id, $index){
-			if (confirm('Are you sure you want to delete this product?')) {
+				if (confirm('Are you sure you want to delete this product?')) {
 				Restful.delete( 'api/Session/User/ProductPost/' + id ).success(function(data){
 					console.log(data);
 					$.notify({
