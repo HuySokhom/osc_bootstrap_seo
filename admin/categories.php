@@ -653,9 +653,8 @@ updateGross();
 #piList li { margin: 5px 0; padding: 2px; }
 </style>
 
-<!-- CKEditor -->
+<!-- TinyMce ditor -->
 <script>
-//	CKEDITOR.replace( 'products_description[1]' );
 	tinymce.init({
       selector:'#products_description',
       plugins: 'media'
