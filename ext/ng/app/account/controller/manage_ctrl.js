@@ -158,10 +158,17 @@ app.controller(
 			if(params.product_detail[0].products_description == ''){
 				return alert('Please input product description.');
 			}
-
 			if(angular.isUndefined(params.product[0].products_image) ){
 				return alert('Please file add photo main image.');
 			}
+			if(
+				$scope.user.customers_telephone == '' ||
+				$scope.user.customers_address == '' ||
+				$scope.user.customers_location == ''
+			){
+				return alert('Please input all information in contact.');
+			}
+
 			$scope.disabled = false;
 			if($scope.id) {
 				console.log($scope.id);

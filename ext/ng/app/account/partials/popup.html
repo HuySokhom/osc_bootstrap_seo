@@ -184,7 +184,6 @@
 											type="text"
 											class="form-control"
 											data-ng-model="user.customers_telephone"
-											required="required"
 											only-numbers
 										/>
 									</td>
@@ -212,7 +211,6 @@
 											data-ng-model="user.customers_location"
 											data-ng-options="location.id as location.name for location in location.elements"
 											data-ng-init="user.customers_location == location.id"
-											required
 										>
 											<option value="">--Select--</option>
 										</select>
@@ -226,7 +224,6 @@
 										<textarea
 											class="form-control"
 											data-ng-model="user.customers_address"
-											required="required"
 											rows="5"
 										></textarea>
 									</td>
