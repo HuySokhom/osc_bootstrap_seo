@@ -575,7 +575,7 @@ function updateNet() {
 <script type="text/javascript"><!--
 updateGross();
 //--></script>
-<script src="js/ckeditor/ckeditor.js"></script>
+<script src="js/tinymce/tinymce.min.js"></script>
 <?php
     for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
 ?>
@@ -599,7 +599,7 @@ updateGross();
 							'products_description[' . $languages[$i]['id'] . ']', 
 							'soft', '70', '15', (empty($pInfo->products_id) ? '' 
 							: tep_get_products_description($pInfo->products_id, 
-							$languages[$i]['id']))
+							$languages[$i]['id'])),'id="products_description"'
 						); 
 					?></td>
               </tr>
@@ -655,7 +655,11 @@ updateGross();
 
 <!-- CKEditor -->
 <script>
-	CKEDITOR.replace( 'products_description[1]' );
+//	CKEDITOR.replace( 'products_description[1]' );
+	tinymce.init({
+      selector:'#products_description',
+      plugins: 'media'
+    });
 </script>
         
 <script type="text/javascript">
