@@ -9,8 +9,6 @@
 
   Released under the GNU General Public License
 */
-$new_products_category_id = '12';
-//  if ( (!isset($new_products_category_id))  ) {var_dump($new_products_category_id);
     $new_products_query = tep_db_query("
       select
         p.products_id,
@@ -19,11 +17,11 @@ $new_products_category_id = '12';
         p.products_image,
         pd.products_name
       from " . TABLE_PRODUCTS . " p
-      left join product_contact_person c
-      on p.products_id = c.products_id, " . TABLE_PRODUCTS_DESCRIPTION . " pd
+      left join  " . TABLE_PRODUCTS_DESCRIPTION . " pd
+      on p.products_id = pd.products_id
       where p.products_status = '1'
       and p.products_id = pd.products_id
-      and c.customers_id = 1
+      and p.customers_id = '". $customer['customers_id'] ."'
       and pd.language_id = '" . (int)$languages_id . "'
       and p.products_id != '" . (int)$HTTP_GET_VARS['products_id'] . "'
       order by p.products_date_added desc limit 4");
@@ -55,10 +53,10 @@ $new_products_category_id = '12';
       $new_prods_content .= '  </div>';
       $new_prods_content .= '</div>';
     }
-  }
+
 ?>
   <h4 class="page-header col-md-12">Relate Product</h4>
   <?php echo $new_prods_content; ?>
 <?php
-//  }
+  }
 ?>

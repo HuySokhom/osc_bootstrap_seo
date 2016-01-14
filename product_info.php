@@ -156,8 +156,6 @@
           from product_contact_person
           where
             products_id = ". (int)$HTTP_GET_VARS['products_id'] . "
-                and
-            customers_id = " . (int)$_SESSION['customer_id'] . "
         ");
         $customer = tep_db_fetch_array($customer_query);
         if (tep_db_num_rows($customer_query) > 0) {
