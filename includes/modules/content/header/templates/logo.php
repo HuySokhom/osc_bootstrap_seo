@@ -29,7 +29,7 @@
             <a href="advanced_search.php">Advance Search</a>
           </li>
           <li>
-            <a href="account.php#/manage">Manage Ad</a>
+            <a href="account.php#/index">Manage Ad</a>
           </li>
           <li class="dropdown">
             <?php
@@ -58,9 +58,9 @@
               }
               if(tep_session_is_registered('customer_id')){
                 ?>
-                <li class="divider"></li>
-                <li><?php echo '<a href="' . tep_href_link(FILENAME_ACCOUNT . '#/account', '', 'SSL') . '">' . HEADER_ACCOUNT . '</a>'; ?></li>
-                <li><?php echo '<a href="' . tep_href_link(FILENAME_ACCOUNT . '#/manage', '', 'SSL') . '">Post Ads</a>'; ?></li>
+<!--                <li class="divider"></li>-->
+<!--                <li>--><?php //echo '<a href="' . tep_href_link(FILENAME_ACCOUNT . '#/account', '', 'SSL') . '">' . HEADER_ACCOUNT . '</a>'; ?><!--</li>-->
+<!--                <li>--><?php //echo '<a href="' . tep_href_link(FILENAME_ACCOUNT . '#/manage', '', 'SSL') . '">Post Ads</a>'; ?><!--</li>-->
                 <?php
               }
               ?>
