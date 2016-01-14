@@ -91,7 +91,9 @@
     echo $messageStack->output('product_action');
   }
 ?>
-
+<link rel="stylesheet" href="ext/js/magnific-popup/magnific-popup.css">
+<script src="ext/js/magnific-popup/jquery.magnific-popup.js"></script><script>
+</script>
 <div class="contentContainer">
   <div class="contentText">
 <script type="text/javascript" src="ext/js/slider/jssor.slider.mini.js"></script>
@@ -106,23 +108,31 @@
       products_id = '" . (int)$product_info['products_id'] . "'order by sort_order");
       $pi_total = tep_db_num_rows($pi_query);
       ?>
-      <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 800px; height: 456px; overflow: hidden; visibility: hidden; background-color: #24262e;">
+      <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 800px; height: 456px;
+       overflow: hidden; visibility: hidden; background-color: #24262e;">
         <!-- Loading Screen -->
         <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
             <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
             <div style="position:absolute;display:block;background:url('images/product_slider/loading.gif') no-repeat center center;
             top:0px;left:0px;width:100%;height:100%;"></div>
         </div>
-        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 800px; height: 356px; overflow: hidden;">
+        <div class="gallery"  data-u="slides"
+            style="
+                cursor: default; position: relative;
+                top: 0px; left: 0px; width:800px;
+                height: 356px; overflow: hidden;"
+            >
           <div data-p="144.50" style="display: none;">
-            <img data-u="image" src="<?php echo DIR_WS_IMAGES . $product_info['products_image'];?>" />
+            <a href="<?php echo DIR_WS_IMAGES . $product_info['products_image'];?>">
+                <img data-u="image" src="<?php echo DIR_WS_IMAGES . $product_info['products_image'];?>" />
+            </a>
             <img data-u="thumb" src="<?php echo DIR_WS_IMAGES . $product_info['products_image_thumbnail'];?>" />
           </div>
           <?php
             if ($pi_total > 0) {
                 while ($pi = tep_db_fetch_array($pi_query)) {
                     echo '<div data-p="144.50" style="display: none;">';
-                    echo '<img data-u="image" src="' . DIR_WS_IMAGES . $pi['image'] . '" />';
+                    echo '<a href="'. DIR_WS_IMAGES . $pi['image'] .'"><img data-u="image" src="' . DIR_WS_IMAGES . $pi['image'] . '" /></a>';
                     echo '<img data-u="thumb" src="' . DIR_WS_IMAGES . $pi['image_thumbnail'] . '" />';
                     echo '</div>';
                 }
@@ -286,11 +296,21 @@
 </div>
 </form>
 <script>
-    $(function() {
+$('.gallery').each(function() { // the containers for all your galleries
+    $(this).magnificPopup({
+        delegate: 'a', // the selector for gallery item
+        type: 'image',
+        gallery: {
+          enabled:true
+        }
+    });
+});
+
+//    $(function() {
 //        $( "#columnLeft" ).css('display', 'none');
 //        $( "#bodyContent" ).removeClass('col-md-9 col-md-push-3');
 //        $( "#bodyContent" ).addClass('col-md-12');
-    });
+//    });
 </script>
 <?php
   }
