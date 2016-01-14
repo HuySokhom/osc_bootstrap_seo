@@ -7,43 +7,97 @@
  */
 class RestApiUploadImage extends RestApi {
 
-    public function post( $params ){
-        foreach( $_FILES as $file ){
-            // get extension
-            $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
-
-            // check extension is valid image
-            if( ! in_array($ext, array(
-                'jpg',
-                'jpeg',
-                'gif',
-                'png',
-            ))){
-                continue;
-            }
-
-            // add timestamp to image name to prevent against overwrites
-            $file['name'] = substr($file['name'], 0, strlen($ext) * -1)
-                . time()
-                . '.' . $ext
-            ;
-
-            if(move_uploaded_file(
-                $file['tmp_name'],
-                DIR_FS_CATALOG . 'images/' . $file['name']
-            )){
-                $imgOriginal = DIR_FS_CATALOG . 'images/' . $file['name'];
-                $imgThumbnail = DIR_FS_CATALOG  . 'images/image-thumbnail/' . $file['name'];
-
-                $this->make_thumb($file, $imgOriginal, $imgThumbnail, 120);
-            }
-
-            return array(
-                'data' => array(
-                    'image' => $file['name'],
-                    'image_thumbnail' => 'image-thumbnail/' . $file['name']
-                )
+    public function get(){
+        if ( !isset($_SESSION['user_name']) ) {
+            throw new \Exception(
+                "403: Access Denied",
+                403
             );
+        } else {
+            return array(data => array('user_name' => $_SESSION['user_name']));
+        }
+    }
+
+    public function post( $params ){
+        if ( !isset($_SESSION['user_name']) ) {
+            throw new \Exception(
+                "403: Access Denied",
+                403
+            );
+        } else {
+            foreach ($_FILES as $file) {
+                // get extension
+                $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
+
+                // check extension is valid image
+                if (!in_array($ext, array(
+                    'jpg',
+                    'jpeg',
+                    'gif',
+                    'png',
+                ))
+                ) {
+                    continue;
+                }
+                $user = str_replace(' ', '_', $_SESSION['user_name']);
+                // add timestamp to image name to prevent against overwrites
+                $file['name'] = substr($file['name'], 0, strlen($ext) * -1)
+                    . time()
+                    . '.' . $ext;
+
+                // create folder for each user when upload
+                $folderName = DIR_FS_CATALOG . 'images/' . $user;
+
+                if ( !file_exists($folderName) ) {
+                    mkdir( $folderName , 0777, true);
+                }
+
+                $date = new DateTime();
+                $dateUpload =  date_format($date, 'Y-m-d');
+                // create sub folder
+                $folderDate = $folderName . '/' . $dateUpload;
+                if(!file_exists($folderDate)){
+                    // create date folder in each folder in user folder upload file
+                    // to determine how many file per day when user upload
+                    mkdir( $folderDate , 0777, true);
+                }
+
+                $folderImage = $folderDate . '/images/';
+                if(!file_exists($folderImage)){
+                    // create date folder in each folder in user folder upload file
+                    // to determine how many file per day when user upload
+                    mkdir( $folderImage , 0777, true);
+                }
+                $folderImageThumbnail = $folderDate . '/image_thumbnail/';
+                if(!file_exists($folderImageThumbnail)){
+                    // create date folder in each folder in user folder upload file
+                    // to determine how many file per day when user upload
+                    mkdir( $folderImageThumbnail , 0777, true);
+                }
+
+                // count file in folder
+//                $fileCount = new FilesystemIterator($folderDate, FilesystemIterator::SKIP_DOTS);
+//                $totalFile = iterator_count($fileCount);
+                // check limit for security when upload file
+//                if($totalFile < 50) {
+                    if (move_uploaded_file(
+                        $file['tmp_name'],
+                        $folderImage . $file['name']
+                    )) {
+                        $imgOriginal = $folderImage . $file['name'];
+                        $imgThumbnail = $folderImageThumbnail . $file['name'];
+
+                        $this->make_thumb($file, $imgOriginal, $imgThumbnail, 120);
+                    }
+
+                    return array(
+                        'data' => array(
+                            'image' => $user . '/' . $dateUpload . '/images/'. $file['name'],
+                            'image_thumbnail' => $user . '/' . $dateUpload .'/image_thumbnail/' . $file['name']
+                        )
+                    );
+//                }
+            }
         }
     }
 

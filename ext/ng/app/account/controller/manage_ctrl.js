@@ -10,7 +10,7 @@ app.controller(
 		$scope.init = function(params){
 			Restful.get(url, params).success(function(data){
 				$scope.products_post = data;
-				$scope.totalItems = data.count;console.log(data);
+				$scope.totalItems = data.count;
 			});
 		};
 		$scope.init();
@@ -72,7 +72,7 @@ app.controller(
 			$('#product-popup').modal('show');
 		};
 
-		$scope.refreshDate = function(params){console.log(params.id);
+		$scope.refreshDate = function(params){
 			Restful.patch('api/Session/User/ProductPost/'+params.id).success(function(data){
 				$scope.init();
 			});
@@ -171,10 +171,8 @@ app.controller(
 
 			$scope.disabled = false;
 			if($scope.id) {
-				console.log($scope.id);
 				$scope.disabled = true;
 				Restful.put('api/Session/User/ProductPost/' + $scope.id, params).success(function (data) {
-					console.log(data);
 					$scope.init();
 					$scope.closeForm();
 					$.notify({
@@ -189,7 +187,6 @@ app.controller(
 				Restful.save('api/Session/User/ProductPost', params).success(function (data) {
 					$scope.init();
 					$scope.closeForm();
-					console.log(data);
 					$scope.disabled = true;
 					$('#product-popup').modal('hide');
 					$.notify({
@@ -205,7 +202,6 @@ app.controller(
 		$scope.remove = function(id, $index){
 				if (confirm('Are you sure you want to delete this product?')) {
 				Restful.delete( 'api/Session/User/ProductPost/' + id ).success(function(data){
-					console.log(data);
 					$.notify({
 						title: '<strong>Success: </strong>',
 						message: 'Delete Success.'
@@ -221,7 +217,7 @@ app.controller(
 
 		//functionality upload
 		$scope.uploadPic = function(file, type) {
-			if (file) {console.log(type);
+			if (file) {
 				file.upload = Upload.upload({
 					url: 'api/UploadImage',
 					data: {file: file, username: $scope.username},
