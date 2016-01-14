@@ -165,7 +165,7 @@
             echo '<tr><td><span class="glyphicon glyphicon-globe icon-font"></span>' . $customer['contact_address'] . '</td></tr>';
             echo '<tr><td><span class="glyphicon glyphicon-envelope icon-font"></span>' . $customer['contact_email'] . '</td></tr>';
             echo '<tr><td><span class="glyphicon glyphicon-home icon-font"></span>
-                <a href="user.php?id='. $customer['customers_id'] .'">Store</a></td></tr>';
+                <a href="user.php?id='. $customer['customers_id'] .'">Go To Store</a></td></tr>';
             echo '</table>';
         }
     ?>
