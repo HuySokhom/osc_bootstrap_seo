@@ -157,7 +157,7 @@
 
 	  $prod_list_contents .= '<span class="price">'. $currencies->display_price($listing['products_price'],
               tep_get_tax_rate($listing['products_tax_class_id']))
-          .'</span><span style="float:right;display:none;">view: 120 </span>     <div
+          .'</span><span style="float:right;font-weight: bold;">view: '. $listing['products_viewed'] .' </span>     <div
 class="row"
 style="display:
  none;">';

@@ -38,9 +38,17 @@
 
 <?php
   } else {
-    $product_info_query = tep_db_query("select p.products_id, p.products_image_thumbnail, pd.products_name, pd.products_description, p.products_model, p
-.products_quantity, p
-.products_image, pd.products_url, p.products_price, p.products_tax_class_id, p.products_date_added, p.products_date_available, p.manufacturers_id from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd where p.products_status = '1' and p.products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "' and pd.products_id = p.products_id and pd.language_id = '" . (int)$languages_id . "'");
+    $product_info_query = tep_db_query("
+        select p.products_id, p.products_image_thumbnail, pd.products_name, pd.products_description, p.products_model, p
+        .products_quantity, pd.products_viewed, m.manufacturers_name, p.products_image, pd.products_url, p.products_price, p
+        .products_tax_class_id, p.products_date_added, p.products_date_available, p.manufacturers_id
+        from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd, " . TABLE_MANUFACTURERS . " m
+        where p.products_status = '1'
+        and p.products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "'
+        and pd.products_id = p.products_id
+        and p.manufacturers_id = m.manufacturers_id
+        and pd.language_id = '" . (int)$languages_id . "'
+    ");
     $product_info = tep_db_fetch_array($product_info_query);
 
     tep_db_query("update " . TABLE_PRODUCTS_DESCRIPTION . " set products_viewed = products_viewed+1 where products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "' and language_id = '" . (int)$languages_id . "'");
@@ -142,6 +150,21 @@
 <?php
     }
 ?>
+<div class="col-md-12">
+    <table style="width: 100%; margin-top: 10px;">
+        <tr>
+            <td width="35%">
+                <?php echo '<b>Post Date:</b> ' . date('d-F-Y', strtotime($product_info['products_date_added'])); ?>
+            </td>
+            <td>
+                <?php echo '<b>Kind Of:</b> ' . $product_info['manufacturers_name']; ?>
+            </td>
+            <td>
+                <?php echo '<b>View:</b> ' . $product_info['products_viewed']; ?>
+            </td>
+        </tr>
+    </table>
+</div>
 <div class="col-sm-6 col-md-8">
     <h4 class="page-header">Description:</h4>
     <div itemprop="description">
