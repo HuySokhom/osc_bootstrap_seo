@@ -215,61 +215,80 @@ app.controller(
 			}
 		};
 
+		// functionality check if in array of image
+		var checkImageType = function isInArray(value, array) {
+			return array.indexOf(value) > -1;
+		};
 		//functionality upload
 		$scope.uploadPic = function(file, type) {
 			if (file) {
-				file.upload = Upload.upload({
-					url: 'api/UploadImage',
-					data: {file: file, username: $scope.username},
-				});
-				file.upload.then(function (response) {
-					$timeout(function () {
-						file.result = response.data;
-						if(type == 'main_image'){
-							$scope.image = response.data.image;
-							$scope.image_thumbnail = response.data.image_thumbnail;
-						}
-						if(type == '1'){
-							$scope.image1 = response.data.image;
-							$scope.image_thumbnail1 = response.data.image_thumbnail;
-						}
-						if(type == '2'){
-							$scope.image2 = response.data.image;
-							$scope.image_thumbnail2 = response.data.image_thumbnail;
-						}
-						if(type == '3'){
-							$scope.image3 = response.data.image;
-							$scope.image_thumbnail3 = response.data.image_thumbnail;
-						}
-						if(type == '4'){
-							$scope.image4 = response.data.image;
-							$scope.image_thumbnail4 = response.data.image_thumbnail;
-						}
-						if(type == '5'){
-							$scope.image5 = response.data.image;
-							$scope.image_thumbnail5 = response.data.image_thumbnail;
-						}
-						if(type == '6'){
-							$scope.image6 = response.data.image;
-							$scope.image_thumbnail6 = response.data.image_thumbnail;
-						}
-						if(type == '7'){
-							$scope.image7 = response.data.image;
-							$scope.image_thumbnail7 = response.data.image_thumbnail;
-						}
-						if(type == '8'){
-							$scope.image8 = response.data.image;
-							$scope.image_thumbnail8 = response.data.image_thumbnail;
-						}
+				// check image type
+				// if need more add in imageType
+				var imageType = ['image/jpeg','image/png'];
+				if ( checkImageType(file.type, imageType) ) {
+					/* validate if image size is bigger than 10MB */
+					var imageSize = (file.size / 1024) / 1024;
+					if (imageSize < 5) {
+						file.upload = Upload.upload({
+							url: 'api/UploadImage',
+							data: {file: file, username: $scope.username},
+						});
+						file.upload.then(function (response) {
+							$timeout(function () {
+								file.result = response.data;
+								if (type == 'main_image') {
+									$scope.image = response.data.image;
+									$scope.image_thumbnail = response.data.image_thumbnail;
+								}
+								if (type == '1') {
+									$scope.image1 = response.data.image;
+									$scope.image_thumbnail1 = response.data.image_thumbnail;
+								}
+								if (type == '2') {
+									$scope.image2 = response.data.image;
+									$scope.image_thumbnail2 = response.data.image_thumbnail;
+								}
+								if (type == '3') {
+									$scope.image3 = response.data.image;
+									$scope.image_thumbnail3 = response.data.image_thumbnail;
+								}
+								if (type == '4') {
+									$scope.image4 = response.data.image;
+									$scope.image_thumbnail4 = response.data.image_thumbnail;
+								}
+								if (type == '5') {
+									$scope.image5 = response.data.image;
+									$scope.image_thumbnail5 = response.data.image_thumbnail;
+								}
+								if (type == '6') {
+									$scope.image6 = response.data.image;
+									$scope.image_thumbnail6 = response.data.image_thumbnail;
+								}
+								if (type == '7') {
+									$scope.image7 = response.data.image;
+									$scope.image_thumbnail7 = response.data.image_thumbnail;
+								}
+								if (type == '8') {
+									$scope.image8 = response.data.image;
+									$scope.image_thumbnail8 = response.data.image_thumbnail;
+								}
 
-					});
-				}, function (response) {
-					if (response.status > 0)
-						$scope.errorMsg = response.status + ': ' + response.data;
-				}, function (evt) {
-					// Math.min is to fix IE which reports 200% sometimes
-					file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-				});
+							});
+						}, function (response) {
+							if (response.status > 0)
+								$scope.errorMsg = response.status + ': ' + response.data;
+						}, function (evt) {
+							// Math.min is to fix IE which reports 200% sometimes
+							file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+						});
+					}
+					else{
+						alert('Sorry image size too big. We allow image size only 5MB.');
+					}
+				}
+				else {
+					alert('Invalid file. Support Image file only png/jpeg.');
+				}
 			}
 		};
 
