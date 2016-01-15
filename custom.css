@@ -311,7 +311,7 @@ p.lead del {
   margin: 0;
   font-size: 1em;
   letter-spacing: 0.1em;
-  color: rgb(142,11,0);
+  color: #FFFFFF;
   text-shadow: 1px 1px 1px rgba(255,255,255,0.6);
   border-bottom: 1px solid #ddd;
   padding-bottom: 10px;
@@ -533,4 +533,9 @@ h1, .h1 {
 }
 .new-image{
     height: 110px;
+}
+.background-image{
+    /*background-image: url('images/bg.png');*/
+    background: #069;
+    color: #ffffff;
 }

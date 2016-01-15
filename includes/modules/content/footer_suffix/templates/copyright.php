@@ -1,3 +1,3 @@
-<div class="col-sm-<?php echo $content_width; ?> text-center-xs">
+<div class="col-sm-12 align_center">
   <?php echo FOOTER_TEXT_BODY; ?>
 </div>

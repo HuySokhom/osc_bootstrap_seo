@@ -15,7 +15,7 @@
       </button>
       <a href="index.php">
         <span style="text-shadow: 3px 4px 5px #777777;font-size: 30px;">
-          FREE POSTING
+          <?php echo STORE_NAME;?>
         </span>
       </a>
       <?php
