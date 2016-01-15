@@ -120,19 +120,11 @@
 											ng-model="picFile"
 											name="file"
 											accept="image/*"
-											ngf-max-size="2MB"
 											ngf-model-invalid="errorFiles"
 											ngf-select="uploadPic(picFile, 'main_image')"
 											class="form-control"
-											ngf-pattern="'.jpg,.png'"
 											data-ng-value="image_thumbnail"
 										>
-										<i data-ng-show="myForm.file.$error.errorFiles">
-											Invalid file
-										</i>
-										<i data-ng-show="myForm.file.$error.maxSize">
-											File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M
-										</i>
 										<img
 											ng-show="image"
 											class="thumb"

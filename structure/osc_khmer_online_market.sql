@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 07, 2016 at 04:38 AM
+-- Generation Time: Jan 15, 2016 at 08:57 AM
 -- Server version: 5.5.46-0ubuntu0.12.04.2
 -- PHP Version: 5.4.43
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `action_recorder` (
   `identifier` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `success` char(1) COLLATE utf8_unicode_ci DEFAULT NULL,
   `date_added` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `action_recorder`
@@ -72,7 +72,9 @@ INSERT INTO `action_recorder` (`id`, `module`, `user_id`, `user_name`, `identifi
 (29, 'ar_admin_login', 1, 'admin', '127.0.0.1', '1', '2016-01-02 09:46:05'),
 (30, 'ar_admin_login', 1, 'admin', '127.0.0.1', '1', '2016-01-04 14:31:32'),
 (31, 'ar_admin_login', 1, 'admin', '127.0.0.1', '1', '2016-01-05 18:00:47'),
-(32, 'ar_admin_login', 1, 'admin', '127.0.0.1', '1', '2016-01-06 11:02:53');
+(32, 'ar_admin_login', 1, 'admin', '127.0.0.1', '1', '2016-01-06 11:02:53'),
+(33, 'ar_admin_login', 1, 'admin', '127.0.0.1', '1', '2016-01-08 18:20:59'),
+(34, 'ar_admin_login', 1, 'admin', '127.0.0.1', '1', '2016-01-12 10:42:48');
 
 -- --------------------------------------------------------
 
@@ -94,16 +96,19 @@ CREATE TABLE IF NOT EXISTS `address_book` (
   `entry_state` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `entry_country_id` int(11) NOT NULL DEFAULT '0',
   `entry_zone_id` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `address_book`
 --
 
 INSERT INTO `address_book` (`address_book_id`, `customers_id`, `entry_gender`, `entry_company`, `entry_firstname`, `entry_lastname`, `entry_street_address`, `entry_suburb`, `entry_postcode`, `entry_city`, `entry_state`, `entry_country_id`, `entry_zone_id`) VALUES
-(1, 1, 'm', 'test', 'test', 'test', 'test test', 'test', '12345', 'test', 'test', 12, 0),
+(1, 1, 'm', 'test', '', '', 'test test', 'test', '12345', 'test', 'test', 12, 0),
 (2, 2, 'm', 'reads', 'test', 'test', 'test test', '1234', '1241', 'atest', 'caga', 36, 0),
-(3, 3, 'm', '', 'GASG', 'sd gsgd', 'ZXC dasdt', '', '', '23r sv', '', 36, 0);
+(3, 3, 'm', '', 'GASG', 'sd gsgd', 'ZXC dasdt', '', '', '23r sv', '', 36, 0),
+(4, 4, '', NULL, '', '', '', NULL, '', '', NULL, 0, 0),
+(5, 5, '', NULL, '', '', '', NULL, '', '', NULL, 0, 0),
+(6, 6, '', NULL, '', '', '', NULL, '', '', NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -115,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `address_format` (
   `address_format_id` int(11) NOT NULL,
   `address_format` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
   `address_summary` varchar(48) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `address_format`
@@ -138,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `administrators` (
   `id` int(11) NOT NULL,
   `user_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `user_password` varchar(60) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `administrators`
@@ -167,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `banners` (
   `date_added` datetime NOT NULL,
   `date_status_change` datetime DEFAULT NULL,
   `status` int(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `banners`
@@ -230,7 +235,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `sort_order` int(3) DEFAULT NULL,
   `date_added` datetime DEFAULT NULL,
   `last_modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `categories`
@@ -299,7 +304,7 @@ CREATE TABLE IF NOT EXISTS `colors` (
   `status` tinyint(1) NOT NULL DEFAULT '1',
   `created` datetime NOT NULL,
   `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `colors`
@@ -335,7 +340,7 @@ CREATE TABLE IF NOT EXISTS `configuration` (
   `date_added` datetime NOT NULL,
   `use_function` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `set_function` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=1543 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `configuration`
@@ -377,7 +382,7 @@ INSERT INTO `configuration` (`configuration_id`, `configuration_title`, `configu
 (33, 'Best Sellers', 'MIN_DISPLAY_BESTSELLERS', '1', 'Minimum number of best sellers to display', 2, 15, NULL, '2015-02-26 16:56:11', NULL, NULL),
 (34, 'Also Purchased', 'MIN_DISPLAY_ALSO_PURCHASED', '1', 'Minimum number of products to display in the ''This Customer Also Purchased'' box', 2, 16, NULL, '2015-02-26 16:56:11', NULL, NULL),
 (35, 'Address Book Entries', 'MAX_ADDRESS_BOOK_ENTRIES', '5', 'Maximum address book entries a customer is allowed to have', 3, 1, NULL, '2015-02-26 16:56:11', NULL, NULL),
-(36, 'Search Results', 'MAX_DISPLAY_SEARCH_RESULTS', '20', 'Amount of products to list', 3, 2, NULL, '2015-02-26 16:56:11', NULL, NULL),
+(36, 'Search Results', 'MAX_DISPLAY_SEARCH_RESULTS', '30', 'Amount of products to list', 3, 2, '2016-01-14 15:23:28', '2015-02-26 16:56:11', NULL, NULL),
 (37, 'Page Links', 'MAX_DISPLAY_PAGE_LINKS', '5', 'Number of ''number'' links use for page-sets', 3, 3, NULL, '2015-02-26 16:56:11', NULL, NULL),
 (38, 'Special Products', 'MAX_DISPLAY_SPECIAL_PRODUCTS', '9', 'Maximum number of products on special to display', 3, 4, NULL, '2015-02-26 16:56:12', NULL, NULL),
 (39, 'New Products Module', 'MAX_DISPLAY_NEW_PRODUCTS', '27', 'Maximum number of new products to display in a category', 3, 5, '2015-11-12 17:26:24', '2015-02-26 16:56:12', NULL, NULL),
@@ -413,7 +418,7 @@ INSERT INTO `configuration` (`configuration_id`, `configuration_title`, `configu
 (69, 'Installed Modules', 'MODULE_ORDER_TOTAL_INSTALLED', 'ot_subtotal.php;ot_shipping.php;ot_tax.php;ot_total.php', 'List of order_total module filenames separated by a semi-colon. This is automatically updated. No need to edit. (Example: ot_subtotal.php;ot_tax.php;ot_shipping.php;ot_total.php)', 6, 0, '2015-06-09 16:09:33', '2015-02-26 16:56:14', NULL, NULL),
 (70, 'Installed Modules', 'MODULE_SHIPPING_INSTALLED', 'flat.php;table.php', 'List of shipping module filenames separated by a semi-colon. This is automatically updated. No need to edit. (Example: ups.php;flat.php;item.php)', 6, 0, '2015-06-04 14:42:05', '2015-02-26 16:56:14', NULL, NULL),
 (71, 'Installed Modules', 'MODULE_ACTION_RECORDER_INSTALLED', 'ar_admin_login.php;ar_contact_us.php;ar_reset_password.php;ar_tell_a_friend.php', 'List of action recorder module filenames separated by a semi-colon. This is automatically updated. No need to edit.', 6, 0, NULL, '2015-02-26 16:56:14', NULL, NULL),
-(72, 'Installed Modules', 'MODULE_SOCIAL_BOOKMARKS_INSTALLED', 'sb_email.php;sb_facebook.php;sb_facebook_like.php;sb_google_plus_share.php;sb_twitter.php;sb_pinterest.php', 'List of social bookmark module filenames separated by a semi-colon. This is automatically updated. No need to edit.', 6, 0, '2016-01-06 11:12:46', '2015-02-26 16:56:14', NULL, NULL),
+(72, 'Installed Modules', 'MODULE_SOCIAL_BOOKMARKS_INSTALLED', 'sb_facebook.php;sb_facebook_like.php;sb_twitter.php', 'List of social bookmark module filenames separated by a semi-colon. This is automatically updated. No need to edit.', 6, 0, '2016-01-06 11:12:46', '2015-02-26 16:56:14', NULL, NULL),
 (73, 'Enable Cash On Delivery Module', 'MODULE_PAYMENT_COD_STATUS', 'True', 'Do you want to accept Cash On Delevery payments?', 6, 1, NULL, '2015-02-26 16:56:14', NULL, 'tep_cfg_select_option(array(''True'', ''False''), '),
 (74, 'Payment Zone', 'MODULE_PAYMENT_COD_ZONE', '0', 'If a zone is selected, only enable this payment method for that zone.', 6, 2, NULL, '2015-02-26 16:56:14', 'tep_get_zone_class_title', 'tep_cfg_pull_down_zone_classes('),
 (75, 'Sort order of display.', 'MODULE_PAYMENT_COD_SORT_ORDER', '67', 'Sort order of display. Lowest is displayed first.', 6, 0, NULL, '2015-02-26 16:56:14', NULL, NULL),
@@ -427,19 +432,8 @@ INSERT INTO `configuration` (`configuration_id`, `configuration_title`, `configu
 (99, 'Allowed Attempts', 'MODULE_ACTION_RECORDER_ADMIN_LOGIN_ATTEMPTS', '3', 'Number of login attempts to allow within the specified period.', 6, 0, NULL, '2015-02-26 16:56:15', NULL, NULL),
 (100, 'Allowed Minutes', 'MODULE_ACTION_RECORDER_RESET_PASSWORD_MINUTES', '5', 'Number of minutes to allow password resets to occur.', 6, 0, NULL, '2015-02-26 16:56:15', NULL, NULL),
 (101, 'Allowed Attempts', 'MODULE_ACTION_RECORDER_RESET_PASSWORD_ATTEMPTS', '1', 'Number of password reset attempts to allow within the specified period.', 6, 0, NULL, '2015-02-26 16:56:15', NULL, NULL),
-(102, 'Enable E-Mail Module', 'MODULE_SOCIAL_BOOKMARKS_EMAIL_STATUS', 'True', 'Do you want to allow products to be shared through e-mail?', 6, 1, NULL, '2015-02-26 16:56:15', NULL, 'tep_cfg_select_option(array(''True'', ''False''), '),
-(103, 'Sort Order', 'MODULE_SOCIAL_BOOKMARKS_EMAIL_SORT_ORDER', '10', 'Sort order of display. Lowest is displayed first.', 6, 0, NULL, '2015-02-26 16:56:15', NULL, NULL),
-(104, 'Enable Google+ Share Module', 'MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_SHARE_STATUS', 'True', 'Do you want to allow products to be shared through Google+?', 6, 1, NULL, '2015-02-26 16:56:16', NULL, 'tep_cfg_select_option(array(''True'', ''False''), '),
-(105, 'Annotation', 'MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_SHARE_ANNOTATION', 'None', 'The annotation to display next to the button.', 6, 1, NULL, '2015-02-26 16:56:16', NULL, 'tep_cfg_select_option(array(''Inline'', ''Bubble'', ''Vertical-Bubble'', ''None''), '),
-(106, 'Width', 'MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_SHARE_WIDTH', '', 'The maximum width of the button.', 6, 0, NULL, '2015-02-26 16:56:16', NULL, NULL),
-(107, 'Height', 'MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_SHARE_HEIGHT', '15', 'Sets the height of the button.', 6, 1, NULL, '2015-02-26 16:56:16', NULL, 'tep_cfg_select_option(array(''15'', ''20'', ''24'', ''60''), '),
-(108, 'Alignment', 'MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_SHARE_ALIGN', 'Left', 'The alignment of the button assets.', 6, 1, NULL, '2015-02-26 16:56:16', NULL, 'tep_cfg_select_option(array(''Left'', ''Right''), '),
-(109, 'Sort Order', 'MODULE_SOCIAL_BOOKMARKS_GOOGLE_PLUS_SHARE_SORT_ORDER', '20', 'Sort order of display. Lowest is displayed first.', 6, 0, NULL, '2015-02-26 16:56:16', NULL, NULL),
-(112, 'Enable Twitter Module', 'MODULE_SOCIAL_BOOKMARKS_TWITTER_STATUS', 'True', 'Do you want to allow products to be shared through Twitter?', 6, 1, NULL, '2015-02-26 16:56:16', NULL, 'tep_cfg_select_option(array(''True'', ''False''), '),
-(113, 'Sort Order', 'MODULE_SOCIAL_BOOKMARKS_TWITTER_SORT_ORDER', '40', 'Sort order of display. Lowest is displayed first.', 6, 0, NULL, '2015-02-26 16:56:16', NULL, NULL),
-(114, 'Enable Pinterest Module', 'MODULE_SOCIAL_BOOKMARKS_PINTEREST_STATUS', 'True', 'Do you want to allow Pinterest Button?', 6, 1, NULL, '2015-02-26 16:56:16', NULL, 'tep_cfg_select_option(array(''True'', ''False''), '),
-(115, 'Layout Position', 'MODULE_SOCIAL_BOOKMARKS_PINTEREST_BUTTON_COUNT_POSITION', 'None', 'Horizontal or Vertical or None', 6, 2, NULL, '2015-02-26 16:56:16', NULL, 'tep_cfg_select_option(array(''Horizontal'', ''Vertical'', ''None''), '),
-(116, 'Sort Order', 'MODULE_SOCIAL_BOOKMARKS_PINTEREST_SORT_ORDER', '50', 'Sort order of display. Lowest is displayed first.', 6, 0, NULL, '2015-02-26 16:56:16', NULL, NULL),
+(112, 'Enable Twitter Module', 'MODULE_SOCIAL_BOOKMARKS_TWITTER_STATUS', 'False', 'Do you want to allow products to be shared through Twitter?', 6, 1, NULL, '2015-02-26 16:56:16', NULL, 'tep_cfg_select_option(array(''True'', ''False''), '),
+(113, 'Sort Order', 'MODULE_SOCIAL_BOOKMARKS_TWITTER_SORT_ORDER', '1', 'Sort order of display. Lowest is displayed first.', 6, 0, NULL, '2015-02-26 16:56:16', NULL, NULL),
 (117, 'Country of Origin', 'SHIPPING_ORIGIN_COUNTRY', '223', 'Select the country of origin to be used in shipping quotes.', 7, 1, NULL, '2015-02-26 16:56:16', 'tep_get_country_name', 'tep_cfg_pull_down_country_list('),
 (118, 'Postal Code', 'SHIPPING_ORIGIN_ZIP', 'NONE', 'Enter the Postal Code (ZIP) of the Store to be used in shipping quotes.', 7, 2, NULL, '2015-02-26 16:56:16', NULL, NULL),
 (119, 'Enter the Maximum Package Weight you will ship', 'SHIPPING_MAX_WEIGHT', '50', 'Carriers have a max weight limit for a single package. This is a common one for all.', 7, 3, NULL, '2015-02-26 16:56:16', NULL, NULL),
@@ -535,7 +529,7 @@ INSERT INTO `configuration` (`configuration_id`, `configuration_title`, `configu
 (209, 'Pages', 'MODULE_HEADER_TAGS_PRODUCT_COLORBOX_PAGES', 'product_info.php', 'The pages to add the Colorbox Scripts to.', 6, 0, NULL, '2015-02-26 16:56:54', 'ht_product_colorbox_show_pages', 'ht_product_colorbox_edit_pages('),
 (210, 'Sort Order', 'MODULE_HEADER_TAGS_PRODUCT_COLORBOX_SORT_ORDER', '900', 'Sort order of display. Lowest is displayed first.', 6, 0, NULL, '2015-02-26 16:56:54', NULL, NULL),
 (211, 'Installed Modules', 'MODULE_ADMIN_DASHBOARD_INSTALLED', 'd_admin_logins.php;d_total_customers.php;d_total_revenue.php', 'List of Administration Tool Dashboard module filenames separated by a semi-colon. This is automatically updated. No need to edit.', 6, 0, '2015-11-03 13:05:43', '2015-02-26 16:56:54', NULL, NULL),
-(234, 'Installed Modules', 'MODULE_BOXES_INSTALLED', 'bm_categories.php;bm_manufacturers.php;bm_product_social_bookmarks.php;bm_specials.php;bm_whats_new.php', 'List of box module filenames separated by a semi-colon. This is automatically updated. No need to edit.', 6, 0, '2016-01-06 11:50:12', '2015-02-26 16:56:55', NULL, NULL),
+(234, 'Installed Modules', 'MODULE_BOXES_INSTALLED', 'bm_categories.php;bm_specials.php', 'List of box module filenames separated by a semi-colon. This is automatically updated. No need to edit.', 6, 0, '2016-01-13 16:42:18', '2015-02-26 16:56:55', NULL, NULL),
 (254, 'Installed Template Block Groups', 'TEMPLATE_BLOCK_GROUPS', 'boxes;header_tags', 'This is automatically updated. No need to edit.', 6, 0, NULL, '2015-02-26 16:56:56', NULL, NULL),
 (255, 'Installed Modules', 'MODULE_CONTENT_INSTALLED', 'account/cm_account_stripe_cards;account/cm_account_set_password;checkout_success/cm_cs_redirect_old_order;checkout_success/cm_cs_thank_you;checkout_success/cm_cs_product_notifications;checkout_success/cm_cs_downloads;footer/cm_footer_account;footer/cm_footer_contact_us;footer/cm_footer_information_links;footer/cm_footer_text;footer_suffix/cm_footer_extra_copyright;footer_suffix/cm_footer_extra_icons;header/cm_header_logo;header/cm_header_search;header/cm_header_breadcrumb;login/cm_paypal_login;login/cm_login_form;login/cm_create_account_link;navigation/cm_navbar', 'This is automatically updated. No need to edit.', 6, 0, NULL, '2015-02-26 16:56:57', NULL, NULL),
 (256, 'Enable Set Account Password', 'MODULE_CONTENT_ACCOUNT_SET_PASSWORD_STATUS', 'True', 'Do you want to enable the Set Account Password module?', 6, 1, NULL, '2015-02-26 16:56:57', NULL, 'tep_cfg_select_option(array(''True'', ''False''), '),
@@ -577,8 +571,7 @@ INSERT INTO `configuration` (`configuration_id`, `configuration_title`, `configu
 (308, 'Enable Header Logo Module', 'MODULE_CONTENT_HEADER_LOGO_STATUS', 'True', 'Do you want to enable the Logo content module?', 6, 1, NULL, '2015-02-27 12:23:56', NULL, 'tep_cfg_select_option(array(''True'', ''False''), '),
 (309, 'Content Width', 'MODULE_CONTENT_HEADER_LOGO_CONTENT_WIDTH', '4', 'What width container should the content be shown in?', 6, 1, NULL, '2015-02-27 12:23:56', NULL, 'tep_cfg_select_option(array(''12'', ''11'', ''10'', ''9'', ''8'', ''7'', ''6'', ''5'', ''4'', ''3'', ''2'', ''1''), '),
 (310, 'Sort Order', 'MODULE_CONTENT_HEADER_LOGO_SORT_ORDER', '0', 'Sort order of display. Lowest is displayed first.', 6, 0, NULL, '2015-02-27 12:23:56', NULL, NULL),
-(311, 'Enable Navbar Module', 'MODULE_CONTENT_NAVBAR_STATUS', 'False', 'Should the Navbar be shown? ', 6, 1, NULL, '2015-02-27 12:24:09', NULL, 'tep_cfg_select_option(array(''True'', ''False''), ');
-INSERT INTO `configuration` (`configuration_id`, `configuration_title`, `configuration_key`, `configuration_value`, `configuration_description`, `configuration_group_id`, `sort_order`, `last_modified`, `date_added`, `use_function`, `set_function`) VALUES
+(311, 'Enable Navbar Module', 'MODULE_CONTENT_NAVBAR_STATUS', 'False', 'Should the Navbar be shown? ', 6, 1, NULL, '2015-02-27 12:24:09', NULL, 'tep_cfg_select_option(array(''True'', ''False''), '),
 (312, 'Sort Order', 'MODULE_CONTENT_NAVBAR_SORT_ORDER', '0', 'Sort order of display. Lowest is displayed first.', 6, 0, NULL, '2015-02-27 12:24:09', NULL, NULL),
 (313, 'Enable Search Box Module', 'MODULE_CONTENT_HEADER_SEARCH_STATUS', 'False', 'Do you want to enable the Search Box content module?', 6, 1, NULL, '2015-02-27 12:24:17', NULL, 'tep_cfg_select_option(array(''True'', ''False''), '),
 (314, 'Content Width', 'MODULE_CONTENT_HEADER_SEARCH_CONTENT_WIDTH', '4', 'What width container should the content be shown in?', 6, 1, NULL, '2015-02-27 12:24:17', NULL, 'tep_cfg_select_option(array(''12'', ''11'', ''10'', ''9'', ''8'', ''7'', ''6'', ''5'', ''4'', ''3'', ''2'', ''1''), '),
@@ -588,7 +581,8 @@ INSERT INTO `configuration` (`configuration_id`, `configuration_title`, `configu
 (318, 'Sort Order', 'MODULE_CONTENT_FOOTER_ACCOUNT_SORT_ORDER', '0', 'Sort order of display. Lowest is displayed first.', 6, 0, NULL, '2015-02-27 12:25:00', NULL, NULL),
 (319, 'Enable Contact Us Footer Module', 'MODULE_CONTENT_FOOTER_CONTACT_US_STATUS', 'True', 'Do you want to enable the Contact Us content module?', 6, 1, NULL, '2015-02-27 12:25:11', NULL, 'tep_cfg_select_option(array(''True'', ''False''), '),
 (320, 'Content Width', 'MODULE_CONTENT_FOOTER_CONTACT_US_CONTENT_WIDTH', '4', 'What width container should the content be shown in? (12 = full width, 6 = half width).', 6, 1, NULL, '2015-02-27 12:25:11', NULL, 'tep_cfg_select_option(array(''12'', ''11'', ''10'', ''9'', ''8'', ''7'', ''6'', ''5'', ''4'', ''3'', ''2'', ''1''), '),
-(321, 'Sort Order', 'MODULE_CONTENT_FOOTER_CONTACT_US_SORT_ORDER', '0', 'Sort order of display. Lowest is displayed first.', 6, 0, NULL, '2015-02-27 12:25:11', NULL, NULL),
+(321, 'Sort Order', 'MODULE_CONTENT_FOOTER_CONTACT_US_SORT_ORDER', '0', 'Sort order of display. Lowest is displayed first.', 6, 0, NULL, '2015-02-27 12:25:11', NULL, NULL);
+INSERT INTO `configuration` (`configuration_id`, `configuration_title`, `configuration_key`, `configuration_value`, `configuration_description`, `configuration_group_id`, `sort_order`, `last_modified`, `date_added`, `use_function`, `set_function`) VALUES
 (325, 'Enable Generic Text Footer Module', 'MODULE_CONTENT_FOOTER_TEXT_STATUS', 'True', 'Do you want to enable the Generic Text content module?', 6, 1, NULL, '2015-02-27 12:26:32', NULL, 'tep_cfg_select_option(array(''True'', ''False''), '),
 (326, 'Content Width', 'MODULE_CONTENT_FOOTER_TEXT_CONTENT_WIDTH', '3', 'What width container should the content be shown in? (12 = full width, 6 = half width).', 6, 1, NULL, '2015-02-27 12:26:32', NULL, 'tep_cfg_select_option(array(''12'', ''11'', ''10'', ''9'', ''8'', ''7'', ''6'', ''5'', ''4'', ''3'', ''2'', ''1''), '),
 (327, 'Sort Order', 'MODULE_CONTENT_FOOTER_TEXT_SORT_ORDER', '0', 'Sort order of display. Lowest is displayed first.', 6, 0, NULL, '2015-02-27 12:26:32', NULL, NULL),
@@ -684,9 +678,6 @@ INSERT INTO `configuration` (`configuration_id`, `configuration_title`, `configu
 (1505, 'Enable Categories Module', 'MODULE_BOXES_CATEGORIES_STATUS', 'True', 'Do you want to add the module to your shop?', 6, 1, NULL, '2015-06-11 11:22:08', NULL, 'tep_cfg_select_option(array(''True'', ''False''), '),
 (1506, 'Content Placement', 'MODULE_BOXES_CATEGORIES_CONTENT_PLACEMENT', 'Left Column', 'Should the module be loaded in the left or right column?', 6, 1, NULL, '2015-06-11 11:22:08', NULL, 'tep_cfg_select_option(array(''Left Column'', ''Right Column''), '),
 (1507, 'Sort Order', 'MODULE_BOXES_CATEGORIES_SORT_ORDER', '0', 'Sort order of display. Lowest is displayed first.', 6, 0, NULL, '2015-06-11 11:22:08', NULL, NULL),
-(1508, 'Enable What''s New Module', 'MODULE_BOXES_WHATS_NEW_STATUS', 'True', 'Do you want to add the module to your shop?', 6, 1, NULL, '2015-09-24 18:36:51', NULL, 'tep_cfg_select_option(array(''True'', ''False''), '),
-(1509, 'Content Placement', 'MODULE_BOXES_WHATS_NEW_CONTENT_PLACEMENT', 'Left Column', 'Should the module be loaded in the left or right column?', 6, 1, NULL, '2015-09-24 18:36:51', NULL, 'tep_cfg_select_option(array(''Left Column'', ''Right Column''), '),
-(1510, 'Sort Order', 'MODULE_BOXES_WHATS_NEW_SORT_ORDER', '0', 'Sort order of display. Lowest is displayed first.', 6, 0, NULL, '2015-09-24 18:36:52', NULL, NULL),
 (1511, 'Require users to login to reply?', 'NEWS_REPLY', 'true', 'This makes users create an account at your store to reply to prevent spam.', 367, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, 'tep_cfg_select_option(array(''true'', ''false''),'),
 (1512, 'Receive email when user replies?', 'NEWS_EMAIL', 'true', 'This will send an email when a user replies?', 367, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, 'tep_cfg_select_option(array(''true'', ''false''),'),
 (1513, 'Require replies to be approved by admin?', 'NEWS_APPROVED', 'false', 'Set to true if you want to approve user repies before they display on your store.', 367, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, 'tep_cfg_select_option(array(''true'', ''false''),'),
@@ -700,22 +691,16 @@ INSERT INTO `configuration` (`configuration_id`, `configuration_title`, `configu
 (1521, 'Sort Order', 'MODULE_ADMIN_DASHBOARD_TOTAL_REVENUE_SORT_ORDER', '0', 'Sort order of display. Lowest is displayed first.', 6, 0, NULL, '2015-11-03 13:05:39', NULL, NULL),
 (1522, 'Enable Administrator Logins Module', 'MODULE_ADMIN_DASHBOARD_ADMIN_LOGINS_STATUS', 'True', 'Do you want to show the latest administrator logins on the dashboard?', 6, 1, NULL, '2015-11-03 13:05:42', NULL, 'tep_cfg_select_option(array(''True'', ''False''), '),
 (1523, 'Sort Order', 'MODULE_ADMIN_DASHBOARD_ADMIN_LOGINS_SORT_ORDER', '0', 'Sort order of display. Lowest is displayed first.', 6, 0, NULL, '2015-11-03 13:05:42', NULL, NULL),
-(1524, 'Enable Product Social Bookmarks Module', 'MODULE_BOXES_PRODUCT_SOCIAL_BOOKMARKS_STATUS', 'True', 'Do you want to add the module to your shop?', 6, 1, NULL, '2016-01-05 18:20:08', NULL, 'tep_cfg_select_option(array(''True'', ''False''), '),
-(1525, 'Content Placement', 'MODULE_BOXES_PRODUCT_SOCIAL_BOOKMARKS_CONTENT_PLACEMENT', 'Right Column', 'Should the module be loaded in the left or right column?', 6, 1, NULL, '2016-01-05 18:20:08', NULL, 'tep_cfg_select_option(array(''Left Column'', ''Right Column''), '),
-(1526, 'Sort Order', 'MODULE_BOXES_PRODUCT_SOCIAL_BOOKMARKS_SORT_ORDER', '0', 'Sort order of display. Lowest is displayed first.', 6, 0, NULL, '2016-01-05 18:20:08', NULL, NULL),
 (1527, 'Enable Specials Module', 'MODULE_BOXES_SPECIALS_STATUS', 'True', 'Do you want to add the module to your shop?', 6, 1, NULL, '2016-01-05 18:20:20', NULL, 'tep_cfg_select_option(array(''True'', ''False''), '),
 (1528, 'Content Placement', 'MODULE_BOXES_SPECIALS_CONTENT_PLACEMENT', 'Right Column', 'Should the module be loaded in the left or right column?', 6, 1, NULL, '2016-01-05 18:20:20', NULL, 'tep_cfg_select_option(array(''Left Column'', ''Right Column''), '),
 (1529, 'Sort Order', 'MODULE_BOXES_SPECIALS_SORT_ORDER', '0', 'Sort order of display. Lowest is displayed first.', 6, 0, NULL, '2016-01-05 18:20:21', NULL, NULL),
 (1533, 'Enable Facebook Like Module', 'MODULE_SOCIAL_BOOKMARKS_FACEBOOK_LIKE_STATUS', 'True', 'Do you want to allow products to be shared through Facebook Like?', 6, 1, NULL, '2016-01-06 11:12:46', NULL, 'tep_cfg_select_option(array(''True'', ''False''), '),
-(1534, 'Layout Style', 'MODULE_SOCIAL_BOOKMARKS_FACEBOOK_LIKE_STYLE', 'Standard', 'Determines the size and amount of social context next to the button.', 6, 1, NULL, '2016-01-06 11:12:46', NULL, 'tep_cfg_select_option(array(''Standard'', ''Button Count''), '),
-(1535, 'Show Faces', 'MODULE_SOCIAL_BOOKMARKS_FACEBOOK_LIKE_FACES', 'False', 'Show profile pictures below the button?', 6, 1, NULL, '2016-01-06 11:12:46', NULL, 'tep_cfg_select_option(array(''True'', ''False''), '),
-(1536, 'Width', 'MODULE_SOCIAL_BOOKMARKS_FACEBOOK_LIKE_WIDTH', '125', 'The width of the iframe in pixels.', 6, 0, NULL, '2016-01-06 11:12:46', NULL, NULL),
+(1534, 'Layout Style', 'MODULE_SOCIAL_BOOKMARKS_FACEBOOK_LIKE_STYLE', 'Button Count', 'Determines the size and amount of social context next to the button.', 6, 1, NULL, '2016-01-06 11:12:46', NULL, 'tep_cfg_select_option(array(''Standard'', ''Button Count''), '),
+(1535, 'Show Faces', 'MODULE_SOCIAL_BOOKMARKS_FACEBOOK_LIKE_FACES', 'True', 'Show profile pictures below the button?', 6, 1, NULL, '2016-01-06 11:12:46', NULL, 'tep_cfg_select_option(array(''True'', ''False''), '),
+(1536, 'Width', 'MODULE_SOCIAL_BOOKMARKS_FACEBOOK_LIKE_WIDTH', '200', 'The width of the iframe in pixels.', 6, 0, NULL, '2016-01-06 11:12:46', NULL, NULL),
 (1537, 'Verb to Display', 'MODULE_SOCIAL_BOOKMARKS_FACEBOOK_LIKE_VERB', 'Like', 'The verb to display in the button.', 6, 1, NULL, '2016-01-06 11:12:46', NULL, 'tep_cfg_select_option(array(''Like'', ''Recommend''), '),
-(1538, 'Color Scheme', 'MODULE_SOCIAL_BOOKMARKS_FACEBOOK_LIKE_SCHEME', 'Light', 'The color scheme of the button.', 6, 1, NULL, '2016-01-06 11:12:46', NULL, 'tep_cfg_select_option(array(''Light'', ''Dark''), '),
-(1539, 'Sort Order', 'MODULE_SOCIAL_BOOKMARKS_FACEBOOK_LIKE_SORT_ORDER', '0', 'Sort order of display. Lowest is displayed first.', 6, 0, NULL, '2016-01-06 11:12:46', NULL, NULL),
-(1540, 'Enable Manufacturers Module', 'MODULE_BOXES_MANUFACTURERS_STATUS', 'True', 'Do you want to add the module to your shop?', 6, 1, NULL, '2016-01-06 11:50:07', NULL, 'tep_cfg_select_option(array(''True'', ''False''), '),
-(1541, 'Content Placement', 'MODULE_BOXES_MANUFACTURERS_CONTENT_PLACEMENT', 'Left Column', 'Should the module be loaded in the left or right column?', 6, 1, NULL, '2016-01-06 11:50:07', NULL, 'tep_cfg_select_option(array(''Left Column'', ''Right Column''), '),
-(1542, 'Sort Order', 'MODULE_BOXES_MANUFACTURERS_SORT_ORDER', '0', 'Sort order of display. Lowest is displayed first.', 6, 0, NULL, '2016-01-06 11:50:07', NULL, NULL);
+(1538, 'Color Scheme', 'MODULE_SOCIAL_BOOKMARKS_FACEBOOK_LIKE_SCHEME', 'Dark', 'The color scheme of the button.', 6, 1, NULL, '2016-01-06 11:12:46', NULL, 'tep_cfg_select_option(array(''Light'', ''Dark''), '),
+(1539, 'Sort Order', 'MODULE_SOCIAL_BOOKMARKS_FACEBOOK_LIKE_SORT_ORDER', '0', 'Sort order of display. Lowest is displayed first.', 6, 0, NULL, '2016-01-06 11:12:46', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -729,7 +714,7 @@ CREATE TABLE IF NOT EXISTS `configuration_group` (
   `configuration_group_description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `sort_order` int(5) DEFAULT NULL,
   `visible` int(1) DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=368 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `configuration_group`
@@ -767,7 +752,7 @@ CREATE TABLE IF NOT EXISTS `countries` (
   `countries_iso_code_2` char(2) COLLATE utf8_unicode_ci NOT NULL,
   `countries_iso_code_3` char(3) COLLATE utf8_unicode_ci NOT NULL,
   `address_format_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=240 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `countries`
@@ -1031,7 +1016,7 @@ CREATE TABLE IF NOT EXISTS `currencies` (
   `decimal_places` char(1) COLLATE utf8_unicode_ci DEFAULT NULL,
   `value` float(13,8) DEFAULT NULL,
   `last_updated` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `currencies`
@@ -1054,6 +1039,7 @@ CREATE TABLE IF NOT EXISTS `customers` (
   `customers_firstname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `customers_lastname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `user_name` varchar(127) COLLATE utf8_unicode_ci NOT NULL,
+  `photo` varchar(127) COLLATE utf8_unicode_ci NOT NULL,
   `customers_dob` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `customers_email_address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `customers_default_address_id` int(11) DEFAULT NULL,
@@ -1062,16 +1048,19 @@ CREATE TABLE IF NOT EXISTS `customers` (
   `customers_fax` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `customers_password` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `customers_newsletter` char(1) COLLATE utf8_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`customers_id`, `customers_location`, `customers_gender`, `customers_firstname`, `customers_lastname`, `user_name`, `customers_dob`, `customers_email_address`, `customers_default_address_id`, `customers_address`, `customers_telephone`, `customers_fax`, `customers_password`, `customers_newsletter`) VALUES
-(1, 5, 'm', 'test', 'test', 'test posting', '2010-02-17 00:00:00', 'test@test.com', 1, 'phnom penh', '1234124', '', '$P$DHXuIqt1FraLmwA0.jDbRUQKNw69qs.', '1'),
-(2, 0, 'm', 'test', 'test', '', '2010-05-06 00:00:00', 'cvn@testw.adf', 2, '', '12512', 'test@test.com', '$P$DpiUh/.52rNO0l1mcIRJgTWMWkXjCp/', ''),
-(3, 0, 'm', 'GASG', 'sd gsgd', '', '1999-01-05 00:00:00', 'asg@gm.com', 3, '', '1241241 52 1255', '', '$P$DWCxvfMUNfRgLmjSP01fkWZIVEL.fB.', '');
+INSERT INTO `customers` (`customers_id`, `customers_location`, `customers_gender`, `customers_firstname`, `customers_lastname`, `user_name`, `photo`, `customers_dob`, `customers_email_address`, `customers_default_address_id`, `customers_address`, `customers_telephone`, `customers_fax`, `customers_password`, `customers_newsletter`) VALUES
+(1, 3, '', 'test', 'test', 'test posting', '', '0000-00-00 00:00:00', 'test@test.com', 1, 'phnom penh', '0912 332', '', '$P$DHXuIqt1FraLmwA0.jDbRUQKNw69qs.', '1'),
+(2, 0, 'm', 'test', 'test', '', '', '2010-05-06 00:00:00', 'cvn@testw.adf', 2, '', '12512', 'test@test.com', '$P$DpiUh/.52rNO0l1mcIRJgTWMWkXjCp/', ''),
+(3, 0, 'm', 'GASG', 'sd gsgd', '', '', '1999-01-05 00:00:00', 'asg@gm.com', 3, '', '1241241 52 1255', '', '$P$DWCxvfMUNfRgLmjSP01fkWZIVEL.fB.', ''),
+(4, 0, '', '', '', 'test', '', '0000-00-00 00:00:00', 'test@test123.com', 4, '', '', '', '$P$DZzKStkf05c.AJtH/FjMmTBwEDpyKf0', ''),
+(5, 21, '', '', '', 'ate', '', '0000-00-00 00:00:00', 'test@21test.com', 5, 'hohohohohoho', '11111111111111111111111111111', '', '$P$Dzk5dwyypgi7zq0E6LngYaqNzdgK3//', ''),
+(6, 0, '', '', '', 'gooo', '', '0000-00-00 00:00:00', 'goo@gmail.com', 6, '', '', '', '$P$DxmYD6GiXi0cLukSEyDtCo53yRQw7R0', '');
 
 -- --------------------------------------------------------
 
@@ -1140,9 +1129,12 @@ CREATE TABLE IF NOT EXISTS `customers_info` (
 --
 
 INSERT INTO `customers_info` (`customers_info_id`, `customers_info_date_of_last_logon`, `customers_info_number_of_logons`, `customers_info_date_account_created`, `customers_info_date_account_last_modified`, `global_product_notifications`, `password_reset_key`, `password_reset_date`) VALUES
-(1, '2016-01-07 10:35:12', 43, '2015-02-27 12:38:45', '2016-01-05 10:46:09', 0, NULL, NULL),
+(1, '2016-01-14 14:36:03', 54, '2015-02-27 12:38:45', '2016-01-14 14:27:05', 0, NULL, NULL),
 (2, NULL, 0, '2015-09-30 16:39:51', NULL, 0, NULL, NULL),
-(3, NULL, 0, '2015-11-12 19:26:58', '2015-11-12 19:33:11', 0, NULL, NULL);
+(3, NULL, 0, '2015-11-12 19:26:58', '2015-11-12 19:33:11', 0, NULL, NULL),
+(4, '2016-01-09 17:10:45', 2, '2016-01-09 17:06:43', NULL, 0, NULL, NULL),
+(5, NULL, 0, '2016-01-10 14:46:31', '2016-01-10 14:52:53', 0, NULL, NULL),
+(6, '2016-01-14 14:09:32', 1, '2016-01-14 13:07:07', NULL, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1188,7 +1180,7 @@ CREATE TABLE IF NOT EXISTS `geo_zones` (
   `geo_zone_description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `last_modified` datetime DEFAULT NULL,
   `date_added` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `geo_zones`
@@ -1212,7 +1204,7 @@ CREATE TABLE IF NOT EXISTS `image_slider` (
   `status` tinyint(1) NOT NULL,
   `created` datetime NOT NULL,
   `sort_order` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `image_slider`
@@ -1220,16 +1212,9 @@ CREATE TABLE IF NOT EXISTS `image_slider` (
 
 INSERT INTO `image_slider` (`id`, `text`, `image`, `image_thumbnail`, `link`, `status`, `created`, `sort_order`) VALUES
 (66, 'test', 'iPhone-7-Release-Date.1451538338.jpg', 'image-thumbnail/iPhone-7-Release-Date.1451538338.jpg', '', 0, '2015-12-31 12:05:49', 1),
-(72, 'ZC', 'iphone-5s.1451538880.jpg', 'image-thumbnail/iphone-5s.1451538880.jpg', '', 0, '2015-12-31 12:13:05', 2),
-(73, 'zxv efh24', 'Visa-Mastercard-credit-cards-e1387426494114.1451538800.jpg', 'image-thumbnail/Visa-Mastercard-credit-cards-e1387426494114.1451538800.jpg', '', 0, '2015-12-31 12:13:44', 1),
-(75, 'Af', 'Nature-sea-scenery-travel-photography-image-768x1366.1451546327.jpg', 'image-thumbnail/Nature-sea-scenery-travel-photography-image-768x1366.1451546327.jpg', '', 0, '2015-12-31 14:18:49', 0),
 (76, 'ZXSD', 'philip.1451546339.jpg', 'image-thumbnail/philip.1451546339.jpg', '', 0, '2015-12-31 14:19:01', 3),
-(77, 'xzcv', '11952989_930159617033941_4881288092699221522_n.1451546362.jpg', 'image-thumbnail/11952989_930159617033941_4881288092699221522_n.1451546362.jpg', '', 0, '2015-12-31 14:19:27', 4),
-(78, 'eee', 'wallpapers-hd-7986-8317-hd-wallpapers.1451546381.jpg', 'image-thumbnail/wallpapers-hd-7986-8317-hd-wallpapers.1451546381.jpg', '', 0, '2015-12-31 14:19:43', 0),
 (79, 'ឋខ', 'Visa-Mastercard-credit-cards-e1387426494114.1451546409.jpg', 'image-thumbnail/Visa-Mastercard-credit-cards-e1387426494114.1451546409.jpg', '', 0, '2015-12-31 14:20:02', 0),
-(80, 'សដសង​សដង​', 'Visa-Mastercard-credit-cards-e1387426494114.1451546426.jpg', 'image-thumbnail/Visa-Mastercard-credit-cards-e1387426494114.1451546426.jpg', '', 0, '2015-12-31 14:20:27', 0),
-(81, 'ស​ៗ"', '11866435_884222554979832_6150711205517164049_n.1451546443.png', 'image-thumbnail/11866435_884222554979832_6150711205517164049_n.1451546443.png', '', 0, '2015-12-31 14:20:44', 0),
-(83, 'zAS', '', '', '', 0, '2015-12-31 14:21:27', 0);
+(81, 'ស​ៗ"', '11866435_884222554979832_6150711205517164049_n.1451546443.png', 'image-thumbnail/11866435_884222554979832_6150711205517164049_n.1451546443.png', '', 0, '2015-12-31 14:20:44', 0);
 
 -- --------------------------------------------------------
 
@@ -1244,7 +1229,7 @@ CREATE TABLE IF NOT EXISTS `languages` (
   `image` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
   `directory` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
   `sort_order` int(3) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `languages`
@@ -1264,7 +1249,7 @@ CREATE TABLE IF NOT EXISTS `location` (
   `name` varchar(175) NOT NULL,
   `created` datetime NOT NULL,
   `modifies` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `location`
@@ -1310,7 +1295,7 @@ CREATE TABLE IF NOT EXISTS `manufacturers` (
   `manufacturers_image` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
   `date_added` datetime DEFAULT NULL,
   `last_modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `manufacturers`
@@ -1355,7 +1340,7 @@ CREATE TABLE IF NOT EXISTS `news` (
   `month_date` varchar(20) NOT NULL DEFAULT '',
   `date_created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `replys` int(12) DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `news`
@@ -1379,7 +1364,7 @@ CREATE TABLE IF NOT EXISTS `newsletters` (
   `date_sent` datetime DEFAULT NULL,
   `status` int(1) DEFAULT NULL,
   `locked` int(1) DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `newsletters`
@@ -1400,7 +1385,7 @@ CREATE TABLE IF NOT EXISTS `news_description` (
   `language_id` int(1) NOT NULL DEFAULT '1',
   `name` varchar(64) DEFAULT NULL,
   `content` text
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `news_description`
@@ -1477,7 +1462,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `orders_date_finished` datetime DEFAULT NULL,
   `currency` char(3) COLLATE utf8_unicode_ci DEFAULT NULL,
   `currency_value` decimal(14,6) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `orders`
@@ -1507,7 +1492,7 @@ CREATE TABLE IF NOT EXISTS `orders_products` (
   `final_price` decimal(15,4) NOT NULL,
   `products_tax` decimal(7,4) NOT NULL,
   `products_quantity` int(2) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `orders_products`
@@ -1545,7 +1530,7 @@ CREATE TABLE IF NOT EXISTS `orders_products_attributes` (
   `products_options_values` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `options_values_price` decimal(15,4) NOT NULL,
   `price_prefix` char(1) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `orders_products_attributes`
@@ -1615,7 +1600,7 @@ CREATE TABLE IF NOT EXISTS `orders_status_history` (
   `date_added` datetime NOT NULL,
   `customer_notified` int(1) DEFAULT '0',
   `comments` text COLLATE utf8_unicode_ci
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `orders_status_history`
@@ -1646,7 +1631,7 @@ CREATE TABLE IF NOT EXISTS `orders_total` (
   `value` decimal(15,4) NOT NULL,
   `class` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `sort_order` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `orders_total`
@@ -1684,7 +1669,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `customers_id` int(11) NOT NULL,
   `products_quantity` int(4) NOT NULL,
   `products_model` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `products_image` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `products_image` varchar(220) COLLATE utf8_unicode_ci DEFAULT NULL,
   `products_image_thumbnail` varchar(220) COLLATE utf8_unicode_ci NOT NULL,
   `products_price` decimal(15,4) NOT NULL,
   `products_date_added` datetime NOT NULL,
@@ -1695,18 +1680,42 @@ CREATE TABLE IF NOT EXISTS `products` (
   `products_tax_class_id` int(11) NOT NULL,
   `manufacturers_id` int(11) DEFAULT NULL,
   `products_ordered` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`products_id`, `location_id`, `customers_id`, `products_quantity`, `products_model`, `products_image`, `products_image_thumbnail`, `products_price`, `products_date_added`, `products_last_modified`, `products_date_available`, `products_weight`, `products_status`, `products_tax_class_id`, `manufacturers_id`, `products_ordered`) VALUES
-(105, 1, 1, 0, NULL, 'phone6.1452055621.jpg', 'image-thumbnail/phone6.1452055621.jpg', 32000.0000, '2016-01-06 11:47:07', NULL, NULL, 0.00, 1, 0, 10, 0),
+(105, 1, 1, 0, NULL, 'phone6.1452055621.jpg', 'image-thumbnail/phone6.1452055621.jpg', 32000.0000, '2016-01-12 10:29:17', NULL, NULL, 0.00, 0, 0, 10, 0),
 (106, 2, 1, 0, NULL, 'wallpapers-hd-7986-8317-hd-wallpapers.1452066255.jpg', 'image-thumbnail/wallpapers-hd-7986-8317-hd-wallpapers.1452066255.jpg', 323.0000, '2016-01-06 14:44:40', NULL, NULL, 0.00, 1, 0, 7, 0),
 (107, 1, 1, 0, NULL, 'iphone-7-images.1452067686.jpg', 'image-thumbnail/iphone-7-images.1452067686.jpg', 223.0000, '2016-01-06 15:08:27', NULL, NULL, 0.00, 1, 0, 3, 0),
 (108, 4, 1, 0, NULL, 'iPhone-7-release-date-1.1452067840.png', 'image-thumbnail/iPhone-7-release-date-1.1452067840.png', 2.0000, '2016-01-06 15:10:51', NULL, NULL, 0.00, 1, 0, 3, 0),
-(109, 2, 1, 0, NULL, 'iphone-5s.1452067953.jpg', 'image-thumbnail/iphone-5s.1452067953.jpg', 32.0000, '2016-01-06 15:12:48', NULL, NULL, 0.00, 1, 0, 7, 0);
+(109, 2, 1, 0, NULL, 'iphone-5s.1452067953.jpg', 'image-thumbnail/iphone-5s.1452067953.jpg', 32.0000, '2016-01-11 17:28:52', NULL, NULL, 0.00, 1, 0, 7, 0),
+(110, 1, 1, 0, NULL, 'Visa-Mastercard-credit-cards-e1387426494114.1452142247.jpg', 'image-thumbnail/Visa-Mastercard-credit-cards-e1387426494114.1452142247.jpg', 235.0000, '2016-01-07 11:50:48', NULL, NULL, 0.00, 1, 0, 7, 0),
+(111, 3, 1, 0, NULL, 'Visa-Mastercard-credit-cards-e1387426494114.1452142312.jpg', 'image-thumbnail/Visa-Mastercard-credit-cards-e1387426494114.1452142312.jpg', 2363.0000, '2016-01-07 11:51:54', NULL, NULL, 0.00, 1, 0, 10, 0),
+(112, 2, 1, 0, NULL, 'wallpapers-hd-7986-8317-hd-wallpapers.1452142383.jpg', 'image-thumbnail/wallpapers-hd-7986-8317-hd-wallpapers.1452142383.jpg', 346.0000, '2016-01-11 14:13:01', NULL, NULL, 0.00, 0, 0, 7, 0),
+(113, 3, 1, 0, NULL, 'philip.1452142424.jpg', 'image-thumbnail/philip.1452142424.jpg', 2356.0000, '2016-01-11 14:12:56', NULL, NULL, 0.00, 1, 0, 7, 0),
+(114, 1, 1, 0, NULL, 'phone6.1452328820.jpg', 'image-thumbnail/phone6.1452328820.jpg', 124.0000, '2016-01-11 14:12:58', NULL, NULL, 0.00, 1, 0, 10, 0),
+(115, 1, 1, 0, NULL, 'philip.1452497328.jpg', 'image-thumbnail/philip.1452497328.jpg', 5253.0000, '2016-01-11 14:28:50', NULL, NULL, 0.00, 1, 0, 3, 0),
+(116, 2, 1, 0, NULL, 'Nature-sea-scenery-travel-photography-image-768x1366.1452497412.', 'image-thumbnail/Nature-sea-scenery-travel-photography-image-768x1366.1452497412.jpg', 2.0000, '2016-01-11 14:30:13', NULL, NULL, 0.00, 1, 0, 3, 0),
+(117, 2, 1, 0, NULL, '11952989_930159617033941_4881288092699221522_n.1452497429.jpg', 'image-thumbnail/11952989_930159617033941_4881288092699221522_n.1452497429.jpg', 2.0000, '2016-01-11 14:30:30', NULL, NULL, 0.00, 1, 0, 3, 0),
+(118, 2, 1, 0, NULL, 'Visa-Mastercard-credit-cards-e1387426494114.1452497464.jpg', 'image-thumbnail/Visa-Mastercard-credit-cards-e1387426494114.1452497464.jpg', 2.0000, '2016-01-11 14:31:47', NULL, NULL, 0.00, 1, 0, 3, 0),
+(119, 1, 1, 0, NULL, 'iPhone-7-release-date-1.1452498079.png', 'image-thumbnail/iPhone-7-release-date-1.1452498079.png', 3.0000, '2016-01-11 14:41:20', NULL, NULL, 0.00, 1, 0, 3, 0),
+(120, 4, 1, 0, NULL, 'philip.1452498128.jpg', 'image-thumbnail/philip.1452498128.jpg', 2.0000, '2016-01-11 14:42:10', NULL, NULL, 0.00, 1, 0, 7, 0),
+(121, 1, 1, 0, NULL, '11952989_930159617033941_4881288092699221522_n.1452500018.jpg', 'image-thumbnail/11952989_930159617033941_4881288092699221522_n.1452500018.jpg', 45.0000, '2016-01-11 17:32:59', NULL, NULL, 0.00, 1, 0, 10, 0),
+(122, 1, 1, 0, NULL, 'philip.1452507946.jpg', 'image-thumbnail/philip.1452507946.jpg', 12.0000, '2016-01-12 10:27:05', NULL, NULL, 0.00, 0, 0, 3, 0),
+(123, 1, 1, 0, NULL, '11866435_884222554979832_6150711205517164049_n.1452577359.png', 'image-thumbnail/11866435_884222554979832_6150711205517164049_n.1452577359.png', 22222.0000, '2016-01-12 12:43:57', NULL, NULL, 0.00, 1, 0, 10, 0),
+(125, 1, 1, 0, NULL, 'philip.1452600301.jpg', 'image-thumbnail/philip.1452600301.jpg', 23523.0000, '2016-01-12 19:05:07', NULL, NULL, 0.00, 0, 0, 10, 0),
+(127, 1, 1, 0, NULL, 'iphone-7-images.1452601550.jpg', 'image-thumbnail/iphone-7-images.1452601550.jpg', 235235.0000, '2016-01-12 19:25:51', NULL, NULL, 0.00, 0, 0, 3, 0),
+(128, 1, 1, 0, NULL, '11952989_930159617033941_4881288092699221522_n.1452601606.jpg', 'image-thumbnail/11952989_930159617033941_4881288092699221522_n.1452601606.jpg', 325.0000, '2016-01-12 19:26:48', NULL, NULL, 0.00, 1, 0, 10, 0),
+(130, 1, 6, 0, NULL, 'iPhone-7-release-date-1.1452751731.png', 'image-thumbnail/iPhone-7-release-date-1.1452751731.png', 4643.0000, '2016-01-14 13:08:58', NULL, NULL, 0.00, 1, 0, 10, 0),
+(131, 1, 6, 0, NULL, 'iphone-7-images.1452752564.jpg', 'image-thumbnail/iphone-7-images.1452752564.jpg', 31.0000, '2016-01-14 13:22:54', NULL, NULL, 0.00, 1, 0, 3, 0),
+(132, 1, 6, 0, NULL, 'philip.1452754483.jpg', 'image-thumbnail/philip.1452754483.jpg', 235235.0000, '2016-01-14 13:54:51', NULL, NULL, 0.00, 1, 0, 10, 0),
+(133, 1, 6, 0, NULL, 'iPhone-7-release-date-1.1452755512.png', 'image-thumbnail/iPhone-7-release-date-1.1452755512.png', 23424.0000, '2016-01-14 14:12:30', NULL, NULL, 0.00, 1, 0, 3, 0),
+(134, 1, 6, 0, NULL, 'Visa-Mastercard-credit-cards-e1387426494114.1452755714.jpg', 'image-thumbnail/Visa-Mastercard-credit-cards-e1387426494114.1452755714.jpg', 325.0000, '2016-01-14 14:15:34', NULL, NULL, 0.00, 1, 0, 10, 0),
+(135, 1, 6, 0, NULL, 'Nature-sea-scenery-travel-photography-image-768x1366.1452755861.', 'image-thumbnail/Nature-sea-scenery-travel-photography-image-768x1366.1452755861.jpg', 341.0000, '2016-01-14 14:18:07', NULL, NULL, 0.00, 1, 0, 10, 0),
+(137, 2, 1, 0, NULL, 'test_posting/2016-01-14/images/11866435_884222554979832_6150711205517164049_n.1452771985.png', 'test_posting/2016-01-14/image_thumbnail/11866435_884222554979832_6150711205517164049_n.1452771985.png', 346.0000, '2016-01-14 18:48:07', NULL, NULL, 0.00, 1, 0, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -1752,22 +1761,46 @@ INSERT INTO `products_attributes_download` (`products_attributes_id`, `products_
 CREATE TABLE IF NOT EXISTS `products_description` (
   `products_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL DEFAULT '1',
-  `products_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `products_name` varchar(127) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `products_description` text COLLATE utf8_unicode_ci,
   `products_url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `products_viewed` int(5) DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `products_description`
 --
 
 INSERT INTO `products_description` (`products_id`, `language_id`, `products_name`, `products_description`, `products_url`, `products_viewed`) VALUES
-(105, 1, 'House Sell Urgent', 'test test test \ntest \netst\nt est\n set sta\nas gadh sdajdasjdcb adfj afj dfj \ndfj dfjjjjjjjthn 46teujncv jrfgj rjmn dhfs jh asdgopwry; klk asdpjhojashkl;mahkl;asdfh opjprwejhajop ash p[ah opasdhasdgj  jl;asjd gh asdfh;asdh jop', NULL, 11),
-(106, 1, 'AV', 'ASSFA', NULL, 2),
+(105, 1, 'House Sell Urgent', '<ol>\n<li>sadg asdh&nbsp;</li>\n<li>sdg&nbsp;</li>\n<li>sadg&nbsp;</li>\n<li>asdh&nbsp;</li>\n<li>aw4y r</li>\n<li></li>\n</ol>', NULL, 34),
+(106, 1, 'AV', 'ASSFA', NULL, 15),
 (107, 1, 'Iphone 6*', 'adv', NULL, 1),
 (108, 1, 'b', '1wd', NULL, 3),
-(109, 1, 'EEE', 'sd adbsb', NULL, 0);
+(109, 1, 'EEE', 'sd adbsb', NULL, 24),
+(110, 1, 'test', 'test&lt;script&gt;alert(''test'');&lt;/script&gt;', NULL, 1),
+(111, 1, 'asdg', '$string <script>alert(''test'');</script>', NULL, 3),
+(112, 1, 'weta', '<script>alert(''test'');</script>\ntest\n<?php \n echo ''test'';\n?>', NULL, 2),
+(113, 1, 'swet', '<script>alert(''test'');</script>\ntest\n<?php \n echo ''test'';\n?>', NULL, 6),
+(114, 1, 'the more you learn the moe you know from me sokhom 1ដសងា​ហថ asf ga w4eh dafhb zsdfnsedtu ', 'TEST  ETD G DSG  ASDG SD SD GS GSF SHH SB SDDVDV HS HSDB  BSSDSVVS  VSDH BSB SD SNSBSB SB B WEWHWH NWRRH BSD BDS H SB BSDSDCV​សដង​ាហប៣រ៥្ាសេរ​ហ៣រ៥\n<script>alert(''Goooooooooo'');</script>', NULL, 24),
+(115, 1, 'EEE 12312', 'sd adbsb w436 t54735q5 7', NULL, 4),
+(116, 1, '22222', '22', NULL, 0),
+(117, 1, '22222ffffffffffff', '22', NULL, 10),
+(118, 1, '22222ffffffffffff33333333333', '22', NULL, 0),
+(119, 1, '33333333', '3', NULL, 0),
+(120, 1, '4', '42', NULL, 1),
+(121, 1, 'Sell Iphone 5S Full Accesseries 240 Urgent i love you somuch', '#$T #$@ T23.0', NULL, 5),
+(122, 1, '10pp', '10', NULL, 0),
+(123, 1, 'Sell Toyota Priuse 2010 No Crush With Full Tax', '<ol>\n<li>testsdg sgd sa gds a4</li>\n<li>fa sysy</li>\n<li>asdh ash&nbsp;</li>\n<li>asd h</li>\n<li>asdf&nbsp;</li>\n</ol>', NULL, 102),
+(125, 1, '233222235sdg', '<p>asdg</p>', NULL, 1),
+(127, 1, 'w346', '', NULL, 2),
+(128, 1, '3r3', '<ol>\n<li>asdg awe</li>\n<li>ag&nbsp;</li>\n<li>asdg</li>\n</ol>', NULL, 11),
+(130, 1, 'Goooo', '<p>asdg ash ash<strong>h ash wrh adj </strong></p>\n<p><strong>ad adfj adj er ea </strong></p>\n<ol>\n<li><strong>dad fdf</strong></li>\n<li><strong>h a</strong></li>\n<li><strong>sdh </strong></li>\n<li><strong>ad</strong></li>\n<li><strong>fh ad</strong></li>\n<li><strong>fh </strong></li>\n<li><strong>dfa</strong></li>\n<li><strong>h </strong></li>\n<li><strong>adfh </strong></li>\n<li><strong>asd</strong></li>\n<li><strong>fh </strong></li>\n<li><strong>adf </strong></li>\n<li><strong>adf</strong></li>\n<li><strong>j </strong></li>\n<li><strong>dfj </strong></li>\n<li><strong>dfj</strong></li>\n<li><strong>&nbsp;d</strong></li>\n<li><strong>j </strong></li>\n<li><strong>daf</strong></li>\n<li><strong>&nbsp;djf</strong></li>\n<li><strong>&nbsp;dfj</strong></li>\n<li><strong>&nbsp;</strong></li>\n</ol>', NULL, 66),
+(131, 1, 'zXCV ZD', '<ol>\n<li>zd dsad</li>\n<li>g sadg</li>\n<li>s</li>\n<li>d</li>\n</ol>', NULL, 16),
+(132, 1, 'House Sell 3100$', '<p>new house sell urgent</p>', NULL, 2),
+(133, 1, '234tg asd ahf', '<p>zxv SXH W%$Y SERH</p>', NULL, 3),
+(134, 1, 'Toyota Camary 2013 23000$', '<p>asdfa 2tt</p>\n<p>t as</p>\n<p>ady awry</p>', NULL, 25),
+(135, 1, '235235', '<p>asdf asdg a24y</p>', NULL, 4),
+(137, 1, '346 fx', '<p>ZC WER WER zXV S<br />DH&nbsp;</p>\n<p>sdh&nbsp;</p>\n<p>asdh&nbsp;</p>\n<p>a</p>', NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -1778,11 +1811,11 @@ INSERT INTO `products_description` (`products_id`, `language_id`, `products_name
 CREATE TABLE IF NOT EXISTS `products_images` (
   `id` int(11) NOT NULL,
   `products_id` int(11) NOT NULL,
-  `image` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `image` varchar(220) COLLATE utf8_unicode_ci DEFAULT NULL,
   `image_thumbnail` varchar(220) COLLATE utf8_unicode_ci NOT NULL,
   `htmlcontent` text COLLATE utf8_unicode_ci,
   `sort_order` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=206 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `products_images`
@@ -1797,7 +1830,24 @@ INSERT INTO `products_images` (`id`, `products_id`, `image`, `image_thumbnail`, 
 (202, 108, 'phone6.1452067848.jpg', 'image-thumbnail/phone6.1452067848.jpg', NULL, 0),
 (203, 109, '8cznLo5ji.1452067960.png', 'image-thumbnail/8cznLo5ji.1452067960.png', NULL, 0),
 (204, 109, 'phone6.1452067963.jpg', 'image-thumbnail/phone6.1452067963.jpg', NULL, 0),
-(205, 109, 'phone6.1452067967.jpg', 'image-thumbnail/phone6.1452067967.jpg', NULL, 0);
+(205, 109, 'phone6.1452067967.jpg', 'image-thumbnail/phone6.1452067967.jpg', NULL, 0),
+(206, 114, 'bg.1452328607.png', 'image-thumbnail/bg.1452328607.png', NULL, 0),
+(207, 123, 'phone6.1452577362.jpg', 'image-thumbnail/phone6.1452577362.jpg', NULL, 0),
+(208, 123, 'phone6.1452577365.jpg', 'image-thumbnail/phone6.1452577365.jpg', NULL, 0),
+(209, 123, 'Visa-Mastercard-credit-cards-e1387426494114.1452577368.jpg', 'image-thumbnail/Visa-Mastercard-credit-cards-e1387426494114.1452577368.jpg', NULL, 0),
+(210, 123, 'iphone-7-images.1452577371.jpg', 'image-thumbnail/iphone-7-images.1452577371.jpg', NULL, 0),
+(211, 123, 'wallpapers-hd-7986-8317-hd-wallpapers.1452577376.jpg', 'image-thumbnail/wallpapers-hd-7986-8317-hd-wallpapers.1452577376.jpg', NULL, 0),
+(212, 123, 'philip.1452577380.jpg', 'image-thumbnail/philip.1452577380.jpg', NULL, 0),
+(213, 123, 'iphone-5s.1452577384.jpg', 'image-thumbnail/iphone-5s.1452577384.jpg', NULL, 0),
+(214, 125, 'iPhone-7-Release-Date.1452600305.jpg', 'image-thumbnail/iPhone-7-Release-Date.1452600305.jpg', NULL, 0),
+(215, 128, 'phone6.1452601601.jpg', 'image-thumbnail/phone6.1452601601.jpg', NULL, 0),
+(216, 130, '11952989_930159617033941_4881288092699221522_n.1452751734.jpg', 'image-thumbnail/11952989_930159617033941_4881288092699221522_n.1452751734.jpg', NULL, 0),
+(217, 132, 'iphone-7-images.1452754486.jpg', 'image-thumbnail/iphone-7-images.1452754486.jpg', NULL, 0),
+(218, 132, 'iPhone-7-release-date-1.1452754490.png', 'image-thumbnail/iPhone-7-release-date-1.1452754490.png', NULL, 0),
+(219, 134, '11952989_930159617033941_4881288092699221522_n.1452755704.jpg', 'image-thumbnail/11952989_930159617033941_4881288092699221522_n.1452755704.jpg', NULL, 0),
+(222, 137, 'test_posting/2016-01-14/images/iphone-5s.1452772035.jpg', 'test_posting/2016-01-14/image_thumbnail/iphone-5s.1452772035.jpg', NULL, 0),
+(223, 137, 'test_posting/2016-01-14/images/wallpapers-hd-7986-8317-hd-wallpapers.1452772042.jpg', 'test_posting/2016-01-14/image_thumbnail/wallpapers-hd-7986-8317-hd-wallpapers.1452772042.jpg', NULL, 0),
+(224, 137, 'test_posting/2016-01-14/images/Visa-Mastercard-credit-cards-e1387426494114.1452772057.jpg', 'test_posting/2016-01-14/image_thumbnail/Visa-Mastercard-credit-cards-e1387426494114.1452772057.jpg', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -1874,7 +1924,7 @@ CREATE TABLE IF NOT EXISTS `products_options_values_to_products_options` (
   `products_options_values_to_products_options_id` int(11) NOT NULL,
   `products_options_id` int(11) NOT NULL,
   `products_options_values_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `products_options_values_to_products_options`
@@ -1912,9 +1962,33 @@ CREATE TABLE IF NOT EXISTS `products_to_categories` (
 INSERT INTO `products_to_categories` (`products_id`, `categories_id`) VALUES
 (105, 37),
 (106, 37),
-(107, 27),
-(108, 23),
-(109, 27);
+(107, 37),
+(108, 37),
+(109, 37),
+(110, 37),
+(111, 37),
+(112, 37),
+(113, 37),
+(114, 37),
+(115, 37),
+(116, 37),
+(117, 37),
+(118, 37),
+(119, 37),
+(120, 37),
+(121, 37),
+(122, 37),
+(123, 37),
+(125, 37),
+(127, 37),
+(128, 37),
+(130, 37),
+(131, 37),
+(132, 37),
+(133, 37),
+(134, 37),
+(135, 37),
+(137, 37);
 
 -- --------------------------------------------------------
 
@@ -1931,18 +2005,42 @@ CREATE TABLE IF NOT EXISTS `product_contact_person` (
   `contact_address` varchar(127) NOT NULL,
   `contact_location` int(11) NOT NULL,
   `contact_email` varchar(127) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `product_contact_person`
 --
 
 INSERT INTO `product_contact_person` (`id`, `customers_id`, `products_id`, `contact_name`, `contact_phone`, `contact_address`, `contact_location`, `contact_email`) VALUES
-(48, 1, 105, 'test posting edit', '1234124', 'phnom penh', 5, 'test@test.com'),
+(48, 1, 105, 'test posting', 'GGGGSDGG', 'phnom penh', 3, 'test@test.com'),
 (49, 1, 106, 'Mr. Lonely', '012212121', 'phnom penh 123', 1, 'test123@test.com'),
 (50, 1, 107, 'test @@2', '444444444444', 'phnom penh', 5, 'test@test.com'),
 (51, 1, 108, 'test posting', '1234124', 'phnom penh', 5, 'test@test.com'),
-(52, 1, 109, 'test posting', '1234124', 'phnom penh', 5, 'test@test.com');
+(52, 1, 109, 'test posting', '1234124', 'phnom penh', 5, 'test@test.com'),
+(53, 1, 110, 'test posting', '1234124', 'phnom penh', 5, 'test@test.com'),
+(54, 1, 111, 'test posting', '1234124', 'phnom penh', 5, 'test@test.com'),
+(55, 1, 112, 'test posting', '1234124', 'phnom penh', 5, 'test@test.com'),
+(56, 1, 113, 'test posting', '1234124', 'phnom penh', 5, 'test@test.com'),
+(57, 1, 114, 'test posting', '1234124', 'phnom penh', 5, 'test@test.com'),
+(58, 1, 115, 'test posting', '1234124', 'phnom penh', 5, 'test@test.com'),
+(59, 1, 116, 'test posting', 'GGGGSDGG', 'phnom penh', 3, 'test@test.com'),
+(60, 1, 117, 'test posting', 'GGGGSDGG', 'phnom penh', 3, 'test@test.com'),
+(61, 1, 118, 'test posting', 'GGGGSDGG', 'phnom penh', 3, 'test@test.com'),
+(62, 1, 119, 'test posting', 'GGGGSDGG', 'phnom penh', 3, 'test@test.com'),
+(63, 1, 120, 'test posting', 'GGGGSDGG', 'phnom penh', 3, 'test@test.com'),
+(64, 1, 121, 'test ags', '2235325', 'phnom as', 3, 'test@test.sag'),
+(65, 1, 122, 'test posting', 'GGGGSDGG', 'phnom penh', 3, 'test@test.com'),
+(66, 1, 123, 'test posting', 'GGGGSDGG', 'phnom penh', 3, 'test@test.com'),
+(68, 1, 125, 'test posting', 'GGGGSDGG', 'phnom penh', 3, 'test@test.com'),
+(70, 1, 127, 'test posting', 'GGGGSDGG', 'phnom penh', 3, 'test@test.com'),
+(71, 1, 128, 'test posting', 'GGGGSDGG', 'phnom penh', 3, 'test@test.com'),
+(73, 6, 130, 'gooo', '545474534346346', 'G SD SDFH EJDFJ', 1, 'goo@gmail.com'),
+(74, 6, 131, 'gooo', '3125235', 'sf ssd as', 1, 'goo@gmail.com'),
+(75, 6, 132, 'gooo dfsg', '012546541', 'phnom penh', 1, 'goo@gmail.com'),
+(76, 6, 133, 'gooo', '2352346346346', '', 0, 'goo@gmail.com'),
+(77, 6, 134, 'gooo', '325234634772', 'wea sdag .\nsadh asdh\nw4y', 1, 'goo@gmail.com'),
+(78, 6, 135, 'gooo', '235235235', 'sdf asd a24ty234ty42', 1, 'goo@gmail.com'),
+(80, 1, 137, 'test posting', '0912 332', 'phnom penh', 3, 'test@test.com');
 
 -- --------------------------------------------------------
 
@@ -1998,7 +2096,7 @@ CREATE TABLE IF NOT EXISTS `sagepay_server_securitykeys` (
 CREATE TABLE IF NOT EXISTS `sec_directory_whitelist` (
   `id` int(11) NOT NULL,
   `directory` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `sec_directory_whitelist`
@@ -2036,8 +2134,13 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 INSERT INTO `sessions` (`sesskey`, `expiry`, `value`) VALUES
-('iufukf8mfu6q2jng12js4ov457', 1452137719, 'sessiontoken|s:32:"e7cd8c4b745d6da4b98e97b877a2576f";cart|O:12:"shoppingCart":5:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:6:"cartID";s:5:"55806";s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"USD";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:0:{}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}customer_id|i:1;customer_default_address_id|s:1:"1";customer_first_name|s:4:"test";customer_last_name|s:4:"test";customer_country_id|s:2:"12";customer_zone_id|s:1:"0";'),
-('ksbbi9d9lb2iu76u1tljei08m5', 1452081294, 'sessiontoken|s:32:"b4262c8f604226a1820fb0d6de7c87f9";cart|O:12:"shoppingCart":5:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:6:"cartID";s:5:"17704";s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"USD";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:3:{s:5:"cPath";s:2:"37";s:4:"page";s:1:"3";s:4:"sort";s:2:"2a";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}customer_id|i:1;customer_default_address_id|s:1:"1";customer_first_name|s:4:"test";customer_last_name|s:4:"test";customer_country_id|s:2:"12";customer_zone_id|s:1:"0";');
+('1i6088320sslkm7vmu3nuuj600', 1452568106, 'sessiontoken|s:32:"44b974bfd1f9d1dfe35f0c21f067acdb";cart|O:12:"shoppingCart":4:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"USD";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:5:"cPath";s:2:"26";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}'),
+('50d7rmnbpeb3gqv2djt3v6ov32', 1452754532, 'sessiontoken|s:32:"3639d6d33f96b5f1a0ada9bb4cb700b8";cart|O:12:"shoppingCart":5:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:6:"cartID";s:5:"26896";s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"USD";navigation|O:17:"navigationHistory":2:{s:4:"path";a:2:{i:0;a:4:{s:4:"page";s:11:"account.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:0:{}s:4:"post";a:0:{}}i:1;a:4:{s:4:"page";s:13:"api/index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:0:{}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}customer_user_name|s:4:"gooo";customer_id|i:6;customer_first_name|N;customer_default_address_id|i:6;customer_country_id|N;customer_zone_id|N;'),
+('gqv9cru9f030phtorcuvuotf63', 1452766165, 'language|s:7:"english";languages_id|s:1:"1";admin|a:2:{s:2:"id";s:1:"1";s:8:"username";s:5:"admin";}'),
+('khq52t8sjl7kak79sam1p54gc7', 1452756021, 'sessiontoken|s:32:"700cd1ef6b29d711ea98961fbfce11b8";cart|O:12:"shoppingCart":5:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:6:"cartID";s:5:"00805";s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"USD";navigation|O:17:"navigationHistory":2:{s:4:"path";a:4:{i:0;a:4:{s:4:"page";s:16:"account_edit.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:0:{}s:4:"post";a:0:{}}i:1;a:4:{s:4:"page";s:11:"account.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:0:{}s:4:"post";a:0:{}}i:2;a:4:{s:4:"page";s:13:"api/index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:0:{}s:4:"post";a:0:{}}i:3;a:4:{s:4:"page";s:16:"product_info.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:11:"products_id";s:3:"134";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}customer_id|i:6;user_name|s:4:"gooo";customer_default_address_id|s:1:"6";customer_first_name|s:0:"";customer_last_name|s:0:"";customer_country_id|s:1:"0";customer_zone_id|s:1:"0";'),
+('m9dmqhntr9vda7s7d6r9uk1si4', 1452518499, 'sessiontoken|s:32:"b22507fef427721ace7caaa9ed8d63e5";cart|O:12:"shoppingCart":5:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:6:"cartID";s:5:"52821";s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"USD";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:5:"cPath";s:5:"37_27";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}customer_id|i:1;user_name|s:12:"test posting";customer_default_address_id|s:1:"1";customer_first_name|s:4:"test";customer_last_name|s:4:"test";customer_country_id|s:2:"12";customer_zone_id|s:1:"0";'),
+('mn14cbuqk0cvi0g84gvua5u6l0', 1452844368, 'sessiontoken|s:32:"98e7225f64bb94b0ccbdfc4146499ece";cart|O:12:"shoppingCart":5:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:6:"cartID";s:5:"43023";s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"USD";navigation|O:17:"navigationHistory":2:{s:4:"path";a:3:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:3:{s:5:"cPath";s:2:"37";s:9:"filter_id";s:1:"3";s:4:"sort";s:2:"2a";}s:4:"post";a:0:{}}i:1;a:4:{s:4:"page";s:11:"account.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:0:{}s:4:"post";a:0:{}}i:2;a:4:{s:4:"page";s:13:"api/index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:0:{}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}user_name|s:12:"test posting";customer_id|i:1;customer_default_address_id|s:1:"1";customer_first_name|s:4:"test";customer_last_name|s:4:"test";customer_country_id|s:2:"12";customer_zone_id|s:1:"0";'),
+('t4gcvhn2852jf0l1utcnu5e095', 1452767566, 'sessiontoken|s:32:"1c82fa6805f44b74f30731ae6bfda8d3";cart|O:12:"shoppingCart":5:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:6:"cartID";N;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"USD";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:13:"api/index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:0:{}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
 
 -- --------------------------------------------------------
 
@@ -2068,7 +2171,7 @@ CREATE TABLE IF NOT EXISTS `tax_class` (
   `tax_class_description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `last_modified` datetime DEFAULT NULL,
   `date_added` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `tax_class`
@@ -2092,7 +2195,7 @@ CREATE TABLE IF NOT EXISTS `tax_rates` (
   `tax_description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `last_modified` datetime DEFAULT NULL,
   `date_added` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `tax_rates`
@@ -2122,7 +2225,7 @@ CREATE TABLE IF NOT EXISTS `whos_online` (
 --
 
 INSERT INTO `whos_online` (`customer_id`, `full_name`, `session_id`, `ip_address`, `time_entry`, `time_last_click`, `last_page_url`) VALUES
-(1, 'test test', 'iufukf8mfu6q2jng12js4ov457', '127.0.0.1', '1452136476', '1452137719', '/osc_bootstrap_seo/index.php');
+(1, 'test test', 'mn14cbuqk0cvi0g84gvua5u6l0', '127.0.0.1', '1452842856', '1452844368', '/osc_bootstrap_seo/api/UploadImage');
 
 -- --------------------------------------------------------
 
@@ -2135,7 +2238,7 @@ CREATE TABLE IF NOT EXISTS `zones` (
   `zone_country_id` int(11) NOT NULL,
   `zone_code` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `zone_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=182 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `zones`
@@ -2337,7 +2440,7 @@ CREATE TABLE IF NOT EXISTS `zones_to_geo_zones` (
   `geo_zone_id` int(11) DEFAULT NULL,
   `last_modified` datetime DEFAULT NULL,
   `date_added` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `zones_to_geo_zones`
@@ -2763,27 +2866,27 @@ ALTER TABLE `zones_to_geo_zones`
 -- AUTO_INCREMENT for table `action_recorder`
 --
 ALTER TABLE `action_recorder`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `address_book`
 --
 ALTER TABLE `address_book`
-  MODIFY `address_book_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `address_book_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `address_format`
 --
 ALTER TABLE `address_format`
-  MODIFY `address_format_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `address_format_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `administrators`
 --
 ALTER TABLE `administrators`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `banners`
 --
 ALTER TABLE `banners`
-  MODIFY `banners_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `banners_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `banners_history`
 --
@@ -2793,37 +2896,37 @@ ALTER TABLE `banners_history`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `categories_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=38;
+  MODIFY `categories_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `colors`
 --
 ALTER TABLE `colors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `configuration`
 --
 ALTER TABLE `configuration`
-  MODIFY `configuration_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1543;
+  MODIFY `configuration_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `configuration_group`
 --
 ALTER TABLE `configuration_group`
-  MODIFY `configuration_group_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=368;
+  MODIFY `configuration_group_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `countries`
 --
 ALTER TABLE `countries`
-  MODIFY `countries_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=240;
+  MODIFY `countries_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `currencies`
 --
 ALTER TABLE `currencies`
-  MODIFY `currencies_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `currencies_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customers_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `customers_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `customers_basket`
 --
@@ -2853,42 +2956,42 @@ ALTER TABLE `customers_stripe_tokens`
 -- AUTO_INCREMENT for table `geo_zones`
 --
 ALTER TABLE `geo_zones`
-  MODIFY `geo_zone_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `geo_zone_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `image_slider`
 --
 ALTER TABLE `image_slider`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=84;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `languages`
 --
 ALTER TABLE `languages`
-  MODIFY `languages_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `languages_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `location`
 --
 ALTER TABLE `location`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `manufacturers`
 --
 ALTER TABLE `manufacturers`
-  MODIFY `manufacturers_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `manufacturers_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `newsletters`
 --
 ALTER TABLE `newsletters`
-  MODIFY `newsletters_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `newsletters_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `news_description`
 --
 ALTER TABLE `news_description`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `news_replys`
 --
@@ -2898,17 +3001,17 @@ ALTER TABLE `news_replys`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orders_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `orders_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `orders_products`
 --
 ALTER TABLE `orders_products`
-  MODIFY `orders_products_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+  MODIFY `orders_products_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `orders_products_attributes`
 --
 ALTER TABLE `orders_products_attributes`
-  MODIFY `orders_products_attributes_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `orders_products_attributes_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `orders_products_download`
 --
@@ -2918,17 +3021,17 @@ ALTER TABLE `orders_products_download`
 -- AUTO_INCREMENT for table `orders_status_history`
 --
 ALTER TABLE `orders_status_history`
-  MODIFY `orders_status_history_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `orders_status_history_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `orders_total`
 --
 ALTER TABLE `orders_total`
-  MODIFY `orders_total_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+  MODIFY `orders_total_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `products_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=110;
+  MODIFY `products_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `products_attributes`
 --
@@ -2938,22 +3041,22 @@ ALTER TABLE `products_attributes`
 -- AUTO_INCREMENT for table `products_description`
 --
 ALTER TABLE `products_description`
-  MODIFY `products_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=110;
+  MODIFY `products_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `products_images`
 --
 ALTER TABLE `products_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=206;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `products_options_values_to_products_options`
 --
 ALTER TABLE `products_options_values_to_products_options`
-  MODIFY `products_options_values_to_products_options_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+  MODIFY `products_options_values_to_products_options_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `product_contact_person`
 --
 ALTER TABLE `product_contact_person`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `reviews`
 --
@@ -2968,7 +3071,7 @@ ALTER TABLE `sagepay_server_securitykeys`
 -- AUTO_INCREMENT for table `sec_directory_whitelist`
 --
 ALTER TABLE `sec_directory_whitelist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `specials`
 --
@@ -2978,22 +3081,22 @@ ALTER TABLE `specials`
 -- AUTO_INCREMENT for table `tax_class`
 --
 ALTER TABLE `tax_class`
-  MODIFY `tax_class_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `tax_class_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tax_rates`
 --
 ALTER TABLE `tax_rates`
-  MODIFY `tax_rates_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `tax_rates_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `zones`
 --
 ALTER TABLE `zones`
-  MODIFY `zone_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=182;
+  MODIFY `zone_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `zones_to_geo_zones`
 --
 ALTER TABLE `zones_to_geo_zones`
-  MODIFY `association_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `association_id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
