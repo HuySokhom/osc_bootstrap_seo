@@ -23,7 +23,7 @@
 			Action
 		</th>
 	</tr>
-	<tr data-ng-if="totalItems <= 0">
+	<tr data-ng-if="!image_sliders">
 		<td colspan="4" align="center">
 			<img src="images/icons/gettestr-large-spinner-orange.gif"/>
 		</td>
@@ -68,6 +68,13 @@
 		</td>
 	</tr>
 </table>
+<div
+	data-ng-if="image_sliders.elements == 0"
+>
+	<div class="alert alert-warning alert-dismissible">
+		<strong>Warning!</strong> No Image.
+	</div>
+</div>
 <div
 	class="panel-footer"
 	data-ng-show="totalItems > 10"
