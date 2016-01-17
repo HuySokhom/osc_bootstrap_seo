@@ -230,6 +230,7 @@
         $products_image->set_destination(DIR_FS_CATALOG_IMAGES);
         if ($products_image->parse() && $products_image->save()) {
           $sql_data_array['products_image'] = tep_db_prepare_input($products_image->filename);
+          $sql_data_array['products_image_thumbnail'] = tep_db_prepare_input($products_image->filename);
         }
 
         if ($action == 'insert_product') {
@@ -284,6 +285,7 @@
             $t->set_destination(DIR_FS_CATALOG_IMAGES);
             if ($t->parse() && $t->save()) {
               $sql_data_array['image'] = tep_db_prepare_input($t->filename);
+              $sql_data_array['image_thumbnail'] = tep_db_prepare_input($t->filename);
             }
 
             tep_db_perform(TABLE_PRODUCTS_IMAGES, $sql_data_array, 'update', "products_id = '" . (int)$products_id . "' and id = '" . (int)$matches[1] . "'");
@@ -300,6 +302,7 @@
               $pi_sort_order++;
 
               $sql_data_array['image'] = tep_db_prepare_input($t->filename);
+              $sql_data_array['image_thumbnail'] = tep_db_prepare_input($t->filename);
               $sql_data_array['sort_order'] = $pi_sort_order;
 
               tep_db_perform(TABLE_PRODUCTS_IMAGES, $sql_data_array);

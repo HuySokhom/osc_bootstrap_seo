@@ -55,7 +55,7 @@
     }
 
 ?>
-  <h4 class="page-header col-md-12">Relate Product</h4>
+  <h4 class="page-header col-md-12">Others Product</h4>
   <?php echo $new_prods_content; ?>
 <?php
   }
