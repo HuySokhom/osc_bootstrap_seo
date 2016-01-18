@@ -175,13 +175,13 @@
         </tr>
     </table>
 </div>
-<div class="col-sm-6 col-md-8">
+<div class="col-sm-8 col-md-8">
     <h4 class="page-header">Description:</h4>
     <div itemprop="description">
       <?php echo stripslashes($product_info['products_description']); ?>
     </div>
 </div>
-<div class="col-sm-6 col-md-4">
+<div class="col-sm-4 col-md-4">
     <h4 class="page-header">Contact:</h4>
     <?php
         $customer_query = tep_db_query("
@@ -202,6 +202,17 @@
             echo '</table>';
         }
     ?>
+</div>
+
+ <div class="clearfix col-sm-12 col-md-12 alert alert-success">
+    <p>
+        ទំនាក់ទំនងលេខ <?php echo $customer['contact_phone'];?> កុំភ្លេចនិយាយថាអ្នកបានរកឃើញការផ្សព្វផ្សាយនេះនៅលើ
+        <?php echo STORE_NAME;?>។
+   </p>
+    <p>
+        Call to <?php echo $customer['contact_phone'];?> for more information,
+        don't forget to mention that you found this ad on <?php echo STORE_NAME;?>.
+    </p>
 </div>
 <?php
     include(DIR_WS_MODULES . 'relate_products.php');
