@@ -11,4 +11,4 @@
 */
 
 define('NAVBAR_TITLE', 'Login');
-define('HEADING_TITLE', 'Log in to manage products or post products free');
+define('HEADING_TITLE', 'Login To Manage Products Or Post Products Free');

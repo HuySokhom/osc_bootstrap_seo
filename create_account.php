@@ -281,7 +281,7 @@
 
 <div class="contentContainer">
   <div class="contentText">
-  <div class="col-sm-12">
+  <div class="col-md-6">
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="form-group has-feedback">
@@ -432,7 +432,7 @@
 
 </form>
 </div></div></div>
-    <div class="col-sm-12">
+    <div class="col-md-6">
   <div class="panel panel-default">
     <div class="panel-body">
       <h4>Register Today and Enjoy :</h4>
