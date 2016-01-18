@@ -28,7 +28,7 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?php echo tep_output_string_protected($oscTemplate->getTitle()); ?></title>
 <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>">
-
+    <link rel="shortcut icon" href="images/banners/logo.ico">
 <link href="ext/bootstrap/css/bootstrap.css" rel="stylesheet">
 <link href="custom.css" rel="stylesheet">
 <link href="user.css" rel="stylesheet">
@@ -51,7 +51,7 @@
   <?php echo $oscTemplate->getContent('navigation'); ?>
   
   <div id="bodyWrapper" class="<?php echo BOOTSTRAP_CONTAINER; ?>">
-    <div class="row" style="margin-top: 75px;">
+    <div class="row" style="margin-top: 100px;">
 
       <?php require(DIR_WS_INCLUDES . 'header.php'); ?>
 
@@ -59,4 +59,4 @@
           id="bodyContent"
           class="col-md-<?php echo $oscTemplate->getGridContentWidth(); ?> <?php echo ($oscTemplate->hasBlocks('boxes_column_left') ? 'col-md-push-' . $oscTemplate->getGridColumnWidth() : ''); ?>"
           style="margin-top: -40px;"
-          >
+      >

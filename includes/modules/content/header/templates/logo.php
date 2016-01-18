@@ -1,6 +1,6 @@
 <nav class="navbar header-style navbar-inverse navbar-fixed-top" role="navigation" style="position: absolute;">
-  <div class="container">
-    <div class="navbar-header" style="padding: 10px;">
+  <div class="container"  style="background: #069;">
+    <div class="navbar-header">
       <button
           type="button"
           class="navbar-toggle collapsed"
@@ -13,14 +13,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="index.php">
-        <span style="text-shadow: 3px 4px 5px #777777;font-size: 30px;">
-          <?php echo STORE_NAME;?>
-        </span>
-      </a>
+<!--      <a href="index.php">-->
+<!--        <span style="text-shadow: 3px 4px 5px #777777;font-size: 30px;">-->
+<!--          --><?php //echo STORE_NAME;?>
+<!--        </span>-->
+<!--      </a>-->
       <?php
-//        echo '<a href="' . tep_href_link('index.php') . '">
-//            <img src="' . DIR_WS_IMAGES . STORE_LOGO .'" style="width: 55px;" /></a>';
+        echo '<a href="' . tep_href_link('index.php') . '">
+            <img src="' . DIR_WS_IMAGES . STORE_LOGO .'" style="width: 135px;" /></a>';
       ?>
     </div>
     <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">

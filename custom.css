@@ -12,7 +12,7 @@ body {
 .header-style{
     border: 0px;
     /*box-shadow: 0 5px 5px 1px #3f9923;*/
-    background: #ffffff;
+    background: #069;
 }
 a{
     color: #777777;
@@ -506,7 +506,7 @@ h1 > span{
     background-color: #3f9923;
 }
 .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus{
-    color: black;
+    color: #FFFFFF;
 }
 .icon-font{
     font-size: 25px;
@@ -538,4 +538,7 @@ h1, .h1 {
     /*background-image: url('images/bg.png');*/
     background: #069;
     color: #ffffff;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #FFFFFF;
 }
