@@ -1,3 +1,18 @@
+<div
+    data-ng-if="product_image_thumbnail"
+    data-ng-repeat="product_image in product_image_thumbnail"
+>
+    <img src="images/{{product_image.image_thumbnail}}">{{$index}}
+    <input
+        type="file"
+        ng-model="picFile"
+        name="file"
+        accept="image/*"
+        ngf-model-invalid="errorFiles"
+        ngf-select="uploadPic(picFile@index, '1')"
+        class="form-control"
+    >
+</div>
 <input
     type="file"
     ng-model="picFile1"
