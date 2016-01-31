@@ -542,3 +542,7 @@ h1, .h1 {
 .navbar-inverse .navbar-nav > li > a {
     color: #FFFFFF;
 }
+.ads{
+    text-align: center;
+    padding: 10px;
+}

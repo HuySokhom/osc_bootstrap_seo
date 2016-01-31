@@ -51,12 +51,21 @@
   <?php echo $oscTemplate->getContent('navigation'); ?>
   
   <div id="bodyWrapper" class="<?php echo BOOTSTRAP_CONTAINER; ?>">
-    <div class="row" style="margin-top: 100px;">
+    <div class="row" style="margin-top: 120px;">
 
       <?php require(DIR_WS_INCLUDES . 'header.php'); ?>
-
+        <div class="col-md-12">
+            <a href="#">
+                <img
+                    src="images/ads/advertise-here-a-748CTP.jpg"
+                    class="img-responsive"
+                    style="width: 100%;height:80px;"
+                />
+            </a>
+        </div>
       <div
           id="bodyContent"
-          class="col-md-<?php echo $oscTemplate->getGridContentWidth(); ?> <?php echo ($oscTemplate->hasBlocks('boxes_column_left') ? 'col-md-push-' . $oscTemplate->getGridColumnWidth() : ''); ?>"
-          style="margin-top: -40px;"
+          class="col-md-9 <?php echo $oscTemplate->getGridContentWidth(); ?> <?php echo ($oscTemplate->hasBlocks
+          ('boxes_column_left') ? 'col-md-push-' . $oscTemplate->getGridColumnWidth() : ''); ?>"
+          style=""
       >
