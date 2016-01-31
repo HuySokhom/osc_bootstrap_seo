@@ -562,14 +562,18 @@ function tep_get_location($id = '') {
 function tep_get_categories_list($parent_id = '0', $indent = '') {
   global $languages_id;
   $categories_query = tep_db_query("select c.categories_id, cd.categories_name from " . TABLE_CATEGORIES . " c, " . TABLE_CATEGORIES_DESCRIPTION . " cd where parent_id = '" . (int)$parent_id . "' and c.categories_id = cd.categories_id and cd.language_id = '" . (int)$languages_id . "' order by sort_order, cd.categories_name");
-  $t = '<ul>';
+  if ( !$parent_id ){
+    $t = '<ul class="nav navbar-nav">';
+  }else{
+    $t = '<ul class="naav hide-menu">';
+  }
   while ($categories = tep_db_fetch_array($categories_query)) {
-  $t .= '<li>';
+    $t .= '<li><a href="' . tep_href_link(FILENAME_DEFAULT, 'cPath=' . $categories['categories_id']) . '">';
     $t .= $categories['categories_name'];
     if ($categories['categories_id'] != $parent_id) {
       $t .= tep_get_categories_list($categories['categories_id'], $indent . '');
     }
-    $t .= '</li>';
+    $t .= '</a></li>';
   }
   $t .= '</ul>';
   return $t;

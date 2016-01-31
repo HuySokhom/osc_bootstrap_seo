@@ -51,7 +51,7 @@
   <?php echo $oscTemplate->getContent('navigation'); ?>
   
   <div id="bodyWrapper" class="<?php echo BOOTSTRAP_CONTAINER; ?>">
-    <div class="row" style="margin-top: 120px;">
+    <div class="row" style="margin-top: 165px;">
 
       <?php require(DIR_WS_INCLUDES . 'header.php'); ?>
         <div class="col-md-12">
