@@ -59,7 +59,7 @@
                 <img
                     src="images/ads/advertise-here-a-748CTP.jpg"
                     class="img-responsive"
-                    style="width: 100%;height:80px;"
+                    style="width: 100%;height:80px;margin-bottom: 20px;"
                 />
             </a>
         </div>

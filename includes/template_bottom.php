@@ -34,6 +34,25 @@
 <?php
   }
 ?>
+<div class="col-sm-3">
+    <div class="searchbox-margin">
+        <form name="quick_find"
+              action="advanced_search_result.php"
+              method="get"
+              class="form-horizontal"
+            >
+            <div class="input-group">
+                <input type="search" name="keywords" required="" placeholder="Search ..." class="form-control"
+                       style="border-radius:0px;">
+                <span class="input-group-btn">
+                  <button type="submit" class="btn btn-primary" style="border-radius:0px;">
+                      <i class="glyphicon glyphicon-search"></i>
+                  </button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
 <div id="columnRight" class="col-md-3 ads">
     <a href="#">
         <img src="images/ads/advertise-here-a-748CTP.jpg" class="img-responsive" style="height: 170px;">
@@ -61,13 +80,12 @@
 </div>
 
     </div> <!-- row -->
-
-  </div> <!-- bodyWrapper //-->
 <div id="columnRight" class="col-md-12">
     <a href="#">
         <img src="images/ads/advertise-here-a-748CTP.jpg" class="img-responsive" style="height: 100px;width: 100%;">
     </a>
 </div>
+  </div> <!-- bodyWrapper //-->
   <?php require(DIR_WS_INCLUDES . 'footer.php'); ?>
 
 <script src="ext/bootstrap/js/bootstrap.min.js"></script>

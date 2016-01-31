@@ -251,11 +251,6 @@
 <?php
   } else { // default page
 ?>
-
-<div class="page-header">
-  <h3>Latest Ads</h3>
-</div>
-
 <?php
   if ($messageStack->size('product_action') > 0) {
     echo $messageStack->output('product_action');
@@ -279,7 +274,7 @@
     }
 
     include(DIR_WS_MODULES . FILENAME_NEW_PRODUCTS);
-    include(DIR_WS_MODULES . FILENAME_UPCOMING_PRODUCTS);
+    //include(DIR_WS_MODULES . FILENAME_UPCOMING_PRODUCTS);
 ?>
 
 </div>
