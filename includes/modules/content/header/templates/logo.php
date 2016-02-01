@@ -1,4 +1,4 @@
-<nav class="navbar header-style navbar-inverse navbar-fixed-top" role="navigation" style="position: absolute;">
+<nav class="navbar header-style navbar-inverse" role="navigation">
   <div class="container"  style="background: #069;">
       <table width="100%">
           <tr>

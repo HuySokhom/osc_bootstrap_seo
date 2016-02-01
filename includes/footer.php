@@ -15,14 +15,14 @@
 </div>
 
 <footer>
-  <div class="footer background-image">
+  <div class="footer">
     <div class="container background-image">
       <div class="row">
         <?php echo $oscTemplate->getContent('footer'); ?>
       </div>
     </div>
   </div>
-  <div class="footer-extra background-image">
+  <div>
     <div class="container background-image">
       <div class="row">
         <?php echo $oscTemplate->getContent('footer_suffix'); ?>

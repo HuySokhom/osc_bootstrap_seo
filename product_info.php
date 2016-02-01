@@ -81,8 +81,6 @@
 <div itemscope itemtype="http://schema.org/Product">
 
 <div class="page-header">
-  <h1 class="pull-right product_price" itemprop="offers" itemscope itemtype="http://schema.org/Offer"><?php echo $products_price;
-  ?></h1>
   <h1><?php echo $products_name; ?></h1>
 </div>
 
@@ -100,7 +98,7 @@
     <!-- use jssor.slider.debug.js instead for debug -->
     <script type="text/javascript" src="ext/js/slide_product.js"></script>
     <link href="ext/css/slider_product.css" rel="stylesheet">
-<?php
+<?php /*
     if (tep_not_null($product_info['products_image'])) {
 
 //      echo tep_image(DIR_WS_IMAGES . $product_info['products_image'], NULL, NULL, NULL, 'itemprop="image" style="display:none;"');
@@ -158,62 +156,21 @@
         <a href="http://www.jssor.com" style="display:none">Bootstrap Carousel</a>
     </div>
 <?php
-    }
+    } */
 ?>
-<div class="col-md-12">
-    <table style="width: 100%; margin-top: 10px;">
-        <tr>
-            <td width="35%">
-                <?php echo '<b>Post Date:</b> ' . date('d-F-Y', strtotime($product_info['products_date_added'])); ?>
-            </td>
-            <td>
-                <?php echo '<b>Kind Of:</b> ' . $product_info['manufacturers_name']; ?>
-            </td>
-            <td>
-                <?php echo '<b>View:</b> ' . $product_info['products_viewed']; ?>
-            </td>
-        </tr>
-    </table>
+<div style="float: right;padding: 10px;">
+    <a href="#">
+        <img
+            src="images/ads/advertising_icon.jpg" class="img-responsive"
+        />
+    </a>
 </div>
-<div class="col-sm-8 col-md-8">
-    <h4 class="page-header">Description:</h4>
-    <div itemprop="description">
-      <?php echo stripslashes($product_info['products_description']); ?>
-    </div>
-</div>
-<div class="col-sm-4 col-md-4">
-    <h4 class="page-header">Contact:</h4>
-    <?php
-        $customer_query = tep_db_query("
-          select contact_name, contact_phone, contact_address, contact_email, customers_id
-          from product_contact_person
-          where
-            products_id = ". (int)$HTTP_GET_VARS['products_id'] . "
-        ");
-        $customer = tep_db_fetch_array($customer_query);
-        if (tep_db_num_rows($customer_query) > 0) {
-            echo '<table>';
-            echo '<tr><td><span class="glyphicon glyphicon-user icon-font"></span>' . $customer['contact_name'] . '</td></tr>';
-            echo '<tr><td><span class="glyphicon glyphicon-phone icon-font"></span>' . $customer['contact_phone'] . '</td></tr>';
-            echo '<tr><td><span class="glyphicon glyphicon-globe icon-font"></span>' . $customer['contact_address'] . '</td></tr>';
-            echo '<tr><td><span class="glyphicon glyphicon-envelope icon-font"></span>' . $customer['contact_email'] . '</td></tr>';
-            echo '<tr><td><span class="glyphicon glyphicon-home icon-font"></span>
-                <a href="user.php?id='. $customer['customers_id'] .'">Go To Store</a></td></tr>';
-            echo '</table>';
-        }
-    ?>
+<div itemprop="description">
+  <?php
+    echo stripslashes($product_info['products_description']);
+  ?>
 </div>
 
- <div class="clearfix col-sm-12 col-md-12 alert alert-success">
-    <p>
-        ទំនាក់ទំនងលេខ <?php echo $customer['contact_phone'];?> កុំភ្លេចនិយាយថាអ្នកបានរកឃើញការផ្សព្វផ្សាយនេះនៅលើ
-        <?php echo STORE_NAME;?>។
-   </p>
-    <p>
-        Call to <?php echo $customer['contact_phone'];?> for more information,
-        don't forget to mention that you found this ad on <?php echo STORE_NAME;?>.
-    </p>
-</div>
 <?php
     include(DIR_WS_MODULES . 'relate_products.php');
 ?>

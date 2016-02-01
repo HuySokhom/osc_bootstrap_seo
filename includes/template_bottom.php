@@ -55,34 +55,25 @@
 </div>
 <div id="columnRight" class="col-md-3 ads">
     <a href="#">
-        <img src="images/ads/advertise-here-a-748CTP.jpg" class="img-responsive" style="height: 170px;">
+        <img src="images/ads/advertising_icon.jpg" class="img-responsive">
     </a>
 </div>
 <div id="columnRight" class="col-md-3 ads">
     <a href="#">
-        <img src="images/ads/advertise-here-a-748CTP.jpg" class="img-responsive" style="height: 170px;">
+        <img src="images/ads/advertising_icon.jpg" class="img-responsive">
     </a>
 </div>
 <div id="columnRight" class="col-md-3 ads">
     <a href="#">
-        <img src="images/ads/advertise-here-a-748CTP.jpg" class="img-responsive" style="height: 170px;">
-    </a>
-</div>
-<div id="columnRight" class="col-md-3 ads">
-    <a href="#">
-        <img src="images/ads/advertise-here-a-748CTP.jpg" class="img-responsive" style="height: 170px;">
-    </a>
-</div>
-<div id="columnRight" class="col-md-3 ads">
-    <a href="#">
-        <img src="images/ads/advertise-here-a-748CTP.jpg" class="img-responsive" style="height: 170px;">
+        <img src="images/ads/advertising_icon.jpg" class="img-responsive">
     </a>
 </div>
 
     </div> <!-- row -->
 <div id="columnRight" class="col-md-12">
     <a href="#">
-        <img src="images/ads/advertise-here-a-748CTP.jpg" class="img-responsive" style="height: 100px;width: 100%;">
+        <img src="images/ads/advertise-here-a-748CTP.jpg" class="img-responsive" style="margin-bottom: 15px;height:
+        100px;width: 100%;">
     </a>
 </div>
   </div> <!-- bodyWrapper //-->
