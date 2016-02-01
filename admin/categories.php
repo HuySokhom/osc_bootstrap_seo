@@ -223,7 +223,8 @@
                                 'products_weight' => (float)tep_db_prepare_input($HTTP_POST_VARS['products_weight']),
                                 'products_status' => tep_db_prepare_input($HTTP_POST_VARS['products_status']),
                                 'products_tax_class_id' => tep_db_prepare_input($HTTP_POST_VARS['products_tax_class_id']),
-                                'manufacturers_id' => (int)tep_db_prepare_input($HTTP_POST_VARS['manufacturers_id']),
+                                'manufacturers_id' => 7,// (int)tep_db_prepare_input
+//                                ($HTTP_POST_VARS['manufacturers_id']),
                                 'location_id' => (int)tep_db_prepare_input($HTTP_POST_VARS['location_id']));
 
         $products_image = new upload('products_image');
@@ -597,12 +598,12 @@ updateGross();
 					?>&nbsp;
 				</td>
                 <td class="main">
-                	<?php 
+                	<?php
                 		echo tep_draw_textarea_field(
 							'products_description[' . $languages[$i]['id'] . ']', 
 							'soft', '70', '15', (empty($pInfo->products_id) ? '' 
-							: tep_get_products_description($pInfo->products_id, 
-							$languages[$i]['id'])),'id="products_description"'
+							: stripslashes( tep_get_products_description($pInfo->products_id,
+							$languages[$i]['id']) )),'id="products_description"'
 						); 
 					?></td>
               </tr>
@@ -667,11 +668,11 @@ updateGross();
         "insertdatetime media table contextmenu paste imagetools"
     ],
     toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-  imagetools_cors_hosts: ['www.tinymce.com', 'codepen.io'],
-  content_css: [
-    '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
-    '//www.tinymce.com/css/codepen.min.css'
-  ]
+    imagetools_cors_hosts: ['www.tinymce.com', 'codepen.io'],
+    content_css: [
+      '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
+      '//www.tinymce.com/css/codepen.min.css'
+    ]
     });
 </script>
         
