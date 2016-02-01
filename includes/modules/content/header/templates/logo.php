@@ -1,5 +1,5 @@
 <nav class="navbar header-style navbar-inverse" role="navigation">
-  <div class="container"  style="background: #069;">
+  <div class="container"  style="background: #1C5B6E;">
       <table width="100%">
           <tr>
               <td>

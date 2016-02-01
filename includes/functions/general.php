@@ -565,7 +565,7 @@ function tep_get_categories_list($parent_id = '0', $indent = '') {
   if ( !$parent_id ){
     $t = '<ul class="nav navbar-nav">';
   }else{
-    $t = '<ul class="naav hide-menu">';
+    $t = '<ul class="hide-menu">';
   }
   while ($categories = tep_db_fetch_array($categories_query)) {
     $t .= '<li><a href="' . tep_href_link(FILENAME_DEFAULT, 'cPath=' . $categories['categories_id']) . '">';

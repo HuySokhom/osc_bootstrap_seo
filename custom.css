@@ -539,8 +539,7 @@ h1, .h1 {
     height: 110px;
 }
 .background-image{
-    /*background-image: url('images/bg.png');*/
-    background: #069;
+    background: #1C5B6E;
     color: #ffffff;
 }
 .navbar-inverse .navbar-nav > li > a {
@@ -554,7 +553,7 @@ h1, .h1 {
     width: 200px;
     display: none;
     position: absolute;
-    background: #069;
+    background: #1C5B6E;
     list-style: none;
     margin: 0;
     padding: 0;
