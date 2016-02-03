@@ -12,6 +12,7 @@
 
 // define the filenames used in the project
   define('FILENAME_ACCOUNT', 'account.php');
+define('FILENAME_USER', 'user.php');
   define('FILENAME_ACCOUNT_EDIT', 'account_edit.php');
   define('FILENAME_ACCOUNT_HISTORY', 'account_history.php');
   define('FILENAME_ACCOUNT_HISTORY_INFO', 'account_history_info.php');
