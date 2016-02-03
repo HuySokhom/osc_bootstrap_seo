@@ -37,8 +37,8 @@ app.controller(
 
 		$scope.disabled = true;
 
-		$scope.edit = function(params){
-			tinymce.init({ selector:'#description' });
+		$scope.edit = function(params){console.log(params);
+			tinymce.init({ selector:'#description',plugins: 'media' });
 			tinymce.get('description').setContent(params.fields[0].products_description);
 			$scope.id = params.id;
 			// category
@@ -56,7 +56,7 @@ app.controller(
 			$scope.price = params.products_price;
 
 			// product image
-			//$scope.image_thumbnail1 =
+			$scope.product_image_thumbnail = params.image;
 			//	angular.isDefined( $scope.products.image[0].image_thumbnail )
 			//		?
 			//	$scope.products.image[0].image_thumbnail
@@ -304,7 +304,13 @@ app.controller(
 			$scope.init(params);
 		};
 
+		$scope.product_image_thumbnail = [{
+			image: '',
+			image_thumbnail: ''
+		}];
+
 		function clear(){
+			$scope.product_image_thumbnail = '';
 			$scope.id = '';
 			$scope.title = '';
 			$scope.description = '';

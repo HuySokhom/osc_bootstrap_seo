@@ -36,7 +36,7 @@
             if (tep_session_is_registered('customer_id')) {
               ?>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <span class="glyphicon glyphicon-user"></span>
+                <span class="fa fa-user"></span>
                 <?php echo $_SESSION['user_name']?>
                 <b class="caret"></b>
               </a>
