@@ -15,11 +15,6 @@
                       <img
                           src="images/ads/advertise-here-a-748CTP.jpg"
                           class="img-responsive"
-                          style="
-                width: 100%;
-                padding: 9px;
-                height: 104px;
-            "
                           />
                   </div>
               </td>

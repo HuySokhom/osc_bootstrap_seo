@@ -39,7 +39,7 @@
         $p_name = $new_products['products_name'];
       }
       $new_prods_content .= '<div class="col-sm-4 col-md-3" style="padding-bottom: 10px;">';
-      $new_prods_content .= '  <div class="productHolder equal-height" style="height: 208px;">';
+      $new_prods_content .= '  <div class="productHolder equal-height" style="height: 178px;">';
       $new_prods_content .= '    <a href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $new_products['products_id']) . '">'
           . tep_image(DIR_WS_IMAGES . $new_products['products_image_thumbnail'],
               $new_products['products_name'], SMALL_IMAGE_WIDTH,
@@ -48,7 +48,7 @@
       $new_prods_content .= '      <p class="text-center"><a href="' . tep_href_link(FILENAME_PRODUCT_INFO,
             'products_id=' . $new_products['products_id']) . '">'
             . $p_name . '</a></p>';
-      $new_prods_content .= '      <p class="text-center price">' . $currencies->display_price($new_products['products_price'], tep_get_tax_rate($new_products['products_tax_class_id'])) . '</p>';
+//      $new_prods_content .= '      <p class="text-center price">' . $currencies->display_price($new_products['products_price'], tep_get_tax_rate($new_products['products_tax_class_id'])) . '</p>';
       $new_prods_content .= '    </div>';
       $new_prods_content .= '  </div>';
       $new_prods_content .= '</div>';

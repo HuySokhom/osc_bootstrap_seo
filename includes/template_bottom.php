@@ -34,7 +34,7 @@
 <?php
   }
 ?>
-<div class="col-sm-3">
+<div class="col-md-3">
     <div class="searchbox-margin">
         <form name="quick_find"
               action="advanced_search_result.php"
@@ -70,9 +70,9 @@
 </div>
 
     </div> <!-- row -->
-<div id="columnRight" class="col-md-12">
+<div id="columnRight" class="row">
     <a href="#">
-        <img src="images/ads/advertise-here-a-748CTP.jpg" class="img-responsive" style="margin-bottom: 15px;height:
+        <img src="images/ads/advertise-here-a-748CTP.jpg" class="img-responsive col-md-12" style="margin-bottom: 15px;height:
         100px;width: 100%;">
     </a>
 </div>

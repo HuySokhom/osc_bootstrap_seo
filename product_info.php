@@ -161,11 +161,11 @@
 <div style="float: right;padding: 10px;">
     <a href="#">
         <img
-            src="images/ads/advertising_icon.jpg" class="img-responsive"
+            src="images/ads/advertising_icon.jpg" style="width: 272px;" class="img-responsive"
         />
     </a>
 </div>
-<div itemprop="description">
+<div itemprop="description" style="text-align: justify;">
   <?php
     echo stripslashes($product_info['products_description']);
   ?>

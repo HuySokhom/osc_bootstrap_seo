@@ -53,11 +53,11 @@
   <div id="bodyWrapper" class="<?php echo BOOTSTRAP_CONTAINER; ?>">
     <div class="row">
       <?php require(DIR_WS_INCLUDES . 'header.php'); ?>
-        <div class="col-md-12">
+        <div class="row">
             <a href="#">
                 <img
                     src="images/ads/advertise-here-a-748CTP.jpg"
-                    class="img-responsive"
+                    class="img-responsive col-md-12"
                     style="width: 100%;height:100px;margin-bottom: 20px;"
                 />
             </a>
