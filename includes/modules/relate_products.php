@@ -55,7 +55,7 @@
     }
 
 ?>
-  <h4 class="page-header col-sm-12 col-md-12">Others</h4>
+  <h4 class="page-header col-sm-12 col-md-12" style="margin-top: 10px;">Others</h4>
   <?php echo $new_prods_content; ?>
 <?php
   }
