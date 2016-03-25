@@ -457,3 +457,6 @@ p.lead del {
 .form-control-feedback{
 	padding-right:2%;
 }
+a:hover{
+    text-decoration: none;
+}
