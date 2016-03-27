@@ -39,6 +39,14 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <b class="caret"></b></a>
             <ul class="dropdown-menu">
+<?php
+if (tep_session_is_registered('customer_id')) {
+  echo '<li><a href="' . tep_href_link(FILENAME_LOGOFF, '', 'SSL') . '">' . HEADER_ACCOUNT_LOGOFF . '</a>';
+  echo '<li><a href="' . tep_href_link(FILENAME_ACCOUNT, '', 'SSL') . '"><i class="fa fa-user"></i> ' . HEADER_ACCOUNT . '</a>';
+}
+else {
+
+  ?>
               <li>
                 <a href="login.php">
                   <i class="glyphicon glyphicon-log-in"></i>
@@ -50,7 +58,17 @@
                   <i class="glyphicon glyphicon-pencil"></i>
                   Register
                 </a>
-              </li></ul>
+              </li>
+  <?php
+}
+?>
+              <li>
+                <a href="shopping_cart.php">
+                  <i class="fa fa-shopping-cart"></i>
+                  Shopping Cart
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
       </div><!--/.nav-collapse -->
