@@ -469,9 +469,10 @@ body{
     -webkit-background-size: cover;
 }
 #navbar > ul > li > a:hover{
-   border-top: 3px solid #a0ce4e;
+    color: #a0ce4e;
+    border-top: 3px solid #a0ce4e;
 }
-#navbar > ul > li > a:hover {
+a:hover{
     color: #a0ce4e;
 }
 #navbar > ul > li a{

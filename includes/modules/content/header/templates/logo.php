@@ -40,13 +40,13 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li>
-                <a href="http://localhost/realEstate/login.php">
+                <a href="login.php">
                   <i class="glyphicon glyphicon-log-in"></i>
                   Log In
                 </a>
               </li>
               <li>
-                <a href="http://localhost/realEstate/create_account.php">
+                <a href="create_account.php">
                   <i class="glyphicon glyphicon-pencil"></i>
                   Register
                 </a>

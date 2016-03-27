@@ -51,9 +51,9 @@
 
   <?php echo $oscTemplate->getContent('navigation'); ?>
   
-  <div id="bodyWrapper" class="<?php echo BOOTSTRAP_CONTAINER; ?>">
+  <div id="bodyWrapper" class="<?php echo BOOTSTRAP_CONTAINER; ?>"
+    style="margin-top: 20px;"
+  >
     <div class="row">
-
       <?php require(DIR_WS_INCLUDES . 'header.php'); ?>
-
       <div id="bodyContent" class="col-md-<?php echo $oscTemplate->getGridContentWidth(); ?> <?php echo ($oscTemplate->hasBlocks('boxes_column_left') ? 'col-md-push-' . $oscTemplate->getGridColumnWidth() : ''); ?>">
