@@ -43,6 +43,7 @@
 
 <!-- font awesome -->
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="ext/font/font_avanda.css">
 
 <?php echo $oscTemplate->getBlocks('header_tags'); ?>
 </head>
