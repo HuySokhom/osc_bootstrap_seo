@@ -22,46 +22,45 @@ require('includes/application_top.php');
 ?>
 
 <script type="text/javascript">
-//    $(document).ready(function(){
-//        Dropzone.autoDiscover = false;
-//        $("div#dropzone").dropzone({
-//            url: "api/Image",
-//            addRemoveLinks: true,
-//            uploadMultiple: true, // Adding This
-//            dictRemoveFile: 'X (remove)',
-//            maxFilesize: 1, // MB
-//            accept: function(file, done) {
-//                if (file.name == "justinbieber.jpg") {
-//                    done("Naha, you don't.");
-//                }
-//                else { done(); }
-//            }
-//        });
-//    });
-    //DropzoneJS snippet - js
-//
-//    $.getScript('http://cdnjs.cloudflare.com/ajax/libs/dropzone/3.8.4/dropzone.min.js',function(){
         // instantiate the uploader
-        $('#file-dropzone').dropzone({
-            url: "upload.php",
-            maxFilesize: 100,
-            maxThumbnailFilesize: 5,
-            init: function() {
-                this.on('success', function(file, json) {
-                    console.log(json);
-                    console.log(file);
-                });
+    $('#file-dropzone').dropzone({
+        url: "upload.php",
+        paramName: "file", // The name that will be used to transfer the file
+        maxFilesize: 2,// MB
+        maxFiles: 6,
+        acceptedFiles: ".bmp, .png, .jpg, .jpeg, .gif, .png",
+        maxThumbnailFilesize: 5,
+        addRemoveLink:true,
+        init: function() {
+            this.on('success', function(file, json) {
+                console.log(json);
+                console.log(file);
+            });
 
-                this.on('addedfile', function(file) {
-                    console.log(file);
-                });
+            this.on('addedfile', function(file) {
+                console.log(file);
+                // Create the remove button
+                var removeButton = Dropzone.createElement("<button>Remove file</button>");
+                // Capture the Dropzone instance as closure.
+                var _this = this;
+                // Listen to the click event
+                removeButton.addEventListener("click", function(e) {
+                    // Make sure the button click doesn't submit the form:
+                    e.preventDefault();
+                    e.stopPropagation();
 
-                this.on('drop', function(file) {
-                    alert('file');
+                    // Remove the file preview.
+                    _this.removeFile(file);
+                    // If you want to the delete the file on the server as well,
+                    // you can do the AJAX request here.
                 });
-            }
-        });
-//    });
+                // Add the button to the file preview element.
+                file.previewElement.appendChild(removeButton);
+            });
 
-    $(document).ready(function() {});
+            this.on('drop', function(file) {
+                alert('file');
+            });
+        }
+    });
 </script>
