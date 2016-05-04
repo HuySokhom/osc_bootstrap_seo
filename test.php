@@ -22,16 +22,47 @@ require('includes/application_top.php');
 ?>
 
 <script type="text/javascript">
+    Dropzone.autoDiscover = false;
         // instantiate the uploader
     $('#file-dropzone').dropzone({
         url: "upload.php",
         paramName: "file", // The name that will be used to transfer the file
         maxFilesize: 2,// MB
-        maxFiles: 6,
+        maxFiles: 2,
         acceptedFiles: ".bmp, .png, .jpg, .jpeg, .gif, .png",
         maxThumbnailFilesize: 5,
         addRemoveLink:true,
         init: function() {
+
+            var thisDropzone = this;
+
+            //Call the action method to load the images from the server
+            $.getJSON("json.json").done(function (data) {
+                console.log(data);
+                if (data != '') {
+
+                    $.each(data, function (index, item) {console.log(item);console.log(index);
+                        //// Create the mock file:
+                        var mockFile = {
+                            name: item.file,
+                            size: 10
+                        };
+
+                        // Call the default addedfile event handler
+                        thisDropzone.emit("addedfile", mockFile);
+
+                        // And optionally show the thumbnail of the file:
+                        thisDropzone.emit("thumbnail", mockFile, item.file);
+
+                        // If you use the maxFiles option, make sure you adjust it to the
+                        // correct amount:
+                        //var existingFileCount = 1; // The number of files already uploaded
+                        //myDropzone.options.maxFiles = myDropzone.options.maxFiles - existingFileCount;
+                    });
+                }
+
+            });
+
             this.on('success', function(file, json) {
                 console.log(json);
                 console.log(file);
